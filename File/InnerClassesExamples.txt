@@ -1,0 +1,195 @@
+//Inner Classes
+//A simple example of a top level inner class
+//---------------------------------------------------------------------------------
+public class IC1 {
+  String msg = "Hello";
+  void doWork() {
+    Inner i = new Inner();
+    i.doTheWork();
+    msg = "Goodbye";
+    i.doTheWork();
+  }
+  class Inner {
+    public void doTheWork() {
+      // print member of enclosing class
+      System.out.println(msg);
+    }
+  }
+  public static void main(String[] av) {
+    IC1  p = new IC1 ();
+    p.doWork();
+  }
+}
+
+//Static inner classes
+//---------------------------------------------------------------------------------
+public class IC2 {
+  String msg = "Hello";
+  static class Inner {
+    public void doTheWork() {
+      // print member of enclosing class
+      System.out.println(msg);
+    }
+  }
+  public static void main(String[] av) {
+    IC2.Inner  p = new IC2.Inner();
+    p.dTheoWork();
+  }
+}
+
+//Local Inner Classes
+//---------------------------------------------------------------------------------
+public class IC3 {
+  String msg = "Hello";
+  void doWork() {
+  	class Inner {
+	    public void doTheWork() {
+	      // print member of enclosing class
+	      System.out.println(msg);
+	    }
+	}
+    Inner i = new Inner();
+    i.doTheWork();
+    msg = "Goodbye";
+    i.doTheWork();
+  }
+  public static void main(String[] av) {
+    IC3  p = new IC3();
+    p.doWork();
+  }
+}
+
+//Anonymous inner Class
+//---------------------------------------------------------------------------------
+import java.awt.event.*;
+import javax.swing.*;
+class CloseableFrame extends JFrame
+{  public CloseableFrame()
+   {  setTitle("CloseableFrame");
+      setSize(300, 200);
+      addWindowListener(new WindowAdapter()
+         {  public void windowClosing(WindowEvent e)
+            {  System.exit(0);
+            }
+         } );
+   }
+}
+public class CloseableTest
+{  public static void main(String[] args)
+   {  JFrame frame = new CloseableFrame();
+      frame.setVisible(true);  
+   }
+}
+
+
+//Another useful example of using top level inner classes
+//---------------------------------------------------------------------------------
+public class Parcel1 {
+  class Contents {
+    private int i = 11;
+
+    public int value() {
+      return i;
+    }
+  }
+
+  class Destination {
+    private String label;
+
+    Destination(String whereTo) {
+      label = whereTo;
+    }
+
+    String readLabel() {
+      return label;
+    }
+  }
+
+  // Using inner classes looks just like
+  // using any other class, within Parcel1:
+  public void ship(String dest) {
+    Contents c = new Contents();
+    Destination d = new Destination(dest);
+    System.out.println(d.readLabel());
+  }
+
+  public static void main(String[] args) {
+    Parcel1 p = new Parcel1();
+    p.ship("Tanzania");
+  }
+}
+
+//Nesting Nesting Nesting Inner classes
+//---------------------------------------------------------------------------------
+public class MultiNestingAccess {
+  public static void main(String[] args) {
+    MNA mna = new MNA();
+    MNA.A mnaa = mna.new A();
+    MNA.A.B mnaab = mnaa.new B();
+    mnaab.h();
+  }
+} 
+class MNA {
+  private void f() {
+  }
+
+  class A {
+    private void g() {
+    }
+
+    public class B {
+      void h() {
+        g();
+        f();
+      }
+    }
+  }
+}
+
+//Returning a reference to a inner class
+//---------------------------------------------------------------------------------
+public class Parcel2 {
+  class Contents {
+    private int i = 11;
+
+    public int value() {
+      return i;
+    }
+  }
+
+  class Destination {
+    private String label;
+
+    Destination(String whereTo) {
+      label = whereTo;
+    }
+
+    String readLabel() {
+      return label;
+    }
+  }
+
+  public Destination to(String s) {
+    return new Destination(s);
+  }
+
+  public Contents cont() {
+    return new Contents();
+  }
+
+  public void ship(String dest) {
+    Contents c = cont();
+    Destination d = to(dest);
+    System.out.println(d.readLabel());
+  }
+
+  public static void main(String[] args) {
+    Parcel2 p = new Parcel2();
+    p.ship("Tanzania");
+    Parcel2 q = new Parcel2();
+    // Defining references to inner classes:
+    Parcel2.Contents c = q.cont();
+    Parcel2.Destination d = q.to("Borneo");
+  }
+}
+

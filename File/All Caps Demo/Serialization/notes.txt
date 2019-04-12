@@ -1,0 +1,9 @@
+object stream
+- ObjectInputStream 		ObjectOutputStream
+
+we have a class, build an object -> write an object to disk.
+
+use objectFileTest.java
+
+Serialization occurs with Object Streams - writing and reading. 
+

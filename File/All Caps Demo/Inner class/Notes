@@ -1,0 +1,3 @@
+Instead of having to create a new class SmartPhone and inherit 
+from the parent class Phone, we can have the anonymous
+class inside the phone class; 
