@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="12/src"/>
+	<classpathentry kind="src" path="File/2 - File IO and Serialization/FileIO - individual java files"/>
+	<classpathentry kind="src" path="File/2 - File IO and Serialization/FileIO Notes Adopted from CIS 35a"/>
+	<classpathentry excluding="Exception Handling - Self Healing Software/" kind="src" path="File/3-Exception Handling"/>
+	<classpathentry kind="src" path="File/3-Exception Handling/Exception Handling - Self Healing Software"/>
+	<classpathentry kind="src" path="File/All Caps Demo/All Caps Demo/src"/>
+	<classpathentry kind="src" path="File/All Caps Demo/BufferDemo/src"/>
+	<classpathentry kind="src" path="File/All Caps Demo/Exceptions/src"/>
+	<classpathentry kind="src" path="File/All Caps Demo/FileOutputStream and FileInputStream/src"/>
+	<classpathentry kind="src" path="File/All Caps Demo/Inner class/src"/>
+	<classpathentry kind="src" path="File/All Caps Demo/Object File Demo/src"/>
+	<classpathentry kind="src" path="File/All Caps Demo/Read Bytes/src"/>
+	<classpathentry kind="src" path="File/All Caps Demo/Serialization/src"/>
+	<classpathentry kind="src" path="File/FileIO"/>
+	<classpathentry kind="src" path="File/String Tokenizer"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="12/bin"/>
+</classpath>
