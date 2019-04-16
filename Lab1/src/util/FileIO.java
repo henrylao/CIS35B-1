@@ -11,10 +11,9 @@ import model.*;
 import java.io.*;
 import java.util.*;
 public class FileIO {
+	
 	public Automotive readFile(String fileName){
-		int size = 5;
-		String carName = "FordZTW";
-		Automotive a = new Automotive(carName, 18445, size);
+		Automotive a = null;
 		try {
             FileReader file = new FileReader(fileName);
             BufferedReader buff = new BufferedReader(file);
@@ -22,12 +21,15 @@ public class FileIO {
             int index = -1;
             int counter = 0;
             int pos = 0;
+            String line = buff.readLine();
+    		StringTokenizer stk = new StringTokenizer(line, ",");
+    		a = new Automotive(stk.nextToken(), Float.parseFloat(stk.nextToken()), Integer.parseInt(stk.nextToken()));;
             while (!eof) {
-                String line = buff.readLine();
+            	line = buff.readLine();
                 if (line == null) 
-                   eof = true;
+                	eof = true;
                 else{
-            		StringTokenizer stk = new StringTokenizer(line, ",");
+            		stk = new StringTokenizer(line, ",");
                 	if(pos >= counter){
                         String s = stk.nextToken();
                         counter = Integer.parseInt(stk.nextToken());

@@ -15,7 +15,7 @@ public class OptionSet implements Serializable{
 	private Option opt [];
 	private String name;
 	//Constructor
-	//protected OptionSet(){}
+	protected OptionSet(){}
 	protected OptionSet(String n, int size) {
 		name = n; 
 		opt = new Option[size];
@@ -24,7 +24,7 @@ public class OptionSet implements Serializable{
 		}
 	}
 	//Getter
-	protected String getOptionSetName(){ return name;}
+	protected String getOptionSetName(){ return name; }
 	protected Option[] getOption(){ return opt; }
 	//Find
 	protected int findOption(String n){
@@ -40,44 +40,46 @@ public class OptionSet implements Serializable{
 	protected void setOption(int i, String n, float p ){
 		if(opt[i] == null)
 			opt[i] = new Option(n,p);
-		opt[i].setOptionValue(n,p);
+		else
+			opt[i].setOptionValue(n,p);
 	}
 	//Delete
-	protected void findAndDeleteOption(int pos){
-		if(checkIndex(pos)){
+	protected boolean findAndDeleteOption(int pos){
+		if(checkValidIndex(pos)){
 			opt[pos] = null;
+			return true;
 		}
+		else
+			return false;
 	}
 	//Check valid index
-	public boolean checkIndex(int i){
-		return i>=0 && i<opt.length && opt[i] != null;
+	public boolean checkValidIndex(int i){
+		return i >= 0 && i < opt.length && opt[i] != null;
 	}
 	//Inner class
 	protected class Option implements Serializable {
 		private String name;
 		private float price; 
 		//Constructor
-		//protected Option(){}
-		protected Option(String n, float p){
-			name = n;
-			price = p;
-		}
+		protected Option(){}
+		protected Option(String n, float p){ name = n; price = p; }
 		//Getter
 		protected String getOptionName(){ return name;}
 		protected float getOptionPrice(){ return price;}
 		//Setter
-		protected void setOptionValue(String n, float p ){ name = n; price = p;}
+		protected void setOptionValue(String n, float p ){ name = n; price = p; }
 		protected void setOptionName(String n){ name = n;}
 		protected void setOptionPrice(float p){ price = p;}
 	}
 	//Print
 	@Override
 	public String toString(){
-		StringBuffer s = new StringBuffer(getOptionSetName());
-		s.append(String.format("\n%-35s%8s\n", "Name", "Fee"));
+		StringBuffer s = new StringBuffer();
+		s.append(String.format(" %s\n ---------------------------------------------", getOptionSetName()));
+		s.append(String.format("\n %-35s%10s\n", "Name", "Fee"));
 		for(int i=0; i< opt.length; i++){
 			if(opt[i] != null)
-				s.append(String.format("%-35s%8.2f\n",opt[i].getOptionName(),opt[i].getOptionPrice()));
+				s.append(String.format("%2s.%-35s%8.2f\n",i+1,opt[i].getOptionName(),opt[i].getOptionPrice()));
 		}
 		return s.toString();
 	}

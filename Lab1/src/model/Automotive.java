@@ -27,7 +27,7 @@ public class Automotive implements Serializable{
 	public String getName(){ return name;}
 	public float getbaseprice(){ return baseprice;}
 	public OptionSet getOptionSet(int i){ 
-		if(checkIndex(i))
+		if(checkValidIndex(i))
 			return opset[i];
 		else
 			return null;
@@ -43,7 +43,7 @@ public class Automotive implements Serializable{
 		return pos;
 	}
 	public int findOptionByName(int i, String n){
-		if(checkIndex(i))
+		if(checkValidIndex(i))
 			return opset[i].findOption(n);
 		return -1;
 	}
@@ -57,17 +57,31 @@ public class Automotive implements Serializable{
 		opset[index].getOption()[pos] = opset[index].new Option(n, p);
 	}
 	//Delete
-	public void deleteOptionSet(int i){
-		if(checkIndex(i)){
+	public boolean deleteOptionSet(int i){
+		if(checkValidIndex(i)){
 			opset[i] = null;
+			return true;
 		}
+		else
+			return false;
 	}
-	public void deleteOption(int i, int pos){
-		if(checkIndex(i)){
-			opset[i].findAndDeleteOption(pos);
+	public boolean deleteOption(int i, int pos){
+		if(checkValidIndex(i)){
+			return opset[i].findAndDeleteOption(pos);
 		}
+		return false;
 	}
 	//Update
+	/*
+ 	update an option name or price within an optionSet
+	should take input for old data and new data
+	update optionSet name
+	one option object
+	one option name and price
+	option name only 
+	option price only
+	*/
+	
 	public void updateOptionSet(String name, String n, int size){
 		int pos = findOptionSetByName(name);
 		if( pos != -1){
@@ -81,14 +95,13 @@ public class Automotive implements Serializable{
 		}
 	}
 	//Check valid index
-	public boolean checkIndex(int i){
+	public boolean checkValidIndex(int i){
 		return i >= 0 && i < opset.length && opset[i] != null;
 	}
 	//Print
 	@Override
 	public String toString(){
-		StringBuffer s = new StringBuffer(getName());
-		s.append(String.format("\n%-35s%5.2f\n\n", "Base Price", getbaseprice()));
+		StringBuffer s = new StringBuffer(String.format(" %s\n %-35s%10.2f\n\n", getName(), "Base Price", getbaseprice()));
 		for(int i = 0; i< opset.length; i++){
 			if(opset[i] != null){
 				s.append(opset[i].toString());

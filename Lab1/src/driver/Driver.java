@@ -19,15 +19,17 @@ public class Driver {
 		//Build Automobile Object from a file.
 		Automotive FordZTW = f.readFile(fileName);
 		//Print attributes before serialization
-		System.out.println(FordZTW.toString());
-		//Serialize the object
-		String objectFileName = "auto.dat";
-		f.serializeAuto(FordZTW, objectFileName);
-		System.out.println("Serialized the object...\n");
-		//Deserialize the object and read it into memory.
-		Automotive newFordZTW = f.DeserializeAuto(objectFileName); 
-		System.out.println("Deserialized the object...\n");
-		//Print new attributes.
-		System.out.println(newFordZTW.toString());
+//		System.out.println(FordZTW.toString());
+//		//Serialize the object
+//		String objectFileName = "auto.dat";
+//		f.serializeAuto(FordZTW, objectFileName);
+//		System.out.println("Serialized the object...\n");
+//		//Deserialize the object and read it into memory.
+//		Automotive newFordZTW = f.DeserializeAuto(objectFileName); 
+//		System.out.println("Deserialized the object...\n");
+//		//Print new attributes.
+//		System.out.println(newFordZTW.toString());
+		//Testing
+		
 	}
 }
