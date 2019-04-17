@@ -29,9 +29,10 @@ public class OptionSet implements Serializable{
 	//Find
 	protected int findOption(String n){
 		int pos = -1;
-		for(int j=0; j< opt.length; j++){
-			if(opt[j].getOptionName().equals(n))
-				pos = j;
+		for(int j = 0; j< opt.length; j++){
+			if(checkValidIndex(j) && opt[j].getOptionName().equals(n)) {
+					pos = j;
+			}			
 		}
 		return pos;
 	}
@@ -43,9 +44,27 @@ public class OptionSet implements Serializable{
 		else
 			opt[i].setOptionValue(n,p);
 	}
+	protected boolean setOption(String oldName, String newName, float newPrice ){
+		int pos = findOption(oldName);
+		if(pos != -1) {
+			opt[pos].setOptionValue(newName,newPrice);
+			return true;
+		}
+		return false;
+		
+	}
 	//Delete
 	protected boolean findAndDeleteOption(int pos){
 		if(checkValidIndex(pos)){
+			opt[pos] = null;
+			return true;
+		}
+		else
+			return false;
+	}
+	protected boolean findAndDeleteOption(String name){
+		int pos = findOption(name);
+		if(pos != -1){
 			opt[pos] = null;
 			return true;
 		}

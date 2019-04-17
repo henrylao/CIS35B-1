@@ -1,0 +1,90 @@
+ FordZTW
+ Base Price                           18445.00
+
+ Color
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Fort Knox Gold Clearcoat Metallic      0.00
+ 2.Liquid Grey Clearcoat Metallic         0.00
+ 3.Infra-Red Clearcoat                    0.00
+ 4.Grabber Green Clearcoat Metallic       0.00
+ 5.Sangria Red Clearcoat Metallic         0.00
+ 6.French Blue Clearcoat Metallic         0.00
+ 7.Twilight Blue Clearcoat Metallic       0.00
+ 8.CD Silver Clearcoat Metallic           0.00
+ 9.Pitch Black Clearcoat                  0.00
+10.Cloud 9 White Clearcoat                0.00
+
+ Transmission
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Automatic                              0.00
+ 2.Manual                              -815.00
+
+ Brakes/Traction Control
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Standard                               0.00
+ 2.ABS                                  400.00
+ 3.ABS with Advance Trac               1625.00
+
+ Side Impact Air Bags
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Present                                0.00
+ 2.Not Present                          350.00
+
+ Power Moonroof
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Present                                0.00
+ 2.Not Present                          595.00
+
+
+Serialized the object...
+
+Deserialized the object...
+
+ FordZTW
+ Base Price                           18445.00
+
+ Color
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Fort Knox Gold Clearcoat Metallic      0.00
+ 2.Liquid Grey Clearcoat Metallic         0.00
+ 3.Infra-Red Clearcoat                    0.00
+ 4.Grabber Green Clearcoat Metallic       0.00
+ 5.Sangria Red Clearcoat Metallic         0.00
+ 6.French Blue Clearcoat Metallic         0.00
+ 7.Twilight Blue Clearcoat Metallic       0.00
+ 8.CD Silver Clearcoat Metallic           0.00
+ 9.Pitch Black Clearcoat                  0.00
+10.Cloud 9 White Clearcoat                0.00
+
+ Transmission
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Automatic                              0.00
+ 2.Manual                              -815.00
+
+ Brakes/Traction Control
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Standard                               0.00
+ 2.ABS                                  400.00
+ 3.ABS with Advance Trac               1625.00
+
+ Side Impact Air Bags
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Present                                0.00
+ 2.Not Present                          350.00
+
+ Power Moonroof
+ ---------------------------------------------
+ Name                                      Fee
+ 1.Present                                0.00
+ 2.Not Present                          595.00
+
+
