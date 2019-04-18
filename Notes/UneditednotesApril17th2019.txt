@@ -1,0 +1,108 @@
+Running Notes - April 17th 2019
+-------------------------------
+
+Lab 2 Prep - 
+Exception Handling - 
+ - Ability for a software to detect an issue in runtime, log it and potentially fix it.
+
+Runtime environment - JVM - what is built in JVM to combat exception mgmt
+	physical world - 
+		mistakes
+
+	 errors (not recoverable - crash) 	exceptions (recoverable - fix)
+		
+	Within each exception - 
+		Known Exception - checked - 
+		try {
+
+		} catch(Exception e)
+		{
+
+		}
+		Unknown Exception - unchecked.(Learning) - Learning Machine.
+	Learn about software issues in runtime - capture those - analyze the data - fix the top ones.
+
+Object cache - (model package in Lab 1) - in memory db for referencing for fast performance. - 
+persist object cache - serialization
+
+What is built inside JVM for Exceptions - 
+
+Exception Handler built in - awareness system - when something goes wrong in program execution - alter the course of execution - to recovery.
+
+Coder/Designer - initiate the usage of Exception Handler - enable an interaction with exception handler - "throw an Exception" - conditional predicate - (if statement) - runtime issues - filenotfound etc.
+
+if statement versus exception handling
+ - encapsulate an issue for managing exceptions.
+
+pid
+memory - stack, heap, cs, ds (state of memory)
+pc - keep track of machine instruction being executed.
+state of register	
+
+Coding
+	try, catch, throw, throws, finally.
+	try {
+		
+	}
+	catch(FixProblem e)
+	{
+
+	}
+	catch(Exception e)
+	{
+
+	}
+	finally {
+
+	}
+
+	final, finally, finalize
+
+public void somelazydevelopermethod() throws Exception {
+
+}
+	
+	error no  - 
+	1-100 - model
+	101-200 - util
+	201-300 - exception
+	301-400 - adapter
+	401-500 - thread
+	501-600 - socket
+	601-700 - web
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
