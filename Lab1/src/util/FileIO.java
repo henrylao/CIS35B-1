@@ -22,22 +22,18 @@ public class FileIO {
             int counter = 0;
             int pos = 0;
             String line = buff.readLine();
-    		StringTokenizer stk = new StringTokenizer(line, ",");
-    		a = new Automotive(stk.nextToken(), Float.parseFloat(stk.nextToken()), Integer.parseInt(stk.nextToken()));;
+            a = buildObject(a, line);
             while (!eof) {
             	line = buff.readLine();
                 if (line == null) 
                 	eof = true;
                 else{
-            		stk = new StringTokenizer(line, ",");
                 	if(pos >= counter){//if there is no more option need to be read
-                        String s = stk.nextToken();
-                        counter = Integer.parseInt(stk.nextToken());
-                        a.setValueOptionSet(++index, s, counter);//optionSetIndex, optionSetName, optionSetSize
+                		counter = createOptionSet( a,  line, pos,  ++index) ;
                         pos = 0;
                 	}
                 	else{
-                		a.setValuesOption(index, pos++, stk.nextToken(), Float.parseFloat(stk.nextToken()));//optionSetIndex, optionIndex, optionName, optionPrice
+                		createOption( a,  line,  index,  pos++);
                 	}
                 }
             }
@@ -47,7 +43,21 @@ public class FileIO {
         }
 		return a;
 	}
-	
+	public Automotive buildObject(Automotive a, String line) {
+		StringTokenizer stk = new StringTokenizer(line, ",");
+		return new Automotive(stk.nextToken(), Float.parseFloat(stk.nextToken()), Integer.parseInt(stk.nextToken()));
+	}
+	public int createOptionSet(Automotive a, String line,int pos, int index) {
+		StringTokenizer stk = new StringTokenizer(line, ",");
+		String name = stk.nextToken();
+        int size = Integer.parseInt(stk.nextToken());
+        a.setValueOptionSet(index, name, size);//optionSetIndex, optionSetName, optionSetSize
+        return size;
+	}
+	public void createOption(Automotive a, String line, int index, int pos) {
+		StringTokenizer stk = new StringTokenizer(line, ",");
+		a.setValuesOption(index, pos, stk.nextToken(), Float.parseFloat(stk.nextToken()));//optionSetIndex, optionIndex, optionName, optionPrice
+	}
 	public void serializeAuto(Automotive a, String fileName) throws IOException{
 		  try
 		  {    
