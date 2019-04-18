@@ -30,14 +30,14 @@ public class FileIO {
                 	eof = true;
                 else{
             		stk = new StringTokenizer(line, ",");
-                	if(pos >= counter){
+                	if(pos >= counter){//if there is no more option need to be read
                         String s = stk.nextToken();
                         counter = Integer.parseInt(stk.nextToken());
-                        a.setValueOptionSet(++index, s, counter);
+                        a.setValueOptionSet(++index, s, counter);//optionSetIndex, optionSetName, optionSetSize
                         pos = 0;
                 	}
                 	else{
-                		a.setValuesOption(index, pos++, stk.nextToken(), Float.parseFloat(stk.nextToken()));
+                		a.setValuesOption(index, pos++, stk.nextToken(), Float.parseFloat(stk.nextToken()));//optionSetIndex, optionIndex, optionName, optionPrice
                 	}
                 }
             }
@@ -71,7 +71,7 @@ public class FileIO {
 		  } 	  	
 	}
 	
-	public Automotive DeserializeAuto(String fileName){
+	public Automotive deserializeAuto(String fileName){
 		Automotive b = null;
 		 // Deserialization 
         try

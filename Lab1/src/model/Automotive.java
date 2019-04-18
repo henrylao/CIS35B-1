@@ -55,7 +55,7 @@ public class Automotive implements Serializable{
 	//Setter
 	public void setName(String n){ name = n;}
 	public void setBasePrice(float i){ baseprice = i;}
-	public void setValueOptionSet(int index, String n, int size){//should we return false when set fail
+	public void setValueOptionSet(int index, String n, int size){
 		opset[index] = new OptionSet(n, size);
 	}
 	public void setValuesOption(int index, int pos, String n, float p){

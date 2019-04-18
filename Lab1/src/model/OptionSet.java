@@ -20,7 +20,7 @@ public class OptionSet implements Serializable{
 		name = n; 
 		opt = new Option[size];
 		for(int i = 0; i< size; i++){
-			opt[i] = new Option("", 0);
+			opt[i] = null;
 		}
 	}
 	//Getter
@@ -72,7 +72,7 @@ public class OptionSet implements Serializable{
 			return false;
 	}
 	//Check valid index
-	public boolean checkValidIndex(int i){
+	protected boolean checkValidIndex(int i){
 		return i >= 0 && i < opt.length && opt[i] != null;
 	}
 	//Inner class
