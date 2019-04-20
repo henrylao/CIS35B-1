@@ -11,5 +11,4 @@ public class Program2 {
 			System.out.println("Custom exception: " + e.getMessage());
 		}
 	}
-
 }

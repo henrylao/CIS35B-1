@@ -1,7 +1,8 @@
 //============================================================================
+// Project     : Lab2
 // Name        : Driver.java
 // Author      : Tianqi Yang
-// Time        : 4/10/2019
+// Time        : 4/18/2019
 // IDE         : Eclipse
 // Description : The program reads the data from a file and creates a 
 // Automotive object. After that, it writes the object into a file. Finally, 

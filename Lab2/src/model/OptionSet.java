@@ -1,7 +1,8 @@
 //============================================================================
+// Project     : Lab2
 // Name        : OptionSet.java
 // Author      : Tianqi Yang
-// Time        : 4/10/2019
+// Time        : 4/18/2019
 // IDE         : Eclipse
 // Description : It has the OptionSet class and Option inner class. OptionSet
 // saves an array of Options and Options object contain the value of the 

@@ -50,7 +50,7 @@ public class FixProblems extends Exception {
 
 	public String fixProblemReadFromConsole()
 	{
-		String a = "Z:\\JavaPrograms\\SelfHealingSoftware\\bin\\abc.txt";
+		String a = "/Users/home/Desktop/1.txt";
 		System.out.println("got here --> fixProblemReadFromConsole");
 		return a;
 	}

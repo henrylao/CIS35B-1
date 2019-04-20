@@ -1,7 +1,8 @@
 //============================================================================
+// Project     : Lab2
 // Name        : Automotive.java
 // Author      : Tianqi Yang
-// Time        : 4/10/2019
+// Time        : 4/18/2019
 // IDE         : Eclipse
 // Description : It contains the car's information and an array of OptionSet.
 //============================================================================

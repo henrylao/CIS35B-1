@@ -18,8 +18,5 @@ public class CatchAndFix {
 				myproblem.setFileName(e.fixProblemReadFromConsole()); 
 			}
 		}while(problemFixed == false);
-		
-
 	}
-
 }
