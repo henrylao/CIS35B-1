@@ -9,8 +9,10 @@
 //============================================================================
 package util;
 import model.*;
+import exception.*;
 import java.io.*;
 import java.util.*;
+
 public class FileIO {
 	
 	public Automotive readFile(String fileName){
@@ -23,6 +25,16 @@ public class FileIO {
             int counter = 0;
             int pos = 0;
             String line = buff.readLine();
+            try {
+            	if (line ==null)
+            		throw new FixProblems(1, "Missing Model Name");
+            	else {
+            			
+            	}
+            }catch (FixProblems e) {
+            	System.out.println("Custom exception: " + e.getMessage());
+            	e.fix(1);
+            }
             a = buildObject(a, line);
             while (!eof) {
             	line = buff.readLine();
