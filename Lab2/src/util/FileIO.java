@@ -14,7 +14,6 @@ import java.io.*;
 import java.util.*;
 
 public class FileIO {
-	
 	public Automotive readFile(String fileName){
 		Automotive a = null;
 		try {
@@ -25,20 +24,10 @@ public class FileIO {
             int counter = 0;
             int pos = 0;
             String line = buff.readLine();
-            try {
-            	if (line ==null)
-            		throw new FixProblems(1, "Missing Model Name");
-            	else {
-            			
-            	}
-            }catch (FixProblems e) {
-            	System.out.println("Custom exception: " + e.getMessage());
-            	e.fix(1);
-            }
             a = buildObject(a, line);
             while (!eof) {
             	line = buff.readLine();
-                if (line == null) 
+                if (line == null)
                 	eof = true;
                 else{
                 	if(pos >= counter){//if there is no more option need to be read
@@ -56,6 +45,72 @@ public class FileIO {
         }
 		return a;
 	}
+//	public FileReader openFile(String fileName) throws FixProblems, FileNotFoundException {
+//		FileReader file = new FileReader(fileName);
+//		System.out.println("after");
+//		return file;
+//		//throw new FixProblems(1, "Cannot open file");
+//	}
+//	public Automotive readFile(String fileName) throws FileNotFoundException, FixProblems {
+//		Automotive a = null;
+//		FileReader file = null;
+//        boolean succeedOpen = false;
+//		while(succeedOpen == false){
+//			try {
+//				file = openFile(fileName);
+//				succeedOpen = true;
+//			}catch(FixProblems e) {
+//				fileName = e.fix(1);
+//				e.printStackTrace();
+//
+//				//throw new FixProblems(1, "Cannot open file");
+//			}
+//			catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//
+//		}}
+//		BufferedReader buff = new BufferedReader(file);
+//		boolean eof = false;
+//		int index = -1;
+//		int counter = 0;
+//		int pos = 0;
+//		return a;
+//	}
+
+		/*
+		String line = buff.readLine();
+		try {
+			if (line == null) {
+				System.out.println("empty");
+				throw new FixProblems(1, "The first line is empty!");
+            }
+           	else {
+            		
+           	}
+        }catch (FixProblems e) {
+           	System.out.println("Custom exception: " + e.getMessage());
+           	e.fix(1);
+        }
+           System.out.println("fd");
+            a = buildObject(a, line);
+            while (!eof) {
+            	line = buff.readLine();
+                if (line == null) 
+                	eof = true;
+                else{
+                	if(pos >= counter){//if there is no more option need to be read
+                		counter = createOptionSet( a,  line, pos,  ++index) ;
+                        pos = 0;
+                	}
+                	else{
+                		createOption( a,  line,  index,  pos++);
+                	}
+                }
+            }
+            buff.close();
+            */
+
 	public Automotive buildObject(Automotive a, String line) {
 		StringTokenizer stk = new StringTokenizer(line, ",");
 		return new Automotive(stk.nextToken(), Float.parseFloat(stk.nextToken()), Integer.parseInt(stk.nextToken()));

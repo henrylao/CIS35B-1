@@ -11,8 +11,8 @@ CD Silver Clearcoat Metallic,0
 Pitch Black Clearcoat,0
 Cloud 9 White Clearcoat,0
 Transmission,2
-Automatic,0
-Manual,-815
+Automatic,815
+Manual,0
 Brakes/Traction Control,3
 Standard,0
 ABS,400

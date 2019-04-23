@@ -1,6 +1,14 @@
 package exception;
 import java.util.Arrays;
 
+//============================================================================
+//Project     : Lab2
+//Name        : FixProblems.java
+//Author      : Tianqi Yang
+//Time        : 4/18/2019
+//IDE         : Eclipse
+//Description : it is the child class of Exception and print out the exception
+//============================================================================
 public class FixProblems extends Exception{
 	private int errorno;
 	private String errormsg;
@@ -13,15 +21,18 @@ public class FixProblems extends Exception{
 	}
 
 	public String fix(int x) {
+		String resp = "";
 		switch(x) {
-		case 1:
+		case 1://cannot open file
+			System.out.println("in fix function");
 			Helper1to100 h1 = new Helper1to100();
-			h1.fix1();
+			resp = h1.fix1();
 			break;
 		case 2:
+			
 		case 3:
 		}
-		return "";
+		return resp;
 	} 
 	public FixProblems(int errorno) {
 		super();

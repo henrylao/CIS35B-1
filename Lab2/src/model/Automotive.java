@@ -154,6 +154,17 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	public boolean updateOptionPrice(String optionName, String option, float newPrice) {
+		int pos = findOptionSetByName(optionName);
+		if(pos != -1) {
+			int index = opset[pos].findOption(option);
+			if (index != -1) {
+				opset[pos].getOption()[index].setOptionPrice(newPrice);
+				return true;
+			}
+		}
+		return false;
+	}
 	//Check valid index
 	public boolean checkValidIndex(int i){
 		return i >= 0 && i < opset.length && opset[i] != null;
