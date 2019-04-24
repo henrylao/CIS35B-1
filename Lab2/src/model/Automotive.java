@@ -172,7 +172,7 @@ public class Automotive implements Serializable{
 	//Print
 	@Override
 	public String toString(){
-		StringBuffer s = new StringBuffer(String.format(" %s\n %-35s%10.2f\n\n", getName(), "Base Price", getbaseprice()));
+		StringBuffer s = new StringBuffer(String.format(" Model Name:%34s\n %-35s%10.2f\n\n", getName(), "Base Price", getbaseprice()));
 		for(int i = 0; i< opset.length; i++){
 			if(opset[i] != null){
 				s.append(opset[i].toString());

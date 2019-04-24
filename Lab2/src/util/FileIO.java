@@ -14,118 +14,131 @@ import java.io.*;
 import java.util.*;
 
 public class FileIO {
-	public Automotive readFile(String fileName){
+	
+	public Automotive readFile(String fileName) {
 		Automotive a = null;
-		try {
-            FileReader file = new FileReader(fileName);
-            BufferedReader buff = new BufferedReader(file);
-            boolean eof = false;
-            int index = -1;
-            int counter = 0;
-            int pos = 0;
-            String line = buff.readLine();
-            a = buildObject(a, line);
-            while (!eof) {
-            	line = buff.readLine();
-                if (line == null)
-                	eof = true;
-                else{
-                	if(pos >= counter){//if there is no more option need to be read
-                		counter = createOptionSet( a,  line, pos,  ++index) ;
-                        pos = 0;
-                	}
-                	else{
-                		createOption( a,  line,  index,  pos++);
-                	}
-                }
-            }
-            buff.close();
-        } catch (IOException e) {
-            System.out.println("Cannot open " + fileName);
+		BufferedReader buff = null;
+        boolean nextStep = false;
+		while(nextStep == false){
+			try {
+				buff = openFile(fileName);
+				nextStep = true;
+			}catch(AutoException | FileNotFoundException e) {
+				fileName = ((FixAuto) e).fix(101);
+			}
         }
+		nextStep = false;
+		String line = null;
+    	try {
+			line = buff.readLine();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		while(nextStep == false){
+			try {
+		        a = buildObject(a, line);
+		        nextStep = true;
+			}catch(AutoException e) {
+				line = ((FixAuto) e).fix(1);
+			}
+        }
+		nextStep = false;
+		boolean eof = false;
+		int index = -1;
+		int counter = 0;
+		int pos = 0;
+		while (!eof) {
+			try {
+				line = buff.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if (line == null)
+				eof = true;
+			else{
+				if(pos >= counter){//if there is no more option need to be read
+					index++;
+					while(nextStep == false){
+						try {
+							counter = createOptionSet( a, line, index);
+							nextStep = true;
+							pos = 0;
+						} catch (AutoException e) {
+							line = ((FixAuto) e).fix(2);
+						}
+					}
+					nextStep = false;
+				}
+				else{
+					while(nextStep == false){
+						try {
+							createOption( a, line, index, pos);
+							nextStep = true;
+						} catch (AutoException e) {
+							line = ((FixAuto) e).fix(3);
+						}
+					}
+					nextStep = false;
+					pos++;
+				}
+			}
+		}
+        try {
+			buff.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return a;
 	}
-//	public FileReader openFile(String fileName) throws FixProblems, FileNotFoundException {
-//		FileReader file = new FileReader(fileName);
-//		System.out.println("after");
-//		return file;
-//		//throw new FixProblems(1, "Cannot open file");
-//	}
-//	public Automotive readFile(String fileName) throws FileNotFoundException, FixProblems {
-//		Automotive a = null;
-//		FileReader file = null;
-//        boolean succeedOpen = false;
-//		while(succeedOpen == false){
-//			try {
-//				file = openFile(fileName);
-//				succeedOpen = true;
-//			}catch(FixProblems e) {
-//				fileName = e.fix(1);
-//				e.printStackTrace();
-//
-//				//throw new FixProblems(1, "Cannot open file");
-//			}
-//			catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//
-//		}}
-//		BufferedReader buff = new BufferedReader(file);
-//		boolean eof = false;
-//		int index = -1;
-//		int counter = 0;
-//		int pos = 0;
-//		return a;
-//	}
 
-		/*
-		String line = buff.readLine();
+	public BufferedReader openFile(String fileName) throws AutoException, FileNotFoundException {
 		try {
-			if (line == null) {
-				System.out.println("empty");
-				throw new FixProblems(1, "The first line is empty!");
-            }
-           	else {
-            		
-           	}
-        }catch (FixProblems e) {
-           	System.out.println("Custom exception: " + e.getMessage());
-           	e.fix(1);
-        }
-           System.out.println("fd");
-            a = buildObject(a, line);
-            while (!eof) {
-            	line = buff.readLine();
-                if (line == null) 
-                	eof = true;
-                else{
-                	if(pos >= counter){//if there is no more option need to be read
-                		counter = createOptionSet( a,  line, pos,  ++index) ;
-                        pos = 0;
-                	}
-                	else{
-                		createOption( a,  line,  index,  pos++);
-                	}
-                }
-            }
-            buff.close();
-            */
+			FileReader file = new FileReader(fileName);
+			BufferedReader buff = new BufferedReader(file);
+			return buff;
+		}
+		catch(FileNotFoundException e) {
+			throw new AutoException(101, "Cannot open file");
+		}
+	} 
+	
 
-	public Automotive buildObject(Automotive a, String line) {
-		StringTokenizer stk = new StringTokenizer(line, ",");
-		return new Automotive(stk.nextToken(), Float.parseFloat(stk.nextToken()), Integer.parseInt(stk.nextToken()));
+	public Automotive buildObject(Automotive a, String line) throws AutoException {
+		try {
+			StringTokenizer stk = new StringTokenizer(line, ",");
+			a = new Automotive(stk.nextToken(), Float.parseFloat(stk.nextToken()), Integer.parseInt(stk.nextToken()));
+			return a;
+		}catch(NoSuchElementException e){
+			throw new AutoException(1, "First line is not correct"); 
+		}
 	}
-	public int createOptionSet(Automotive a, String line,int pos, int index) {
-		StringTokenizer stk = new StringTokenizer(line, ",");
-		String name = stk.nextToken();
-        int size = Integer.parseInt(stk.nextToken());
-        a.setValueOptionSet(index, name, size);//optionSetIndex, optionSetName, optionSetSize
-        return size;
+	
+	public int createOptionSet(Automotive a, String line, int index) throws AutoException {
+		try {
+			StringTokenizer stk = new StringTokenizer(line, ",");
+			String name = stk.nextToken();
+	        int size = Integer.parseInt(stk.nextToken());
+	        a.setValueOptionSet(index, name, size);//optionSetIndex, optionSetName, optionSetSize
+	        return size;
+		}catch(NoSuchElementException e){
+			System.out.print(line);
+			System.out.println("  !!!This line is not complete");
+			throw new AutoException(2, "Cannot create optionSet"); 
+		}
+		
 	}
-	public void createOption(Automotive a, String line, int index, int pos) {
-		StringTokenizer stk = new StringTokenizer(line, ",");
-		a.setValuesOption(index, pos, stk.nextToken(), Float.parseFloat(stk.nextToken()));//optionSetIndex, optionIndex, optionName, optionPrice
+	
+	public void createOption(Automotive a, String line, int index, int pos) throws AutoException {
+		try {
+			StringTokenizer stk = new StringTokenizer(line, ",");
+			a.setValuesOption(index, pos, stk.nextToken(), Float.parseFloat(stk.nextToken()));//optionSetIndex, optionIndex, optionName, optionPrice
+		}catch(NoSuchElementException e){
+			System.out.print(line);
+			System.out.println("  !!!This line is not complete");
+			throw new AutoException(3, "Cannot create option"); 
+		}
 	}
+	
 	public void serializeAuto(Automotive a, String fileName) throws IOException{
 		  try
 		  {    
@@ -161,8 +174,8 @@ public class FileIO {
             b = (Automotive)in.readObject();    
             in.close(); 
             file.close(); 
-        } 
-        catch(IOException ex) 
+        }
+        catch(IOException ex)
         { 
             System.out.println("IOException is caught"); 
         }  

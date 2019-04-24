@@ -8,14 +8,13 @@
 // the methods
 //============================================================================
 package adapter;
-import java.io.FileNotFoundException;
-
-import exception.FixProblems;
+import java.io.*;
+import exception.*;
 import model.*;
 import util.*;
 public abstract class ProxyAutomobile {//acting as a delegate
 	private static Automotive a1;
-	public void BuildAuto(String filename) throws FileNotFoundException, FixProblems {
+	public void BuildAuto(String filename) {
 		FileIO file = new FileIO();		
 		a1 = file.readFile(filename);
 	}
