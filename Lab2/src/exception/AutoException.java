@@ -22,9 +22,14 @@ public class AutoException extends Exception implements FixAuto{
 	}
 
 	public String fix(int x) {
-		logging();
+		try {
+			logging();
+		} catch (AutoException e) {
+			((FixAuto) e).fix(201);
+		}
 		Helper1to100 h1 = new Helper1to100();
 		Helper101to200 h2 = new Helper101to200();
+		Helper201to300 h3 = new Helper201to300();
 		switch(x) {
 			case 1://first line is not correct
 				return h1.fix1();		
@@ -33,7 +38,9 @@ public class AutoException extends Exception implements FixAuto{
 			case 3://Cannot create option
 				return h1.fix3();	
 			case 101://cannot open file
-				return h2.fix101();			
+				return h2.fix101();	
+			case 201://cannot open logging
+				return h3.fix201();
 		}
 		return "";
 	} 
@@ -71,7 +78,7 @@ public class AutoException extends Exception implements FixAuto{
 		s.append("\n");
 		return s.toString(); 
 	}
-	public void logging(){
+	public void logging() throws AutoException{
 		try {
 			FileWriter wr = new FileWriter(new File(loggingName), true);
 			BufferedWriter buffer = new BufferedWriter(wr);
@@ -79,7 +86,7 @@ public class AutoException extends Exception implements FixAuto{
 			buffer.close();
 			wr.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new AutoException(201, "Cannot open logging"); 		
 		}
 	}
 }

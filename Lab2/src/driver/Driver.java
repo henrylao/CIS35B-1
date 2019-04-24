@@ -16,11 +16,9 @@ public class Driver {
 		CreateAuto a1 = new BuildAuto();
 		a1.BuildAuto("FordZTW.txt");
 		a1.printAuto();
-		/*
 		UpdateAuto b1 = new BuildAuto();
-		b1.updateTheOptionSetName("FordZTW", "Color", "Deceptive Appearance");
-		b1.updateOptionSetPrice("FordZTW", "Transmission", "Automatic", 999);
+		b1.updateOptionSetName("FordZTW", "Color", "Deceptive Appearance");
+		b1.updateOptionPrice("FordZTW", "Transmission", "Automatic", 999);
 		a1.printAuto();
-		*/
 	}
 }

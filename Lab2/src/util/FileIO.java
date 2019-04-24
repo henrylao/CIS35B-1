@@ -38,7 +38,7 @@ public class FileIO {
 			try {
 		        a = buildObject(a, line);
 		        nextStep = true;
-			}catch(AutoException e) {
+			}catch(AutoException | NumberFormatException e) {
 				line = ((FixAuto) e).fix(1);
 			}
         }
@@ -65,6 +65,8 @@ public class FileIO {
 							pos = 0;
 						} catch (AutoException e) {
 							line = ((FixAuto) e).fix(2);
+						}catch (NumberFormatException e) {
+							line = ((FixAuto) e).fix(2);
 						}
 					}
 					nextStep = false;
@@ -74,7 +76,7 @@ public class FileIO {
 						try {
 							createOption( a, line, index, pos);
 							nextStep = true;
-						} catch (AutoException e) {
+						} catch (AutoException | NumberFormatException e) {
 							line = ((FixAuto) e).fix(3);
 						}
 					}
@@ -120,7 +122,7 @@ public class FileIO {
 	        int size = Integer.parseInt(stk.nextToken());
 	        a.setValueOptionSet(index, name, size);//optionSetIndex, optionSetName, optionSetSize
 	        return size;
-		}catch(NoSuchElementException e){
+		}catch(NoSuchElementException | NumberFormatException e){
 			System.out.print(line);
 			System.out.println("  !!!This line is not complete");
 			throw new AutoException(2, "Cannot create optionSet"); 
@@ -132,7 +134,7 @@ public class FileIO {
 		try {
 			StringTokenizer stk = new StringTokenizer(line, ",");
 			a.setValuesOption(index, pos, stk.nextToken(), Float.parseFloat(stk.nextToken()));//optionSetIndex, optionIndex, optionName, optionPrice
-		}catch(NoSuchElementException e){
+		}catch(NoSuchElementException | NumberFormatException e){
 			System.out.print(line);
 			System.out.println("  !!!This line is not complete");
 			throw new AutoException(3, "Cannot create option"); 
