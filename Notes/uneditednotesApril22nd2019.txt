@@ -1,0 +1,196 @@
+Lab 1 questions - 
+Would parse function be static? Why is it in a different class - namely FileIO
+ - Parse function will not be static.
+ - it is added in util package - FileIO
+
+Review - Exception Handling - 
+Exception Handling System at a high level. - Exception  - stack - fix
+Custom Exception Handling - 
+	extend Exception - errorno, error message - Logging 
+		error no system - e.g. 100-200 for some comp1 etc.
+	throw and throws
+	try/catch
+Opportunities for custom exception - FileIO --> parse.
+
+How to fix exception inline?
+	try {
+		//throw an exception if there is some issue
+	}catch(AutoException e)
+	{
+		e.fix(100);
+	}
+	//continue on reading next line.
+	try {
+		//throw an exception if there is some issue
+	}catch(AutoException e)
+	{
+		e.fix(101);
+	}
+In lab2 - throw five exception and fix one.
+
+Abstract classes
+	public abstract class Shape {
+
+	}
+
+
+
+
+Interfaces
+
+//A really really simple interface
+//---------------------------------------------------------------------------------
+import java.util.Random;
+public interface RandVals {
+  Random rand = new Random();
+  int randomInt = rand.nextInt(10);
+  long randomLong = rand.nextLong() * 10;
+  float randomFloat = rand.nextLong() * 10;
+  double randomDouble = rand.nextDouble() * 10;
+}
+
+
+//Creating an interface vs. an abstract class
+//---------------------------------------------------------------------------------
+   interface Time {
+        int getMinutes();
+    }
+    
+    class Days implements Time {
+        private final int days;
+        public Days(int days) {
+            this.days = days;
+        }
+        public int getMinutes() {
+            return days * 24 * 60;
+        }
+    }
+    
+    class HoursMinutes implements Time {
+        private final int hours;
+        private final int minutes;
+        public HoursMinutes(int hours, int minutes) {
+            this.hours = hours;
+            this.minutes = minutes;
+        }
+        public int getMinutes() {
+            return hours * 60 + minutes;
+        }
+    }
+    
+    public class AIDemo1 {
+        public static void main(String args[]) {
+            Time t1 = new Days(10);
+            Time t2 = new HoursMinutes(15, 59);
+            System.out.println(t1.getMinutes());
+            System.out.println(t2.getMinutes());
+        }
+    }
+
+
+
+//A simple Interface
+//---------------------------------------------------------------------------------
+interface Act {
+  void act();
+}
+
+class Actor1 implements Act {
+  public void act() {
+    System.out.println("To be, or not to be");
+  }
+}
+
+class Actor2 implements Act {
+  public void act() {
+    System.out.println("Wherefore art thou Romeo?");
+  }
+}
+
+public class TryOut {
+  public static void main(String args[]) {
+    Actor1 hamlet = new Actor1();
+    Actor2 juliet = new Actor2();
+    tryout(hamlet);
+    tryout(juliet);
+  }
+
+  private static void tryout(Act actor) {
+    actor.act();
+  }
+}
+
+Multiple Inheritance with Interfaces - Part 1
+//---------------------------------------------------------------------------------
+interface CanFight {
+  void fight();
+}
+interface CanSwim {
+  void swim();
+}
+interface CanFly {
+  void fly();
+}
+class ActionCharacter {
+  public void fight() {
+  }
+}
+//interface x extends CanFight, CanFly {} subjected to verification by class. 
+class Hero extends ActionCharacter implements CanFight, CanSwim, CanFly, x {
+  public void swim() {
+  }
+  public void fly() {
+  }
+}
+
+public class Adventure {
+  public static void t(CanFight x) {
+    x.fight();
+  }
+
+  public static void u(CanSwim x) {
+    x.swim();
+  }
+
+  public static void v(CanFly x) {
+    x.fly();
+  }
+
+  public static void w(ActionCharacter x) {
+    x.fight();
+  }
+
+  public static void main(String[] args) {
+    Hero h = new Hero();
+    t(h); // Treat it as a CanFight
+    u(h); // Treat it as a CanSwim
+    v(h); // Treat it as a CanFly
+    w(h); // Treat it as an ActionCharacter
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
