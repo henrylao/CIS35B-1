@@ -71,11 +71,7 @@ public class AutoException extends Exception implements FixAuto{
 	public String printmyproblem() {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());			
 		StringBuffer s = new StringBuffer(timeStamp);
-		s.append(" FixProblems errorno=");
-		s.append(errorno);
-		s.append(", errormsg=");
-		s.append(errormsg);
-		s.append("\n");
+		s.append(" FixProblems errorno=").append(errorno).append(", errormsg=").append(errormsg).append("\n");
 		return s.toString(); 
 	}
 	public void logging() throws AutoException{

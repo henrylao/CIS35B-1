@@ -95,8 +95,7 @@ public class OptionSet implements Serializable{
 	@Override
 	public String toString(){
 		StringBuffer s = new StringBuffer();
-		s.append(String.format(" %s\n ---------------------------------------------", getOptionSetName()));
-		s.append(String.format("\n %-35s%10s\n", "Name", "Fee"));
+		s.append(String.format(" %s\n ---------------------------------------------", getOptionSetName())).append(String.format("\n %-35s%10s\n", "Name", "Fee"));
 		for(int i=0; i< opt.length; i++){
 			if(opt[i] != null)
 				s.append(String.format("%2s.%-35s%8.2f\n",i+1,opt[i].getOptionName(),opt[i].getOptionPrice()));
