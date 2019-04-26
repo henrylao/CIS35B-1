@@ -1,12 +1,4 @@
-2019.04.24.16.36.37 FixProblems errorno=1, errormsg=First line is not correct
-2019.04.24.16.36.57 FixProblems errorno=3, errormsg=Cannot create option
-2019.04.24.16.41.41 FixProblems errorno=2, errormsg=Cannot create optionSet
-2019.04.24.16.42.54 FixProblems errorno=2, errormsg=Cannot create optionSet
-2019.04.24.16.47.58 FixProblems errorno=2, errormsg=Cannot create optionSet
-2019.04.24.16.50.32 FixProblems errorno=2, errormsg=Cannot create optionSet
-2019.04.24.16.50.36 FixProblems errorno=2, errormsg=Cannot create optionSet
-2019.04.24.16.50.43 FixProblems errorno=2, errormsg=Cannot create optionSet
-2019.04.24.16.50.45 FixProblems errorno=2, errormsg=Cannot create optionSet
-2019.04.24.16.51.13 FixProblems errorno=3, errormsg=Cannot create option
-2019.04.24.16.51.16 FixProblems errorno=3, errormsg=Cannot create option
-2019.04.24.16.51.18 FixProblems errorno=3, errormsg=Cannot create option
+2019.04.25.19.02.02 FixProblems errorno=101, errormsg=Cannot open file
+2019.04.25.19.02.08 FixProblems errorno=101, errormsg=Cannot open file
+2019.04.25.19.07.10 FixProblems errorno=101, errormsg=Cannot open file
+2019.04.25.19.07.29 FixProblems errorno=102, errormsg=Not enough optionSet

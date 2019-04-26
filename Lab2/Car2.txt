@@ -1,0 +1,16 @@
+TeslaModel3,36200,4
+Color,5
+Solid Black,0
+Deep Blue Metallic,0
+Midnight Silver Metallic,100
+Pearl White Multi-Coat,100
+Red Multi-Coat,100
+Powertrain,2
+AC Electric Motor,0
+Single-Speed Fixed Gear,200
+Tires,2
+18'',0
+19'',200
+Wheels,2
+Normal,0
+Sport Alloy,200

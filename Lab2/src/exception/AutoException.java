@@ -21,16 +21,16 @@ public class AutoException extends Exception implements FixAuto{
 		
 	}
 
-	public String fix(int x) {
+	public String fix() {
 		try {
 			logging();
 		} catch (AutoException e) {
-			((FixAuto) e).fix(201);
+			((FixAuto) e).fix();
 		}
 		Helper1to100 h1 = new Helper1to100();
 		Helper101to200 h2 = new Helper101to200();
 		Helper201to300 h3 = new Helper201to300();
-		switch(x) {
+		switch(errorno) {
 			case 1://first line is not correct
 				return h1.fix1();		
 			case 2://Cannot create optionSet

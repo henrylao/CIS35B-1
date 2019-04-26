@@ -24,7 +24,7 @@ public class FileIO {
 				buff = openFile(fileName);
 				nextStep = true;
 			}catch(AutoException | FileNotFoundException e) {
-				fileName = ((FixAuto) e).fix(101);
+				fileName = ((FixAuto) e).fix();
 			}
         }
 		nextStep = false;
@@ -39,7 +39,7 @@ public class FileIO {
 		        a = buildObject(a, line);
 		        nextStep = true;
 			}catch(AutoException | NumberFormatException e) {
-				line = ((FixAuto) e).fix(1);
+				line = ((FixAuto) e).fix();
 			}
         }
 		nextStep = false;
@@ -47,6 +47,7 @@ public class FileIO {
 		int index = -1;
 		int counter = 0;
 		int pos = 0;
+		//int lineCounter = 2;
 		while (!eof) {
 			try {
 				line = buff.readLine();
@@ -64,9 +65,9 @@ public class FileIO {
 							nextStep = true;
 							pos = 0;
 						} catch (AutoException e) {
-							line = ((FixAuto) e).fix(2);
+							line = ((FixAuto) e).fix();
 						}catch (NumberFormatException e) {
-							line = ((FixAuto) e).fix(2);
+							line = ((FixAuto) e).fix();
 						}
 					}
 					nextStep = false;
@@ -77,7 +78,7 @@ public class FileIO {
 							createOption( a, line, index, pos);
 							nextStep = true;
 						} catch (AutoException | NumberFormatException e) {
-							line = ((FixAuto) e).fix(3);
+							line = ((FixAuto) e).fix();
 						}
 					}
 					nextStep = false;
@@ -90,6 +91,15 @@ public class FileIO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+        //check if the option set is full
+        try {
+        	if(index < a.getOptionSetSize()) {
+        		throw new AutoException(102, "Not enough optionSet");
+        	}
+        }catch( AutoException e) {
+			((FixAuto) e).fix();
+        }
+        
 		return a;
 	}
 

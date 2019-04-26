@@ -33,6 +33,7 @@ public class Automotive implements Serializable{
 		else
 			return null;
 	}	
+	public int getOptionSetSize() { return opset.length; }
 	//Find
 	public int findOptionSetByName(String n){
 		int pos = -1;
