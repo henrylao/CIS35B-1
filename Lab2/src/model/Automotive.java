@@ -10,10 +10,15 @@ package model;
 import java.io.*;
 
 public class Automotive implements Serializable{
+	
 	private String name;
+	
 	private float baseprice;
+	
 	private OptionSet opset[];
+	
 	//Constructor
+	
 	//public Automotive(){}
 	public Automotive(String n, float p, int s)
 	{
@@ -24,16 +29,21 @@ public class Automotive implements Serializable{
 //			opset[i] = new OptionSet("", 0);
 //		}
 	} 
+	
 	//Getter
 	public String getName(){ return name;}
+	
 	public float getbaseprice(){ return baseprice;}
+	
 	public OptionSet getOptionSet(int i){ 
 		if(checkValidIndex(i))
 			return opset[i];
 		else
 			return null;
 	}	
+	
 	public int getOptionSetSize() { return opset.length; }
+	
 	//Find
 	public int findOptionSetByName(String n){
 		int pos = -1;
@@ -43,26 +53,33 @@ public class Automotive implements Serializable{
 		}
 		return pos;
 	}
+	
 	public int findOptionByName(int i, String n){
 		if(checkValidIndex(i))
 			return opset[i].findOption(n);
 		return -1;
 	}
+	
 	public int findOptionByName(String setName, String opName){
 		int pos = findOptionSetByName( setName );
 		if(pos != -1)
 			return opset[pos].findOption(opName);
 		return -1;
 	}
+	
 	//Setter
 	public void setName(String n){ name = n;}
+	
 	public void setBasePrice(float i){ baseprice = i;}
+	
 	public void setValueOptionSet(int index, String n, int size){
 		opset[index] = new OptionSet(n, size);
 	}
+	
 	public void setValuesOption(int index, int pos, String n, float p){
 		opset[index].getOption()[pos] = opset[index].new Option(n, p);
 	}
+	
 	//Delete optionSet
 	public boolean deleteOptionSet(int i){
 		if(checkValidIndex(i)){
@@ -72,6 +89,7 @@ public class Automotive implements Serializable{
 		else
 			return false;
 	}
+	
 	public boolean deleteOptionSet(String name){
 		int pos = findOptionSetByName(name);
 		if(pos != -1){
@@ -81,6 +99,7 @@ public class Automotive implements Serializable{
 		else
 			return false;
 	}
+	
 	//delete option
 	public boolean deleteOption(String setName, String opName){
 		int pos = findOptionSetByName(setName);
@@ -89,12 +108,14 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	public boolean deleteOption(int i, int pos){
 		if(checkValidIndex(i)){
 			return opset[i].findAndDeleteOption(pos);
 		}
 		return false;
 	}
+	
 	//Update optionSet
 	public boolean updateOptionSetName(String oldName, String newName) {
 		int pos = findOptionSetByName(oldName);
@@ -104,6 +125,7 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	public boolean updateOptionSet(String oldName, String newName, int size){
 		int pos = findOptionSetByName(oldName);
 		if( pos != -1){
@@ -112,6 +134,7 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	//update option
 	public boolean updateOptionValue(String optionSetName, String optionOldName, String newName, float newPrice){
 		int pos = findOptionSetByName(optionSetName);
@@ -120,6 +143,7 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	public boolean updateOptionValue(int i, String oldName, String newName, float newPrice){
 		int pos = findOptionByName(i, oldName);
 		if( pos != -1){
@@ -128,6 +152,7 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	public boolean updateOptionValue(int i, int pos, String newName, float newPrice) {
 		if(checkValidIndex(i)) {
 			if(opset[i].checkValidIndex(pos)) {
@@ -137,6 +162,7 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	public boolean updateOptionName(int i, int pos, String newName) {
 		if(checkValidIndex(i)) {
 			if(opset[i].checkValidIndex(pos)) {
@@ -146,6 +172,7 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	public boolean updateOptionPrice(int i, int pos, float newPrice) {
 		if(checkValidIndex(i)) {
 			if(opset[i].checkValidIndex(pos)) {
@@ -155,6 +182,7 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	public boolean updateOptionPrice(String optionName, String option, float newPrice) {
 		int pos = findOptionSetByName(optionName);
 		if(pos != -1) {
@@ -166,10 +194,12 @@ public class Automotive implements Serializable{
 		}
 		return false;
 	}
+	
 	//Check valid index
 	public boolean checkValidIndex(int i){
 		return i >= 0 && i < opset.length && opset[i] != null;
 	}
+	
 	//Print
 	@Override
 	public String toString(){

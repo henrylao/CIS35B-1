@@ -14,9 +14,12 @@ import java.io.Serializable;
 
 public class OptionSet implements Serializable{
 	private Option opt [];
+	
 	private String name;
+	
 	//Constructor
 	protected OptionSet(){}
+	
 	protected OptionSet(String n, int size) {
 		name = n; 
 		opt = new Option[size];
@@ -24,9 +27,12 @@ public class OptionSet implements Serializable{
 			opt[i] = null;
 		}
 	}
+	
 	//Getter
 	protected String getOptionSetName(){ return name; }
+	
 	protected Option[] getOption(){ return opt; }
+	
 	//Find
 	protected int findOption(String n){
 		int pos = -1;
@@ -37,14 +43,17 @@ public class OptionSet implements Serializable{
 		}
 		return pos;
 	}
+	
 	//Setter
 	protected void setOptionSetName(String n){ name = n;}
+	
 	protected void setOption(int i, String n, float p ){
 		if(opt[i] == null)
 			opt[i] = new Option(n,p);
 		else
 			opt[i].setOptionValue(n,p);
 	}
+	
 	protected boolean setOption(String oldName, String newName, float newPrice ){
 		int pos = findOption(oldName);
 		if(pos != -1) {
@@ -54,6 +63,7 @@ public class OptionSet implements Serializable{
 		return false;
 		
 	}
+	
 	//Delete
 	protected boolean findAndDeleteOption(int pos){
 		if(checkValidIndex(pos)){
@@ -63,6 +73,7 @@ public class OptionSet implements Serializable{
 		else
 			return false;
 	}
+	
 	protected boolean findAndDeleteOption(String name){
 		int pos = findOption(name);
 		if(pos != -1){
@@ -72,25 +83,37 @@ public class OptionSet implements Serializable{
 		else
 			return false;
 	}
+	
 	//Check valid index
 	protected boolean checkValidIndex(int i){
 		return i >= 0 && i < opt.length && opt[i] != null;
 	}
+	
 	//Inner class
 	protected class Option implements Serializable {
+		
 		private String name;
+		
 		private float price; 
+		
 		//Constructor
 		protected Option(){}
+		
 		protected Option(String n, float p){ name = n; price = p; }
+		
 		//Getter
 		protected String getOptionName(){ return name;}
+		
 		protected float getOptionPrice(){ return price;}
+		
 		//Setter
 		protected void setOptionValue(String n, float p ){ name = n; price = p; }
+		
 		protected void setOptionName(String n){ name = n;}
+		
 		protected void setOptionPrice(float p){ price = p;}
 	}
+	
 	//Print
 	@Override
 	public String toString(){

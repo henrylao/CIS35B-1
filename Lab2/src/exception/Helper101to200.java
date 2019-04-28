@@ -21,7 +21,6 @@ public class Helper101to200 {
 		return reader.nextLine();
 	}
 	public String fix102() {//Not enough optionSet
-		
 		return "";
 	}
 }

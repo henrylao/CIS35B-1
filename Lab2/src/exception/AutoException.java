@@ -16,9 +16,9 @@ public class AutoException extends Exception implements FixAuto{
 	private int errorno;
 	private String errormsg;
 	private String loggingName="logging.txt";
+	
 	public AutoException() {
 		super();
-		
 	}
 
 	public String fix() {
@@ -74,6 +74,7 @@ public class AutoException extends Exception implements FixAuto{
 		s.append(" FixProblems errorno=").append(errorno).append(", errormsg=").append(errormsg).append("\n");
 		return s.toString(); 
 	}
+	
 	public void logging() throws AutoException{
 		try {
 			FileWriter wr = new FileWriter(new File(loggingName), true);
