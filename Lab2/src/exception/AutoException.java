@@ -22,11 +22,7 @@ public class AutoException extends Exception implements FixAuto{
 	}
 
 	public String fix() {
-		try {
-			logging();
-		} catch (AutoException e) {
-			((FixAuto) e).fix();
-		}
+		
 		Helper1to100 h1 = new Helper1to100();
 		Helper101to200 h2 = new Helper101to200();
 		Helper201to300 h3 = new Helper201to300();
@@ -50,6 +46,11 @@ public class AutoException extends Exception implements FixAuto{
 		this.errorno = errorno;
 		this.errormsg = errormsg;
 		System.out.print(printmyproblem());
+		try {
+			logging();
+		} catch (AutoException e) {
+			((FixAuto) e).fix();
+		}
 	}
 	
 	public int getErrorno() {
@@ -71,7 +72,7 @@ public class AutoException extends Exception implements FixAuto{
 	public String printmyproblem() {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());			
 		StringBuffer s = new StringBuffer(timeStamp);
-		s.append(" FixProblems errorno=").append(errorno).append(", errormsg=").append(errormsg).append("\n");
+		s.append(" FixProblems errorno = ").append(errorno).append(", errormsg = ").append(errormsg).append("\n");
 		return s.toString(); 
 	}
 	

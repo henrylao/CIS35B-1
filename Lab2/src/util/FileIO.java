@@ -64,9 +64,7 @@ public class FileIO {
 							counter = createOptionSet( a, line, index);
 							nextStep = true;
 							pos = 0;
-						} catch (AutoException e) {
-							line = ((FixAuto) e).fix();
-						}catch (NumberFormatException e) {
+						} catch (AutoException |NumberFormatException e) {
 							line = ((FixAuto) e).fix();
 						}
 					}

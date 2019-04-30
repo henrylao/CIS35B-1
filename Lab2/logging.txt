@@ -1,4 +1,7 @@
-2019.04.25.19.02.02 FixProblems errorno=101, errormsg=Cannot open file
-2019.04.25.19.02.08 FixProblems errorno=101, errormsg=Cannot open file
-2019.04.25.19.07.10 FixProblems errorno=101, errormsg=Cannot open file
-2019.04.25.19.07.29 FixProblems errorno=102, errormsg=Not enough optionSet
+2019.04.29.20.51.12 FixProblems errorno = 102, errormsg = Not enough optionSet
+2019.04.29.20.54.42 FixProblems errorno = 102, errormsg = Not enough optionSet
+2019.04.29.20.54.47 FixProblems errorno = 102, errormsg = Not enough optionSet
+2019.04.29.20.54.56 FixProblems errorno = 1, errormsg = First line is not correct
+2019.04.29.20.55.01 FixProblems errorno = 1, errormsg = First line is not correct
+2019.04.29.20.55.15 FixProblems errorno = 102, errormsg = Not enough optionSet
+2019.04.30.08.02.31 FixProblems errorno = 1, errormsg = First line is not correct
