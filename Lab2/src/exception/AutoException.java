@@ -12,6 +12,8 @@ import java.io.*;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import adapter.FixAuto;
+
 public class AutoException extends Exception implements FixAuto{
 	private int errorno;
 	private String errormsg;

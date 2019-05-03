@@ -118,8 +118,6 @@ public class Automotive implements Serializable{
 	
 	//Update optionSet
 	public boolean updateOptionSetName(String oldName, String newName) {
-		System.out.println("fds");
-
 		int pos = findOptionSetByName(oldName);
 		if( pos != -1){
 			opset[pos].setOptionSetName(newName);

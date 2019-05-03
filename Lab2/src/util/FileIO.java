@@ -24,7 +24,7 @@ public class FileIO {
 				buff = openFile(fileName);
 				nextStep = true;
 			}catch(AutoException | FileNotFoundException e) {
-				fileName = ((FixAuto) e).fix();
+				fileName =  ((AutoException) e).fix();
 			}
         }
 		nextStep = false;
@@ -39,7 +39,7 @@ public class FileIO {
 		        a = buildObject(a, line);
 		        nextStep = true;
 			}catch(AutoException | NumberFormatException e) {
-				line = ((FixAuto) e).fix();
+				line = ((AutoException) e).fix();
 			}
         }
 		nextStep = false;
@@ -65,7 +65,7 @@ public class FileIO {
 							nextStep = true;
 							pos = 0;
 						} catch (AutoException |NumberFormatException e) {
-							line = ((FixAuto) e).fix();
+							line = ((AutoException) e).fix();
 						}
 					}
 					nextStep = false;
@@ -76,7 +76,7 @@ public class FileIO {
 							createOption( a, line, index, pos);
 							nextStep = true;
 						} catch (AutoException | NumberFormatException e) {
-							line = ((FixAuto) e).fix();
+							line = ((AutoException) e).fix();
 						}
 					}
 					nextStep = false;
@@ -96,7 +96,7 @@ public class FileIO {
         		throw new AutoException(102, "Not enough optionSet");
         	}
         }catch( AutoException e) {
-			((FixAuto) e).fix();
+			((AutoException) e).fix();
         }
         
 		return a;

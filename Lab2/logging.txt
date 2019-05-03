@@ -1,23 +1,10 @@
-2019.04.29.20.51.12 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.04.29.20.54.42 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.04.29.20.54.47 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.04.29.20.54.56 FixProblems errorno = 1, errormsg = First line is not correct
-2019.04.29.20.55.01 FixProblems errorno = 1, errormsg = First line is not correct
-2019.04.29.20.55.15 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.04.30.08.02.31 FixProblems errorno = 1, errormsg = First line is not correct
-2019.05.02.07.47.27 FixProblems errorno = 1, errormsg = First line is not correct
-2019.05.02.08.23.58 FixProblems errorno = 1, errormsg = First line is not correct
-2019.05.02.08.24.29 FixProblems errorno = 1, errormsg = First line is not correct
-2019.05.02.08.25.06 FixProblems errorno = 1, errormsg = First line is not correct
-2019.05.02.08.25.26 FixProblems errorno = 1, errormsg = First line is not correct
-2019.05.02.08.25.34 FixProblems errorno = 1, errormsg = First line is not correct
-2019.05.02.08.27.44 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.08.29.03 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.08.38.22 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.09.08.42 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.09.11.09 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.09.11.34 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.09.12.37 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.09.15.26 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.09.26.07 FixProblems errorno = 102, errormsg = Not enough optionSet
-2019.05.02.09.27.45 FixProblems errorno = 102, errormsg = Not enough optionSet
+2019.05.02.22.36.42 FixProblems errorno = 1, errormsg = First line is not correct
+2019.05.02.22.36.49 FixProblems errorno = 2, errormsg = Cannot create optionSet
+2019.05.02.22.36.55 FixProblems errorno = 2, errormsg = Cannot create optionSet
+2019.05.02.22.37.00 FixProblems errorno = 3, errormsg = Cannot create option
+2019.05.02.22.37.31 FixProblems errorno = 1, errormsg = First line is not correct
+2019.05.02.22.37.39 FixProblems errorno = 2, errormsg = Cannot create optionSet
+2019.05.02.22.37.44 FixProblems errorno = 3, errormsg = Cannot create option
+2019.05.02.22.37.52 FixProblems errorno = 1, errormsg = First line is not correct
+2019.05.02.22.38.37 FixProblems errorno = 2, errormsg = Cannot create optionSet
+2019.05.02.22.38.44 FixProblems errorno = 3, errormsg = Cannot create option

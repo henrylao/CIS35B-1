@@ -6,7 +6,7 @@
 //IDE         : Eclipse
 //Description : it is the interface of AutoExceotion
 //============================================================================
-package exception;
+package adapter;
 
 public interface FixAuto {
 	public String fix();

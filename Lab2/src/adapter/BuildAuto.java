@@ -11,8 +11,6 @@ package adapter;
 
 import java.io.IOException;
 
-import exception.FixAuto;
-
 public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto{
 
 }

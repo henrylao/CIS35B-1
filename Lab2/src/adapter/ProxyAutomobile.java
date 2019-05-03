@@ -26,6 +26,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		Arrays.fill(error, -1);
 		getErrors();
 		fixErrors();
+		
 	}
 	
 	public void printAuto() {
