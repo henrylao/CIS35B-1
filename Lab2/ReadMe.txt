@@ -7,3 +7,8 @@ But for now, the user still need to enter 0 to access it because it is not neces
 Lab2:
 Since the size of array is limited, it cannot expand. WHen using try/catch, the size of optionSet and size of option has to be same number as original.
 User has to enter the correct sizes to void the exception that not in AUtoException.
+
+For testing exception in ProxyAutomobile.java, the working example is for testing updateOptionSetName.
+The program will be execute twice. First time, it will try to run all method in the main. 
+If update file failed, it will display a message and user could run program again and fix the error.
+The user must enter the correct optionSet name like "Color" to succesfully update the name.

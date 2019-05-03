@@ -22,11 +22,12 @@ public class AutoException extends Exception implements FixAuto{
 	}
 
 	public String fix() {
-		
 		Helper1to100 h1 = new Helper1to100();
 		Helper101to200 h2 = new Helper101to200();
 		Helper201to300 h3 = new Helper201to300();
+
 		switch(errorno) {
+
 			case 1://first line is not correct
 				return h1.fix1();		
 			case 2://Cannot create optionSet
@@ -81,10 +82,16 @@ public class AutoException extends Exception implements FixAuto{
 			FileWriter wr = new FileWriter(new File(loggingName), true);
 			BufferedWriter buffer = new BufferedWriter(wr);
 			buffer.write(printmyproblem());
-			buffer.close();
+			buffer.close(); 
 			wr.close();
 		} catch (IOException e) {
 			throw new AutoException(201, "Cannot open logging"); 		
 		}
+	}
+
+	@Override
+	public String fix(int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

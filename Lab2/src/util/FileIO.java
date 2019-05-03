@@ -28,7 +28,7 @@ public class FileIO {
 			}
         }
 		nextStep = false;
-		String line = null;
+		String line = null; 
     	try {
 			line = buff.readLine();
 		} catch (IOException e1) {
@@ -91,7 +91,8 @@ public class FileIO {
 		}
         //check if the option set is full
         try {
-        	if(index < a.getOptionSetSize()) {
+        	if(index+1 < a.getOptionSetSize()) {
+        		System.out.println(index);
         		throw new AutoException(102, "Not enough optionSet");
         	}
         }catch( AutoException e) {

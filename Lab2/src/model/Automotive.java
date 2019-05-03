@@ -28,12 +28,12 @@ public class Automotive implements Serializable{
 //		for(int i = 0; i < s; i++){
 //			opset[i] = new OptionSet("", 0);
 //		}
-	} 
-	
+	}
+
 	//Getter
-	public String getName(){ return name;}
+	public String getName(){ return name; }
 	
-	public float getbaseprice(){ return baseprice;}
+	public float getbaseprice(){ return baseprice; }
 	
 	public OptionSet getOptionSet(int i){ 
 		if(checkValidIndex(i))
@@ -118,12 +118,14 @@ public class Automotive implements Serializable{
 	
 	//Update optionSet
 	public boolean updateOptionSetName(String oldName, String newName) {
+		System.out.println("fds");
+
 		int pos = findOptionSetByName(oldName);
 		if( pos != -1){
 			opset[pos].setOptionSetName(newName);
 			return true;
 		}
-		return false;
+		return false; 
 	}
 	
 	public boolean updateOptionSet(String oldName, String newName, int size){
@@ -211,4 +213,5 @@ public class Automotive implements Serializable{
 		}
 		return s.toString();
 	}
+
 }

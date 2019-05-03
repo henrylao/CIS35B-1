@@ -1,0 +1,113 @@
+Running Notes - April 29th 2019
+Lab 1 - 
+class diagram
+testing (2 or 3 cases)
+steps in design document are not being followed - 
+
+commuication - discussion board - 
+Lab 2 - 
+Creating API 
+adapter - 4 classes - 2 interfaces, abstract and BuildAuto (empty)
+- relationship between - ProxyAuto and the two interfaces (CreatAuto and UpdateAuto)
+
+ProxyAuto does not implement any interfaces
+public abstract class ProxyAuto {
+
+
+}
+BuildAuto implements two interfaces but is empty.
+
+Why does Auto need to be static?
+BuildAuto a1 = new BuildAuto();
+a1.buildAuto(...);
+a1.printAuto(...);
+a1.updateOptionSetname(...);
+a1.updateOptionPrice(...);
+
+CreateAuto a1 = new BuildAuto();
+a1.buildAuto(...); //work
+a1.printAuto(...); //work
+a1.updateOptionSetname(...); //won't work
+a1.updateOptionPrice(...); //won't work
+
+UpdateAuto a2 = new BuildAuto();
+a2.updateOptionSetname(...); //will work
+a2.updateOptionPrice(...); //will work
+a2.buildAuto(....) //won't work
+a2.printAuto(...); //won't work
+
+Human static object - 
+
+componentized
+
+adapter package with 4 classes
+
+exception - package
+public class AutoException extends Exception
+{
+	//errorno and msg handling
+	//logging in the constructor
+	//universal fix(int x)
+	//instantiate Fix1to100 fix1to100
+	public void fix()
+	{
+		switch(errorno)
+		{
+		    case 1: fix1to100.fix1(...);
+		}
+	}	
+}
+
+public class Fix1to100 {
+	public void fix1(....) { 
+
+	}
+}
+
+public class Fix100to200 {
+
+}
+
+
+public class FileIO {
+
+	public void parseAuto(...)
+	{
+		//open file
+		//read 1st line - model name
+		// 1st line return null
+		// if first line throws null pointer exception
+		// throw new AutoException a(errorno)
+		//catch(Autoexception e)
+		//{ e.fix(1); }
+		// if second line throws null pointer exception
+		// throw new AutoException a(errorno)
+		//catch(Autoexception e)
+		//{ e.fix(1); }
+		// if third line throws null pointer exception
+		// throw new AutoException a(errorno)
+		//catch(Autoexception e)
+		//{ e.fix(1); }
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
