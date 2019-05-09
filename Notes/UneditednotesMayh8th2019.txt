@@ -1,0 +1,40 @@
+Review - Collections - 
+how to choose a collection?
+different collections
+lab 3 implementation - 
+ 
+choice --> 
+Auto
+	ArrayList<Option> choice  = new ArrayList<Option>(size); //where size = # of optionset.
+
+OptionSet class
+	OptionSet[0] - choice<Option>	
+	OptionSet[1] - choice<Option>
+	OptionSet[2] - choice<Option>
+	OptionSet[3] - choice<Option>
+	OptionSet[4] - choice<Option>
+
+choice arraylist in Auto acts as an index to choice instance variable in OptionSet.
+
+When you are setting the choice it has to be set in OptionSet and also Auto class.
+
+Why create an arraylist in Auto?
+
+Midterm - 
+Monday, May 13th - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

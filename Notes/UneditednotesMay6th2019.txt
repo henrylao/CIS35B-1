@@ -1,0 +1,167 @@
+Review
+Working with Collections
+-Undestanding Generics
+-How to select a Collection?
+-Algorithms
+-Lab 3
+
+What is a generic?
+JDK 1.5 - for using with Data Structures - 
+One class definition - same method applies for n different types <-- why use generics.
+
+LinkedList - create, add, remove, update or delete  (template)
+JDK 1.4 or earlier - linkedlist of objects - no type specificity - 
+external discipline - linkedlist of auto, option or optionset.
+
+ class Gen<T> { //T is variable that is replaces with class type in runtime.
+  T ob; // declare an object of type T 
+   
+  // Pass the constructor a reference to  
+  // an object of type T. 
+  Gen(T o) { 
+    ob = o; 
+  } 
+ 
+  // Return ob. 
+  T getob() { 
+    return ob; 
+  } 
+ 
+  // Show type of T. 
+  void showType() { 
+    System.out.println("Type of T is " + 
+                       ob.getClass().getName()); 
+  } 
+} 		
+
+polymorphism - of a different sort  - same set of methods used for different types passed in runtime.
+
+Template - in physical world - 
+
+	law of conservation of energy - 
+	Template - Locoe<Human>
+	Livingbeing
+	Locoe<Tesla>
+
+	Human relationships - Brother, Sister
+
+	applied to any class.
+
+Features - 
+ > 1 type can be passed in generic definition
+ T extends another class or T implements Number
+
+How to choose a collection?
+ Memory mgmt with algorithms for faster access of data when inserting, deleting, updating or searching (for small or large data sets)
+ - factors to consider - 
+ - size - s, m or l.
+ s - upto 10K
+ m - 1 Mill
+ l > 1 Mill
+
+operations - 
+	create		
+		find
+			update or delete
+
+	relative usage of create or find
+		for 1 record created - how many times will we search that record.
+
+	 - less create  and more search
+	 - more  create and less search
+
+is it important to keep the data sorted - or unsorted - printed out.
+
+contiguous or discontiguous memory usage - 
+	contiguous good for small dynamic structures
+	med or large (not so useful)
+
+algorithms 
+	search
+	list - arraylist (dynamic structure - contiguous) or linkedlist - doubly linked list implementation - (discontiguous)
+			stack or queue (based on a given set of methods)
+	hashing --> unsorted structure
+			avoid coll.
+
+
+			1. occupancy factor - .75 (ensure that two values will not hash to 			same location.
+			2. hashkey is always a unique value
+			3. size is part of the hashing algorithm.
+
+			3 values that becomes input for hash function - 
+			   resizing requires rehashing all values.
+			autoresize
+	set - a set of keys.	
+	map - a set of keys and values (values can be duplicate).
+	
+	CA - California
+	AZ - Arizona
+	etc.
+	
+
+	cannot used for iterating to print a sorted set.
+
+	treeset - keys
+	treemap - keys and value.
+	
+	binary tree - with each node with 2 children - balanced - sorted - to n levels.
+
+LinkedHashSet
+LinkedHashMap - LinkedList and HashMap 
+	- iteration + Search
+
+Hash - 
+	create and insert are both fast
+
+   Memory overhead
+	allocate enough at start to avoid rehashing
+	store hashtable
+	%occupancy factor - 
+	
+Lab 3 - 
+	Convert Option and OptionSet to ArrayList
+	Create a LHM of Auto in ProxyAuto (use a custom template option).
+
+Making choices for Options in OptionSet - 
+
+Considerations for LHM - 
+1. key = make+model+year
+2. LHM object is static.
+3. Making a template and adding a new class in model package and instantiating the template in ProxyAuto.
+public class Truck extends Auto { }
+public class Hybrid extends Auto  { }
+
+public class MyLHM<T extends Auto>{
+	//private T t;
+	//Put a declaration for LHM as an instance variable in the template
+	//constructor
+	
+	//methods for adding, removing, finding, deleting an auto
+
+}
+
+Making choices - 
+	configure a car 
+
+		given 10 colors - choose a color
+	Selecting an Option in OptionSet.
+
+	add a new instance variable 
+		Option choice in OptionSet class with a getter/setter
+
+public class OptionSet {
+	private Option choice;
+	private ArrayList<Option> opt;
+}
+
+
+	For a given OptionSet - if I want to select an Option - 
+	call setOptionChoice (pass the string - which is the name of the Option) and it will set it in choice variable.
+	
+	OptionSet is a protected class.
+
+	Put functionality in Automobile to setoptionchoice, getoptionchoice, calculatetotalprice - based on option choices.
+	ArrayList of Optionchoices - 
+			Managing references - 
+	
+
