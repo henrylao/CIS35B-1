@@ -10,6 +10,7 @@ package driver;
 
 import adapter.BuildAuto;
 import adapter.CreateAuto;
+import adapter.MakeChoice;
 import adapter.UpdateAuto;
 
 public class Driver3 {
@@ -24,6 +25,7 @@ public class Driver3 {
 //		CreateAuto a2 = new BuildAuto();
 //		a2.BuildAuto("Car2.txt");
 //		a2.printAuto("Tesla Model 3"); 
-		a1.setOptionChoice("Ford","transmission",​ ​"standard");
+		MakeChoice c1 = new BuildAuto();
+		c1.setOptionChoice("Ford","Transmission","Standard");
 	}
 }

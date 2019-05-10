@@ -65,10 +65,9 @@ public class Automobile implements Serializable{
 	public void setOptionChoice(String setName, String optName) {
 		int pos = findOptionSetByName(setName);
 		if(pos != -1){
-			int index = opset.get(pos).findOption(optName);
-			if(index != -1) {
-				opset.get(index).setOptionChoice(optName);
-				choice.set(pos, opset.get(pos).getOption(index));
+			opset.get(pos).setOptionChoice(optName);
+//			if(index != -1) {
+//				choice.set(pos, opset.get(pos).getOption(index));
 //			}else {
 //				try {
 //					throw new AutoException(101, "Cannot find the option set name");
@@ -76,7 +75,7 @@ public class Automobile implements Serializable{
 //				catch(AutoException e) {
 //					e.fix();
 //				}
-			}
+//			}
 		}
 	}
 

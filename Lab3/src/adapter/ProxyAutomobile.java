@@ -21,24 +21,20 @@ import util.*;
 public abstract class ProxyAutomobile  {//acting as a delegate
 	
 	private static LinkedHashMap<String, Automobile> cars;
-	private static int [] error;
-	private String errorFile = "errorFile.dat";
 	
-	public LinkedHashMap<String, Automobile> getModelInfor(){
-		
-		
-		return null;
-		
-	}
+	private static int [] error;
+	
+	private String errorFile = "errorFile.dat";
+	private static Automobile a1;
 	public void setOptionChoice(String modelName, String optionSetName, String optionName) {
-		cars.get(modelName).setOptionChoice(optionSetName, optionName);
+		//cars.get(modelName).setOptionChoice(optionSetName, optionName);
+		a1.setOptionChoice(optionSetName, optionName);
 	}
 	
 	public void BuildAuto(String filename) {
 		FileIO file = new FileIO();
-		Automobile a = file.readFile(filename);
-		cars.put(a.getModel(), a);
-		System.out.println(cars.get(a.getModel()));
+		a1 = file.readFile(filename);
+		//cars.put(a.getMake(), a);
 		error = new int [4];
 		Arrays.fill(error, -1);
 		getErrors();
@@ -47,17 +43,18 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	}
 	
 	public void printAuto(String modelName) {
-		if (cars.isEmpty()) {
-			System.out.println("The object is empty, error number = 301" );
-			saveErrors(301);
-		}else{
-			if(cars.get(modelName) == null ) {
-				saveErrors(304);//no such object
-			}
-			else {
-				System.out.println( cars.get(modelName).toString());
-			}
-		}
+		System.out.println(a1.toString());
+//		if (cars.isEmpty()) {
+//			System.out.println("The object is empty, error number = 301" );
+//			saveErrors(301);
+//		}else{
+//			if(cars.get(modelName) == null ) {
+//				saveErrors(304);//no such object
+//			}
+//			else {
+//				System.out.println( cars.get(modelName).toString());
+//			}
+//		}
 	}
 	
 	public void updateOptionSetName(String modelName, String OptionSetname, String newName) {
