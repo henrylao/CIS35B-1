@@ -46,6 +46,18 @@ public class AutoException extends Exception implements FixAuto{
 		return "";
 	} 
 	
+	public String fix(int i) {
+		Helper301to400 h4 = new Helper301to400();
+		switch(i) {
+			case 301:
+				return h4.fix301();
+			case 302:
+				return h4.fix302();
+			case 303:
+				return h4.fix303();
+		}
+		return null;
+	}
 	public AutoException(int errorno, String errormsg) {
 		super();
 		this.errorno = errorno;
@@ -93,9 +105,5 @@ public class AutoException extends Exception implements FixAuto{
 		}
 	}
 
-	@Override
-	public String fix(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

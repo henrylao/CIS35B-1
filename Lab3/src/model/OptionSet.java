@@ -38,7 +38,6 @@ public class OptionSet implements Serializable{
 			choice = opt.get(pos);
 		}
 	}
-		
 	//Getter
 	protected String getOptionSetName(){ return name; }
 	

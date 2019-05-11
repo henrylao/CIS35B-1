@@ -29,7 +29,19 @@ public class Option implements Serializable{
 	//Setter
 	protected void setOptionValue(String n, float p ){ name = n; price = p; }
 	
-	protected void setOptionName(String n){ name = n;}
+	protected void setOptionName(String n){ name = n; }
 	
-	protected void setOptionPrice(float p){ price = p;}
+	protected void setOptionPrice(float p){ price = p; }
+	
+	@Override
+	public String toString(){
+		StringBuffer s = new StringBuffer();
+		if(name != null) {
+			s.append(String.format("%-38s%8.2f", getOptionName(),getOptionPrice()));
+		}
+		else {
+			s.append("Have not chosen yet");
+		}
+		return s.toString();
+	}
 }

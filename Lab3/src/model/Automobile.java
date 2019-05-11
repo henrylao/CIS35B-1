@@ -11,6 +11,7 @@ package model;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import exception.*;
 
@@ -30,6 +31,8 @@ public class Automobile implements Serializable{
 	
 	private float total;
 
+    private Iterator<OptionSet> itOpset = null;
+
 	//Constructor
 	public Automobile(){};
 	
@@ -41,7 +44,7 @@ public class Automobile implements Serializable{
 		baseprice = p;
 		opset = new ArrayList<OptionSet>();
 		choice = new ArrayList<Option>();
-		total = 0;
+		total = baseprice;
 	}
 	
 	//Setter
@@ -58,14 +61,13 @@ public class Automobile implements Serializable{
 		choice.add(new Option());
 	}
 	
-	public void setValuesOption(int i, String n, float p){
-		opset.get(i).setOption(n, p);
-	}
+	public void setValuesOption(int i, String n, float p){ opset.get(i).setOption(n, p); }
 	
 	public void setOptionChoice(String setName, String optName) {
 		int pos = findOptionSetByName(setName);
 		if(pos != -1){
 			opset.get(pos).setOptionChoice(optName);
+			choice.set(pos, opset.get(pos).getOptionChoice());
 //			if(index != -1) {
 //				choice.set(pos, opset.get(pos).getOption(index));
 //			}else {
@@ -97,15 +99,33 @@ public class Automobile implements Serializable{
 	
 	public int getOptionSetSize() { return opset.size(); }
 	
-	//public String getOptionChoice(​String setName) {return ;}
+	public String getOptionChoice(String setName) {
+		int pos = findOptionSetByName(setName);
+		if(pos != -1) {
+			return choice.get(pos).toString();
+		}
+		return null;
+	}
+	public float getOptionChoicePrice(String s) {
+		int pos = findOptionSetByName(s);
+		if(pos != -1) {
+			return choice.get(pos).getOptionPrice();
+		}
+		return 0;
+	}
 	
-//	​public int getOptionChoicePrice( ​String setName ){
-//		
-//		return 0;
-//	}
-	
-	
-	//public ​float getTotalPrice() { return total;}
+	//get choice total
+	public float caulateTotal() {
+		total = baseprice;
+		for(int i = 0; i< choice.size(); i++) {
+			total += choice.get(i).getOptionPrice();
+		}
+		return total;
+	}
+	public float getTotalPrice() { 
+		caulateTotal();
+		return total;
+	}
 	
 	//Find
 	public int findOptionSetByName(String n){
@@ -251,13 +271,27 @@ public class Automobile implements Serializable{
 	}
 	
 	//Print
+	public void printChoices() {
+		System.out.println("Choices");
+		System.out.println("----------------------------------------------");
+		for( int i = 0; i< choice.size(); i++ ) {
+			System.out.println(String.format( "Optionset:%36s" ,opset.get(i).getOptionSetName()));
+			System.out.println(choice.get(i));
+			System.out.println("----------------------------------------------");
+		}
+//		for ( OptionSet item : opset) {
+//			System.out.println(String.format( "Optionset:%36s" ,item.getOptionSetName()));
+//			System.out.println(item);
+//			System.out.println("----------------------------------------------");
+//		}
+	}
+	
 	@Override
 	public String toString(){
 		StringBuffer s = new StringBuffer(String.format(" Model Name:%34s\n %-35s%10.2f\n\n", getModel(), "Base Price", getbaseprice()));
-		for(int i = 0; i< opset.size(); i++){
-			s.append(opset.get(i).toString()).append('\n');
+		for ( OptionSet item : opset) {
+			s.append(item.toString()).append('\n');
 		}
 		return s.toString();
 	}
-
 }

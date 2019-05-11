@@ -8,23 +8,73 @@
 //============================================================================
 package model;
 
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class AutoLHM <T extends Automobile>{
-	T auto;
+	
+	private LinkedHashMap<String, T> auto;
+	
 	//constructor
+	public AutoLHM() {
+		auto = new LinkedHashMap<String, T>();
+	}
 	public AutoLHM(T a){
-		auto = a;
+		auto = new LinkedHashMap<String, T>();
 	}
-	//return object
-	public T getAuto() {
-		return auto;
+	
+	//adding
+	public void adding(T a) {
+		auto.put( getKey(a), a );
 	}
-	//return type
-	public void showType() {
-		System.out.print("Type of T is ");
-		System.out.println(auto.getClass().getName());
-	}
-	public String setKey() {
-		StringBuffer s = new StringBuffer(auto.getMake()).append(auto.getModel()).append( auto.getYear());
+		
+	//set up the key value for object T
+	public String getKey(Object o) {
+		StringBuffer s = new StringBuffer(((Automobile) o).getMake()).append(((Automobile) o).getModel()).append( ((Automobile) o).getYear());
 		return s.toString();
 	}
+	
+	//Removing
+	public boolean removing(String name) {
+		Iterator it = auto.entrySet().iterator();
+		while(it.hasNext()) {
+			T temp = (T) it.next();
+			if( temp.getModel().equals(name)) {
+				auto.remove(getKey(temp));
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//finding
+	public boolean finding(String name) {
+		Iterator<?> it = auto.entrySet().iterator();
+		while(it.hasNext()) {
+			Map.Entry item = (Map.Entry) it.next();
+			//System.out.println(((Automobile) item.getValue()).getModel());
+			if( ((Automobile) item.getValue()).getModel().equals(name)) 
+				return true;
+			else {
+				System.out.println("Cannot find object");
+			}
+		}
+		return false;		
+	}
+	
+	//return object
+	public T returnObject(String name) {
+		
+		Iterator<?> it = auto.entrySet().iterator();
+		while(it.hasNext()) {
+			Map.Entry item = (Map.Entry) it.next();
+			if( ((Automobile) item.getValue()).getModel().equals(name)) {
+				return (T) item.getValue();
+			}
+		}
+		return null;		
+	}
+	
 }

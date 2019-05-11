@@ -19,22 +19,35 @@ import model.*;
 import util.*;
 
 public abstract class ProxyAutomobile  {//acting as a delegate
-	
-	private static LinkedHashMap<String, Automobile> cars;
-	
+	private AutoException e;
+	//private static LinkedHashMap<String, Automobile> cars;
+	private static AutoLHM<Automobile> cars = new AutoLHM<Automobile>();
 	private static int [] error;
-	
 	private String errorFile = "errorFile.dat";
-	private static Automobile a1;
+	
+	public float getTotal(String modelName) {
+		if(cars.finding(modelName)) {
+			return cars.returnObject(modelName).getTotalPrice();
+		}
+		return -1;
+	}
 	public void setOptionChoice(String modelName, String optionSetName, String optionName) {
+		if(cars.finding(modelName)) {
+			cars.returnObject(modelName).setOptionChoice(optionSetName, optionName);
+		}
 		//cars.get(modelName).setOptionChoice(optionSetName, optionName);
-		a1.setOptionChoice(optionSetName, optionName);
+	}
+	
+	public void printChoices(String modelName) {
+		if(cars.finding(modelName)) {
+			cars.returnObject(modelName).printChoices();
+		}
 	}
 	
 	public void BuildAuto(String filename) {
 		FileIO file = new FileIO();
-		a1 = file.readFile(filename);
-		//cars.put(a.getMake(), a);
+		Automobile a1 = file.readFile(filename);
+		cars.adding(a1);
 		error = new int [4];
 		Arrays.fill(error, -1);
 		getErrors();
@@ -43,7 +56,9 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	}
 	
 	public void printAuto(String modelName) {
-		System.out.println(a1.toString());
+		if(cars.finding(modelName)) {
+			System.out.println(cars.returnObject(modelName).toString());
+		}
 //		if (cars.isEmpty()) {
 //			System.out.println("The object is empty, error number = 301" );
 //			saveErrors(301);
@@ -58,18 +73,22 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	}
 	
 	public void updateOptionSetName(String modelName, String OptionSetname, String newName) {
-		boolean isError = cars.get(modelName).updateOptionSetName(OptionSetname, newName);
-		if(error[2] == -1 && isError != true) {
-			System.out.println("UpdateOptionSetName fail, error number = 302" );
-			saveErrors(302); // 302
+		if(cars.finding(modelName)) {
+			boolean isError = cars.returnObject(modelName).updateOptionSetName(OptionSetname, newName);
+			if(error[2] == -1 && isError != true) {
+				System.out.println("UpdateOptionSetName fail, error number = 302" );
+				saveErrors(302); // 302
+			}
 		}
 	}
 	
 	public void updateOptionPrice(String modelName, String optionName, String option, float newPrice) {
-		boolean isError = cars.get(modelName).updateOptionPrice(optionName, option, newPrice);
-		if(error[3] == -1 && isError != true) {
-			System.out.println("UpdateOptionPrice fail, error number = 303" );
-			saveErrors(303); // 303
+		if(cars.finding(modelName)) {
+			boolean isError = cars.returnObject(modelName).updateOptionPrice(optionName, option, newPrice);
+			if(error[3] == -1 && isError != true) {
+				System.out.println("UpdateOptionPrice fail, error number = 303" );
+				saveErrors(303); // 303
+			}
 		}
 	}
 	
@@ -78,16 +97,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	}
 	
 	public String fix(int i) {
-		Helper301to400 h4 = new Helper301to400();
-		switch(i) {
-			case 301:
-				return h4.fix301();
-			case 302:
-				return h4.fix302();
-			case 303:
-				return h4.fix303();
-		}
-		return "";
+		return null;
 	}
 	
 	public void getErrors() {
@@ -112,7 +122,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	public void fixErrors() {
 		for(int i = 0; i<error.length; i++) {
 			if(error[i] != -1) {
-				String temp = fix(error[i]);
+				String temp = e.fix(error[i]);
 				StringTokenizer stk = new StringTokenizer(temp, ",");
 //				if(error[i] == 302){
 //					a1.updateOptionSetName(stk.nextToken(), stk.nextToken());
