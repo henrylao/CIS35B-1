@@ -4,7 +4,7 @@
 //Author      : Tianqi Yang
 // Time        : 5/6/2019
 //IDE         : Eclipse
-//Description : it is the interface of AutoExceotion
+//Description : it is the interface of FixAuto 
 //============================================================================
 package adapter;
 

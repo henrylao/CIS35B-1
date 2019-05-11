@@ -30,4 +30,8 @@ public class Helper301to400 {
 		System.out.print("Enter the optionName, Option, newPrice: ");
 		return reader.nextLine();
 	}
+	
+	public String fix304() {//cannot find the object
+		return null;
+	}
 }

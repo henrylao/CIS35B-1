@@ -9,12 +9,15 @@
 package exception;
 
 import java.io.*;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 import adapter.FixAuto;
 
 public class AutoException extends Exception implements FixAuto{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6340849508326297449L;
 	private int errorno;
 	private String errormsg;
 	private String loggingName="logging.txt";

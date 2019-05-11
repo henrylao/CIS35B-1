@@ -10,13 +10,14 @@ package model;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import exception.*;
 
 public class Automobile implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7839683941996331129L;
+
 	private String make;
 	
 	private String model;
@@ -30,9 +31,7 @@ public class Automobile implements Serializable{
 	private ArrayList<Option> choice;
 	
 	private float total;
-
-    private Iterator<OptionSet> itOpset = null;
-
+	
 	//Constructor
 	public Automobile(){};
 	
@@ -48,13 +47,13 @@ public class Automobile implements Serializable{
 	}
 	
 	//Setter
-	public void setMake(String m) { make = m;}
+	public void setMake(String m) { make = m; }
 	
-	public void setModel(String m) { model = m;}
+	public void setModel(String m) { model = m; }
 		
-	public void setYear(String y) { year = y;}
+	public void setYear(String y) { year = y; }
 	
-	public void setBasePrice(float i){ baseprice = i;}
+	public void setBasePrice(float i){ baseprice = i; }
 
 	public void setValueOptionSet(String n){ 
 		opset.add(new OptionSet(n)); 
@@ -279,16 +278,11 @@ public class Automobile implements Serializable{
 			System.out.println(choice.get(i));
 			System.out.println("----------------------------------------------");
 		}
-//		for ( OptionSet item : opset) {
-//			System.out.println(String.format( "Optionset:%36s" ,item.getOptionSetName()));
-//			System.out.println(item);
-//			System.out.println("----------------------------------------------");
-//		}
 	}
 	
 	@Override
 	public String toString(){
-		StringBuffer s = new StringBuffer(String.format(" Model Name:%34s\n %-35s%10.2f\n\n", getModel(), "Base Price", getbaseprice()));
+		StringBuffer s = new StringBuffer(String.format("Model Make:%35s\nModel Name:%35s\nYear:%41s\nBase Price:%35.2f\n\n", getMake(), getModel(), getYear(), getbaseprice()));
 		for ( OptionSet item : opset) {
 			s.append(item.toString()).append('\n');
 		}

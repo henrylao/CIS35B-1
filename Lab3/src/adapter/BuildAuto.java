@@ -8,8 +8,5 @@
 // tow interface that CreateAuto and UpdateAuto
 //============================================================================
 package adapter;
-
-import java.io.IOException;
-
 public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto, Choice{
 }

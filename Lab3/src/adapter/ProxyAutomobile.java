@@ -10,45 +10,17 @@
 package adapter;
 import java.io.*;
 
-
 import java.util.Arrays;
 import java.util.StringTokenizer;
-import java.util.LinkedHashMap;
 import exception.*;
 import model.*;
 import util.*;
 
 public abstract class ProxyAutomobile  {//acting as a delegate
-	private AutoException e;
-	//private static LinkedHashMap<String, Automobile> cars;
 	private static AutoLHM<Automobile> cars = new AutoLHM<Automobile>();
 	private static int [] error;
+	private AutoException e;
 	private String errorFile = "errorFile.dat";
-	
-	public void deleteAuto(String modelName) {
-		if(cars.finding(modelName)) {
-			cars.removing(modelName);
-		}
-	}
-
-	public float getTotal(String modelName) {
-		if(cars.finding(modelName)) {
-			return cars.returnObject(modelName).getTotalPrice();
-		}
-		return -1;
-	}
-	public void setOptionChoice(String modelName, String optionSetName, String optionName) {
-		if(cars.finding(modelName)) {
-			cars.returnObject(modelName).setOptionChoice(optionSetName, optionName);
-		}
-		//cars.get(modelName).setOptionChoice(optionSetName, optionName);
-	}
-	
-	public void printChoices(String modelName) {
-		if(cars.finding(modelName)) {
-			cars.returnObject(modelName).printChoices();
-		}
-	}
 	
 	public void BuildAuto(String filename) {
 		FileIO file = new FileIO();
@@ -56,28 +28,21 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		cars.adding(a1);
 		error = new int [4];
 		Arrays.fill(error, -1);
-		getErrors();
-		fixErrors();
+		//getErrors();
+		//fixErrors();
 		//clearError();
 	}
-	
+	//print Auto
 	public void printAuto(String modelName) {
 		if(cars.finding(modelName)) {
 			System.out.println(cars.returnObject(modelName).toString());
 		}
-//		if (cars.isEmpty()) {
-//			System.out.println("The object is empty, error number = 301" );
-//			saveErrors(301);
-//		}else{
-//			if(cars.get(modelName) == null ) {
-//				saveErrors(304);//no such object
-//			}
-//			else {
-//				System.out.println( cars.get(modelName).toString());
-//			}
-//		}
+		else {
+			//e.fix(304);
+			//saveErrors(304);//no such object
+		}
 	}
-	
+	//update
 	public void updateOptionSetName(String modelName, String OptionSetname, String newName) {
 		if(cars.finding(modelName)) {
 			boolean isError = cars.returnObject(modelName).updateOptionSetName(OptionSetname, newName);
@@ -95,15 +60,47 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 				System.out.println("UpdateOptionPrice fail, error number = 303" );
 				saveErrors(303); // 303
 			}
+		}else {
+			System.out.print("Cannot find ");
+			System.out.println(modelName);
 		}
 	}
-	
-	public String fix() {
-		return null;
+	//delete Auto
+	public void deleteAuto(String modelName) {
+		if(cars.finding(modelName)) {
+			cars.removing(modelName);
+		}else {
+			System.out.print("Cannot find ");
+			System.out.println(modelName);
+		}
 	}
-	
-	public String fix(int i) {
-		return null;
+	//record choices
+	public void setOptionChoice(String modelName, String optionSetName, String optionName) {
+		if(cars.finding(modelName)) {
+			cars.returnObject(modelName).setOptionChoice(optionSetName, optionName);
+		}else {
+			System.out.print("Cannot find ");
+			System.out.println(modelName);
+		}
+	}
+	//print choices
+	public void printChoices(String modelName) {
+		if(cars.finding(modelName)) {
+			cars.returnObject(modelName).printChoices();
+		}else {
+			System.out.print("Cannot find ");
+			System.out.println(modelName);
+		}
+	}
+	//get the total of car
+	public float getTotal(String modelName) {
+		if(cars.finding(modelName)) {
+			return cars.returnObject(modelName).getTotalPrice();
+		}else {
+			System.out.print("Cannot find ");
+			System.out.println(modelName);
+		}
+		return -1;
 	}
 	
 	public void getErrors() {
@@ -128,8 +125,9 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	public void fixErrors() {
 		for(int i = 0; i<error.length; i++) {
 			if(error[i] != -1) {
-				String temp = e.fix(error[i]);
-				StringTokenizer stk = new StringTokenizer(temp, ",");
+				System.out.println(error[i]);
+				//String temp = e.fix(error[i]);
+				//StringTokenizer stk = new StringTokenizer(temp, ",");
 //				if(error[i] == 302){
 //					a1.updateOptionSetName(stk.nextToken(), stk.nextToken());
 //				}
@@ -157,5 +155,13 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		if(f.exists()) {
 			f.delete();
 		}
+	}
+	
+	public String fix() {
+		return null;
+	}
+	
+	public String fix(int i) {
+		return null;
 	}
 }

@@ -11,19 +11,15 @@ package model;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class AutoLHM <T extends Automobile>{
 	
 	private LinkedHashMap<String, T> auto;
 	
 	//constructor
-	public AutoLHM() {
-		auto = new LinkedHashMap<String, T>();
-	}
-	public AutoLHM(T a){
-		auto = new LinkedHashMap<String, T>();
-	}
+	public AutoLHM() { auto = new LinkedHashMap<String, T>(); }
+	
+	public AutoLHM(T a){ auto = new LinkedHashMap<String, T>(); }
 	
 	//adding
 	public void adding(T a) {
@@ -37,11 +33,13 @@ public class AutoLHM <T extends Automobile>{
 	}
 	
 	//Removing
+	@SuppressWarnings("unchecked")
 	public boolean removing(String name) {
-		Iterator it = auto.entrySet().iterator();
+		Iterator<?> it = auto.entrySet().iterator();
 		while(it.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
-			if( ((Automobile) item.getValue()).getModel().equals(name)) {
+			if( ((T) item.getValue()).getModel().equals(name)) {
 				auto.remove(getKey(item.getValue()));
 				System.out.print("Detele the car ");
 				System.out.println(name);
@@ -53,12 +51,13 @@ public class AutoLHM <T extends Automobile>{
 	}
 	
 	//finding
+	@SuppressWarnings("unchecked")
 	public boolean finding(String name) {
 		Iterator<?> it = auto.entrySet().iterator();
 		while(it.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
-			//System.out.println(((Automobile) item.getValue()).getModel());
-			if( ((Automobile) item.getValue()).getModel().equals(name)) 
+			if( ((T) item.getValue()).getModel().equals(name)) 
 				return true;
 			else {
 				System.out.print("Cannot find ");
@@ -70,16 +69,17 @@ public class AutoLHM <T extends Automobile>{
 	}
 	
 	//return object
+	@SuppressWarnings("unchecked")
 	public T returnObject(String name) {
 		
 		Iterator<?> it = auto.entrySet().iterator();
 		while(it.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
-			if( ((Automobile) item.getValue()).getModel().equals(name)) {
+			if( ((T) item.getValue()).getModel().equals(name)) {
 				return (T) item.getValue();
 			}
 		}
 		return null;		
 	}
-	
 }
