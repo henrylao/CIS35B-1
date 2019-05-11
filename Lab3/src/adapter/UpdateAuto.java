@@ -11,4 +11,5 @@ package adapter;
 public interface UpdateAuto {
 	public void updateOptionSetName(String modelName, String OptionSetname, String newName);
 	public void updateOptionPrice(String modelName, String optionName, String option, float newPrice);
+	public void deleteAuto(String modelName);
 }

@@ -40,9 +40,12 @@ public class AutoLHM <T extends Automobile>{
 	public boolean removing(String name) {
 		Iterator it = auto.entrySet().iterator();
 		while(it.hasNext()) {
-			T temp = (T) it.next();
-			if( temp.getModel().equals(name)) {
-				auto.remove(getKey(temp));
+			Map.Entry item = (Map.Entry) it.next();
+			if( ((Automobile) item.getValue()).getModel().equals(name)) {
+				auto.remove(getKey(item.getValue()));
+				System.out.print("Detele the car ");
+				System.out.println(name);
+				System.out.println("");
 				return true;
 			}
 		}
@@ -58,7 +61,9 @@ public class AutoLHM <T extends Automobile>{
 			if( ((Automobile) item.getValue()).getModel().equals(name)) 
 				return true;
 			else {
-				System.out.println("Cannot find object");
+				System.out.print("Cannot find ");
+				System.out.println(name);
+				System.out.println("");
 			}
 		}
 		return false;		

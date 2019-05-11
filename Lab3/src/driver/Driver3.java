@@ -25,16 +25,20 @@ public class Driver3 {
 		CreateAuto a2 = new BuildAuto();
 		a2.BuildAuto("Car2.txt");
 		a2.printAuto("Model 3"); 
+		b1.deleteAuto("ZTW");
+		a1.printAuto("ZTW");
+		a2.printAuto("Model 3"); 
 		//testing make choice
-		Choice c1 = new BuildAuto();
-		c1.setOptionChoice("ZTW", "Color", "Fort Knox Gold Clearcoat Metallic");
-		c1.setOptionChoice("ZTW","Transmission","Automatic");
-		c1.setOptionChoice("ZTW", "Brakes/Traction Control", "ABS with Advance Trac");
-		c1.setOptionChoice("ZTW", "Side Impact Air Bags", "Present");
-		c1.setOptionChoice("ZTW", "Power Moonroof", "Present");
-		c1.printChoices("ZTW");
-		//testing get total price
-		System.out.print("Total price: ");
-		System.out.println(c1.getTotal("ZTW"));
+//		Choice c1 = new BuildAuto();
+//		c1.setOptionChoice("ZTW", "Color", "Fort Knox Gold Clearcoat Metallic");
+//		c1.setOptionChoice("ZTW","Transmission","Automatic");
+//		c1.setOptionChoice("ZTW", "Brakes/Traction Control", "ABS with Advance Trac");
+//		c1.setOptionChoice("ZTW", "Side Impact Air Bags", "Present");
+//		c1.setOptionChoice("ZTW", "Power Moonroof", "Present");
+//		c1.printChoices("ZTW");
+//		//testing get total price
+//		System.out.print("Total price: ");
+//		System.out.println(c1.getTotal("ZTW"));
+		
 	}
 }

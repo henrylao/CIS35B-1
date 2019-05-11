@@ -25,6 +25,12 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private static int [] error;
 	private String errorFile = "errorFile.dat";
 	
+	public void deleteAuto(String modelName) {
+		if(cars.finding(modelName)) {
+			cars.removing(modelName);
+		}
+	}
+
 	public float getTotal(String modelName) {
 		if(cars.finding(modelName)) {
 			return cars.returnObject(modelName).getTotalPrice();
