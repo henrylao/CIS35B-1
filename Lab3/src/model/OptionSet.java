@@ -14,6 +14,11 @@ import java.util.ArrayList;
 
 public class OptionSet implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9180409252647709159L;
+
 	private String name;
 	
 	private ArrayList<Option> opt;
@@ -66,6 +71,18 @@ public class OptionSet implements Serializable{
 		return true;
 	}
 	
+	protected boolean updateOption(int i, String n, float p) {
+		updateOptionName(i, n);
+		updateOptionPrice(i, p);
+		return true;
+	}
+	
+	protected boolean updateOption(String oldName, String n, float p) {
+		int pos = findOption(oldName);
+		updateOptionName(pos, n);
+		updateOptionPrice(pos, p);
+		return true;
+	}
 	//Delete
 	protected boolean findAndDeleteOption(int pos){//search by index
 		if(checkValidIndex(pos)){
@@ -95,7 +112,7 @@ public class OptionSet implements Serializable{
 	@Override
 	public String toString(){
 		StringBuffer s = new StringBuffer();
-		s.append(String.format(" %s\n ---------------------------------------------", getOptionSetName())).append(String.format("\n %-35s%10s\n", "Name", "Fee"));
+		s.append(String.format("%s\n----------------------------------------------", getOptionSetName())).append(String.format("\n%-35s%11s\n", "Options:", "Fee"));
 		for(int i=0; i< opt.size(); i++){
 				s.append(String.format("%2s.%-35s%8.2f\n",i+1,opt.get(i).getOptionName(),opt.get(i).getOptionPrice()));
 		}

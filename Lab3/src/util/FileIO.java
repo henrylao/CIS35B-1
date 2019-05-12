@@ -19,6 +19,7 @@ public class FileIO {
 		Automobile a = null;
 		BufferedReader buff = null;
         boolean nextStep = false;
+        
 		while(nextStep == false){
 			try {
 				buff = openFile(fileName);
@@ -77,7 +78,6 @@ public class FileIO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        
 		return a;
 	}
 

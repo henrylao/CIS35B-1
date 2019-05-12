@@ -11,6 +11,8 @@ package model;
 import java.io.*;
 import java.util.ArrayList;
 
+import exception.AutoException;
+
 public class Automobile implements Serializable{
 	
 	/**
@@ -67,16 +69,13 @@ public class Automobile implements Serializable{
 		if(pos != -1){
 			opset.get(pos).setOptionChoice(optName);
 			choice.set(pos, opset.get(pos).getOptionChoice());
-//			if(index != -1) {
-//				choice.set(pos, opset.get(pos).getOption(index));
-//			}else {
-//				try {
-//					throw new AutoException(101, "Cannot find the option set name");
-//				}
-//				catch(AutoException e) {
-//					e.fix();
-//				}
-//			}
+		}else{
+			try {
+				throw new AutoException(101, "Cannot find the option set name");
+			}
+			catch(AutoException e) {
+				e.fix();
+			}
 		}
 	}
 
@@ -194,64 +193,64 @@ public class Automobile implements Serializable{
 		}
 		return false; 
 	}
-//	
-//	public boolean updateOptionSet(String oldName, String newName, int size){
-//		int pos = findOptionSetByName(oldName);
-//		if( pos != -1){
-//			opset[pos] = new OptionSet(newName, size);
-//			return true;
-//		}
-//		return false;
-//	}
+	
+	public boolean updateOptionSet(String oldName, String newName){
+		int pos = findOptionSetByName(oldName);
+		if( pos != -1){
+			opset.set(pos, new OptionSet(newName));
+			return true;
+		}
+		return false;
+	}
 	
 	//update option
-//	public boolean updateOptionValue(String optionSetName, String optionOldName, String newName, float newPrice){
-//		int pos = findOptionSetByName(optionSetName);
-//		if( pos != -1){
-//			return opset[pos].setOption(optionOldName, newName, newPrice);
-//		}
-//		return false;
-//	}
-//	
-//	public boolean updateOptionValue(int i, String oldName, String newName, float newPrice){
-//		int pos = findOptionByName(i, oldName);
-//		if( pos != -1){
-//			opset[i].setOption(pos, newName, newPrice);
-//			return true;
-//		}
-//		return false;
-//	}
-//	
-//	public boolean updateOptionValue(int i, int pos, String newName, float newPrice) {
-//		if(checkValidIndex(i)) {
-//			if(opset[i].checkValidIndex(pos)) {
-//				opset[i].getOption()[pos].setOptionValue(newName, newPrice);
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-//	
-//	public boolean updateOptionName(int i, int pos, String newName) {
-//		if(checkValidIndex(i)) {
-//			if(opset[i].checkValidIndex(pos)) {
-//				opset[i].getOption()[pos].setOptionName(newName);
-//				return true;
-//			}	
-//		}
-//		return false;
-//	}
-//	
-//	public boolean updateOptionPrice(int i, int pos, float newPrice) {
-//		if(checkValidIndex(i)) {
-//			if(opset.get(i).checkValidIndex(pos)) {
-//				opset[i].getOption()[pos].setOptionPrice(newPrice);
-//				return true;
-//			}	
-//		}
-//		return false;
-//	}
-//	
+	public boolean updateOptionValue(String optionSetName, String optionOldName, String newName, float newPrice){
+		int pos = findOptionSetByName(optionSetName);
+		if( pos != -1){
+			return opset.get(pos).updateOption(optionOldName, newName, newPrice);
+		}
+		return false;
+	}
+	
+	public boolean updateOptionValue(int i, String oldName, String newName, float newPrice){
+		int pos = findOptionByName(i, oldName);
+		if( pos != -1){
+			opset.get(pos).updateOption(pos, newName, newPrice);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean updateOptionValue(int i, int pos, String newName, float newPrice) {
+		if(checkValidIndex(i)) {
+			if(opset.get(i).checkValidIndex(pos)) {
+				opset.get(i).getOption(pos).setOptionValue(newName, newPrice);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean updateOptionName(int i, int pos, String newName) {
+		if(checkValidIndex(i)) {
+			if(opset.get(i).checkValidIndex(pos)) {
+				opset.get(i).getOption(pos).setOptionName(newName);
+				return true;
+			}	
+		}
+		return false;
+	}
+	
+	public boolean updateOptionPrice(int i, int pos, float newPrice) {
+		if(checkValidIndex(i)) {
+			if(opset.get(i).checkValidIndex(pos)) {
+				opset.get(i).getOption(pos).setOptionPrice(newPrice);
+				return true;
+			}	
+		}
+		return false;
+	}
+	
 	public boolean updateOptionPrice(String optionName, String option, float newPrice) {
 		int pos = findOptionSetByName(optionName);
 		if(pos != -1) {

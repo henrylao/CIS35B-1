@@ -12,6 +12,11 @@ import java.io.Serializable;
 
 public class Option implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2260484367976294032L;
+
 	private String name;
 	
 	private float price; 
