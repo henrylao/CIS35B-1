@@ -11,7 +11,6 @@ package adapter;
 import java.io.*;
 
 import java.util.Arrays;
-import java.util.StringTokenizer;
 import exception.*;
 import model.*;
 import util.*;
@@ -20,7 +19,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private static AutoLHM<Automobile> cars = new AutoLHM<Automobile>();
 	private static int [] error;
 	private AutoException e;
-	private String errorFile = "errorFile.dat";
+	private String errorFile = "errorFile.txt";
 	
 	public void BuildAuto(String filename) {
 		FileIO file = new FileIO();
@@ -28,9 +27,9 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		cars.adding(a1);
 		error = new int [4];
 		Arrays.fill(error, -1);
-		//getErrors();
-		//fixErrors();
-		//clearError();
+		getErrors();
+		fixErrors();
+		clearError();
 	}
 	//print Auto
 	public void printAuto(String modelName) {
@@ -38,6 +37,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 			System.out.println(cars.returnObject(modelName).toString());
 		}
 		else {
+			//System.out.println("Connot find object");
 			//e.fix(304);
 			//saveErrors(304);//no such object
 		}

@@ -27,7 +27,7 @@ public class Driver3 {
 		a2.printAuto("Model 3"); 
 		//testing make choice
 		Choice c1 = new BuildAuto();
-		c1.setOptionChoice("ZTW", "Color", "Fort Knox Gold Clearcoat Metallic");
+		c1.setOptionChoice("ZTW", "Deceptive Appearance", "Liquid Grey Clearcoat Metallic");
 		c1.setOptionChoice("ZTW","Transmission","Automatic");
 		c1.setOptionChoice("ZTW", "Brakes/Traction Control", "ABS with Advance Trac");
 		c1.setOptionChoice("ZTW", "Side Impact Air Bags", "Present");
@@ -43,129 +43,135 @@ public class Driver3 {
 	}
 }
 /*
-Model Name:                               ZTW
-Base Price                           18555.00
+Model Make:                               Ford
+Model Name:                                ZTW
+Year:                                     2014
+Base Price:                           18555.00
 
 Color
----------------------------------------------
-Name                                      Fee
-1.Fort Knox Gold Clearcoat Metallic      0.00
-2.Liquid Grey Clearcoat Metallic         0.00
-3.Infra-Red Clearcoat                    0.00
-4.Grabber Green Clearcoat Metallic       0.00
-5.Sangria Red Clearcoat Metallic         0.00
-6.French Blue Clearcoat Metallic         0.00
-7.Twilight Blue Clearcoat Metallic       0.00
-8.CD Silver Clearcoat Metallic           0.00
-9.Pitch Black Clearcoat                  0.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Fort Knox Gold Clearcoat Metallic      0.00
+ 2.Liquid Grey Clearcoat Metallic         0.00
+ 3.Infra-Red Clearcoat                    0.00
+ 4.Grabber Green Clearcoat Metallic       0.00
+ 5.Sangria Red Clearcoat Metallic         0.00
+ 6.French Blue Clearcoat Metallic         0.00
+ 7.Twilight Blue Clearcoat Metallic       0.00
+ 8.CD Silver Clearcoat Metallic           0.00
+ 9.Pitch Black Clearcoat                  0.00
 10.Cloud 9 White Clearcoat                0.00
 
 Transmission
----------------------------------------------
-Name                                      Fee
-1.Automatic                              0.00
-2.Manual                              -815.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Automatic                              0.00
+ 2.Manual                              -815.00
 
 Brakes/Traction Control
----------------------------------------------
-Name                                      Fee
-1.Standard                               0.00
-2.ABS                                  400.00
-3.ABS with Advance Trac               1625.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Standard                               0.00
+ 2.ABS                                  400.00
+ 3.ABS with Advance Trac               1625.00
 
 Side Impact Air Bags
----------------------------------------------
-Name                                      Fee
-1.Present                              350.00
-2.Not Present                            0.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Present                              350.00
+ 2.Not Present                            0.00
 
 Power Moonroof
----------------------------------------------
-Name                                      Fee
-1.Present                              595.00
-2.Not Present                            0.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Present                              595.00
+ 2.Not Present                            0.00
 
 
-Model Name:                               ZTW
-Base Price                           18555.00
+Model Make:                               Ford
+Model Name:                                ZTW
+Year:                                     2014
+Base Price:                           18555.00
 
 Deceptive Appearance
----------------------------------------------
-Name                                      Fee
-1.Fort Knox Gold Clearcoat Metallic      0.00
-2.Liquid Grey Clearcoat Metallic         0.00
-3.Infra-Red Clearcoat                    0.00
-4.Grabber Green Clearcoat Metallic       0.00
-5.Sangria Red Clearcoat Metallic         0.00
-6.French Blue Clearcoat Metallic         0.00
-7.Twilight Blue Clearcoat Metallic       0.00
-8.CD Silver Clearcoat Metallic           0.00
-9.Pitch Black Clearcoat                  0.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Fort Knox Gold Clearcoat Metallic      0.00
+ 2.Liquid Grey Clearcoat Metallic         0.00
+ 3.Infra-Red Clearcoat                    0.00
+ 4.Grabber Green Clearcoat Metallic       0.00
+ 5.Sangria Red Clearcoat Metallic         0.00
+ 6.French Blue Clearcoat Metallic         0.00
+ 7.Twilight Blue Clearcoat Metallic       0.00
+ 8.CD Silver Clearcoat Metallic           0.00
+ 9.Pitch Black Clearcoat                  0.00
 10.Cloud 9 White Clearcoat                0.00
 
 Transmission
----------------------------------------------
-Name                                      Fee
-1.Automatic                            999.00
-2.Manual                              -815.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Automatic                            999.00
+ 2.Manual                              -815.00
 
 Brakes/Traction Control
----------------------------------------------
-Name                                      Fee
-1.Standard                               0.00
-2.ABS                                  400.00
-3.ABS with Advance Trac               1625.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Standard                               0.00
+ 2.ABS                                  400.00
+ 3.ABS with Advance Trac               1625.00
 
 Side Impact Air Bags
----------------------------------------------
-Name                                      Fee
-1.Present                              350.00
-2.Not Present                            0.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Present                              350.00
+ 2.Not Present                            0.00
 
 Power Moonroof
----------------------------------------------
-Name                                      Fee
-1.Present                              595.00
-2.Not Present                            0.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Present                              595.00
+ 2.Not Present                            0.00
 
 
 Cannot find Model 3
 
-Model Name:                           Model 3
-Base Price                           36200.00
+Model Make:                              Tesla
+Model Name:                            Model 3
+Year:                                     2019
+Base Price:                           36200.00
 
 Color
----------------------------------------------
-Name                                      Fee
-1.Solid Black                            0.00
-2.Deep Blue Metallic                     0.00
-3.Midnight Silver Metallic             100.00
-4.Pearl White Multi-Coat               100.00
-5.Red Multi-Coat                       100.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Solid Black                            0.00
+ 2.Deep Blue Metallic                     0.00
+ 3.Midnight Silver Metallic             100.00
+ 4.Pearl White Multi-Coat               100.00
+ 5.Red Multi-Coat                       100.00
 
 Powertrain
----------------------------------------------
-Name                                      Fee
-1.AC Electric Motor                      0.00
-2.Single-Speed Fixed Gear              200.00
+----------------------------------------------
+Options:                                   Fee
+ 1.AC Electric Motor                      0.00
+ 2.Single-Speed Fixed Gear              200.00
 
 Tires
----------------------------------------------
-Name                                      Fee
-1.18''                                   0.00
-2.19''                                 200.00
+----------------------------------------------
+Options:                                   Fee
+ 1.18''                                   0.00
+ 2.19''                                 200.00
 
 Wheels
----------------------------------------------
-Name                                      Fee
-1.Normal                                 0.00
-2.Sport Alloy                          200.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Normal                                 0.00
+ 2.Sport Alloy                          200.00
 
 
 Choices
 ----------------------------------------------
 Optionset:                Deceptive Appearance
-Have not chosen yet
+Liquid Grey Clearcoat Metallic            0.00
 ----------------------------------------------
 Optionset:                        Transmission
 Automatic                               999.00
@@ -184,35 +190,38 @@ Detele the car ZTW
 
 Cannot find ZTW
 
-Model Name:                           Model 3
-Base Price                           36200.00
+Model Make:                              Tesla
+Model Name:                            Model 3
+Year:                                     2019
+Base Price:                           36200.00
 
 Color
----------------------------------------------
-Name                                      Fee
-1.Solid Black                            0.00
-2.Deep Blue Metallic                     0.00
-3.Midnight Silver Metallic             100.00
-4.Pearl White Multi-Coat               100.00
-5.Red Multi-Coat                       100.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Solid Black                            0.00
+ 2.Deep Blue Metallic                     0.00
+ 3.Midnight Silver Metallic             100.00
+ 4.Pearl White Multi-Coat               100.00
+ 5.Red Multi-Coat                       100.00
 
 Powertrain
----------------------------------------------
-Name                                      Fee
-1.AC Electric Motor                      0.00
-2.Single-Speed Fixed Gear              200.00
+----------------------------------------------
+Options:                                   Fee
+ 1.AC Electric Motor                      0.00
+ 2.Single-Speed Fixed Gear              200.00
 
 Tires
----------------------------------------------
-Name                                      Fee
-1.18''                                   0.00
-2.19''                                 200.00
+----------------------------------------------
+Options:                                   Fee
+ 1.18''                                   0.00
+ 2.19''                                 200.00
 
 Wheels
----------------------------------------------
-Name                                      Fee
-1.Normal                                 0.00
-2.Sport Alloy                          200.00
+----------------------------------------------
+Options:                                   Fee
+ 1.Normal                                 0.00
+ 2.Sport Alloy                          200.00
+
 
 
 */

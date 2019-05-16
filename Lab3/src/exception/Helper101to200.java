@@ -11,7 +11,6 @@ package exception;
 
 public class Helper101to200 {
 	String fix101() {
-		
 		return null;
 	}
 }
