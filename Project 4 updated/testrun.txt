@@ -1,0 +1,25 @@
+Update 8-speed Transmission: present to 5000
+Thread-0 completed.
+Print result:
+Automobile = Ford
+Model = Sedan
+baseprice = $18445.0
+opset =	Color [Fort Knox Gold Clearcoat Metallic: $0.0, Liquid Grey Clearcoat Metallic: $0.0, Infra-Red Clearcoat: $0.0, Grabber Green Clearcoat Metallic: $0.0, Sangria Red Clearcoat Metallic: $0.0, French Blue Clearcoat Metallic: $0.0, Twilight Blue Clearcoat Metallic: $0.0, CD Silver Clearcoat Metallic: $0.0, Pitch Black Clearcoat: $0.0, Cloud 9 White Clearcoat: $0.0]
+	Transmission [automatic: $5000.0, manual: $-815.0]
+	Brakes [Standard: $0.0, ABS: $400.0, ABS with Advance Trac: $1625.0]
+	Side Impact Air Bags [present: $350.0, not present: $0.0]
+	Power Moonroof [present: $595.0, not present: $0.0]
+Current Total Price = $18445.0
+
+Update 8-speed Transmission: present to 2000
+Thread-1 completed.
+Print result:
+Automobile = Ford
+Model = Sedan
+baseprice = $18445.0
+opset =	Color [Fort Knox Gold Clearcoat Metallic: $0.0, Liquid Grey Clearcoat Metallic: $0.0, Infra-Red Clearcoat: $0.0, Grabber Green Clearcoat Metallic: $0.0, Sangria Red Clearcoat Metallic: $0.0, French Blue Clearcoat Metallic: $0.0, Twilight Blue Clearcoat Metallic: $0.0, CD Silver Clearcoat Metallic: $0.0, Pitch Black Clearcoat: $0.0, Cloud 9 White Clearcoat: $0.0]
+	Transmission [automatic: $2000.0, manual: $-815.0]
+	Brakes [Standard: $0.0, ABS: $400.0, ABS with Advance Trac: $1625.0]
+	Side Impact Air Bags [present: $350.0, not present: $0.0]
+	Power Moonroof [present: $595.0, not present: $0.0]
+Current Total Price = $18445.0

@@ -1,0 +1,113 @@
+Please input command: send, list, config, quit
+send
+File name: properties1.txt
+Server: Automobile created successfully.
+Please input command: send, list, config, quit5.0
+Start server.
+Accept a client.
+Accept a client.
+Receive Automobile GT
+Return list of Automobiles:
+GT
+Please input command: send, list, config, quit
+config
+Model name: 
+GT
+Color [
+			Black: $0.0, 
+			White: $0.0]
+Select one option: Black
+Roof [
+			Carbon Fiber Roof: $5000.0, 
+			Moon Roof: $0.0]
+Select one option: Carbon Fiber Roof
+Automatic Rear Spoiler [
+			present: $1500.0, 
+			not present: $0.0]
+Select one option: present
+Side Impact Air Bags [
+			present: $1000.0, 
+			not present: $0.0]
+Select one option: present
+Navigation [
+			present: $3000.0, 
+			not present: $0.0]
+Select one option: present
+Automobile : 	Ford
+Model : 	GT
+baseprice : 	$110000.0
+optionset :	Color [
+			Black: $0.0, 
+			White: $0.0]
+		Roof [
+			Carbon Fiber Roof: $5000.0, 
+			Moon Roof: $0.0]
+		Automatic Rear Spoiler [
+			present: $1500.0, 
+			not present: $0.0]
+		Side Impact Air Bags [
+			present: $1000.0, 
+			not present: $0.0]
+		Navigation [
+			present: $3000.0, 
+			not present: $0.0]
+	
+Current Total Price = $120500.0
+Please input command: send, list, config, quit
+quit
+Bye!
+
+Please input command: send, list, config, quit
+send
+File name: properties2.txt
+Server: Automobile created successfully.
+Please input command: send, list, config, quit
+list
+Rc F
+Please input command: send, list, config, quit
+config
+Model name: 
+Rc F
+Color [
+			Black: $0.0, 
+			White: $0.0]
+Select one option: Black
+Roof [
+			Carbon Fiber Roof: $3000.0, 
+			Moon Roof: $0.0]
+Select one option: Carbon Fiber Roof
+Automatic Rear Spoiler [
+			present: $1500.0, 
+			not present: $0.0]
+Select one option: present
+Side Impact Air Bags [
+			present: $350.0, 
+			not present: $0.0]
+Select one option: present
+Navigation [
+			present: $1000.0, 
+			not present: $0.0]
+Select one option: present
+Automobile : 	Lexus
+Model : 	Rc F
+baseprice : 	$73000.0
+optionset :	Color [
+			Black: $0.0, 
+			White: $0.0]
+		Roof [
+			Carbon Fiber Roof: $3000.0, 
+			Moon Roof: $0.0]
+		Automatic Rear Spoiler [
+			present: $1500.0, 
+			not present: $0.0]
+		Side Impact Air Bags [
+			present: $350.0, 
+			not present: $0.0]
+		Navigation [
+			present: $1000.0, 
+			not present: $0.0]
+	
+Current Total Price = $78850.0
+Please input command: send, list, config, quit
+quit
+Bye!

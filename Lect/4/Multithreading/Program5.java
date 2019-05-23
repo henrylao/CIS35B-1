@@ -1,11 +1,11 @@
 class Program5{
    public static void main( String[ ] args ) {
-      new MyThread( "foo" ).start();
-      new MyThread( "bar" ).start();
+      new MyThread5( "foo" ).start();
+      new MyThread5( "bar" ).start();
    }
 }
-class MyThread extends Thread {
-   public MyThread( String name ) { super( name ); }
+class MyThread5 extends Thread {
+   public MyThread5( String name ) { super( name ); }
    public void run() {
       while ( true )
          if ( getName().equalsIgnoreCase( "foo" ) )

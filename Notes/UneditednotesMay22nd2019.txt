@@ -1,0 +1,61 @@
+Agenda
+Review
+Lab 4 prep
+Remaining MThreading Concepts
+
+Lab 4 design notes - 
+1. Create EditOptions
+	scale/EditOptions ~ Hello.java
+	//implements Runnable, create a Thread object
+	//start method, switch statment for ops - 
+	//helper classes ~ exceptions.
+2. Expose thru interface.
+	ProxyAuto and BuildAuto 
+	Create a new interface - declare a method
+	Use that method in driver for driving the M'threading ops.
+	Pl don't be using EditOptions for testing. It is an internal datatype.
+	public void op(int op, String a1[]);
+
+ --> Things to look out for - Relationship between EditOptions and BuildAuto
+	EditOptions needs access to LHM - how can it get that easily? --> extends ProxyAuto
+	Expose functionality in EditOption through BuildAuto (interface implementation will be proxyAuto) --> 
+	Pl. dont do this - you may tempted to extend EditOptions in ProxyAuto (import EditOptions in ProxyAuto.
+
+
+What to test and how test?
+ - use the interface to test.
+   Scaleable a1 = new BuildAuto();
+   a1.op(1, str); //str is some string array.
+   a1.op(2, str2);
+
+		-->synchronized - no data corruption
+	t1 - select Option color - Blu --> Blue
+	t2 - select Option color - Blu --> Red
+
+		-->non-synchronized - will show data corruption
+	t1 - select Option color - Blu --> Blue
+	t2 - select Option color - Blu --> Red
+
+ops wise --> EditOption - 1 op for synchronized
+			  2 op for non-synchronized
+
+Synchronization -- Lock in EditOptions (final answer)  - please review all three considerations.
+
+How do you create an Interface?
+ --See Lab 2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

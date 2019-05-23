@@ -1,0 +1,35 @@
+CarMake=Ford
+CarModel=GT
+BasePrice=110000
+Option1=Color
+OptionValue1a=Black
+OptionPrice1a=0
+OptionValue1b=White
+OptionPrice1b=0
+Option2=Roof
+OptionValue2a=Carbon Fiber Roof
+OptionPrice2a=5000
+OptionValue2b=Moon Roof
+OptionPrice2b=0
+Option3=Automatic Rear Spoiler
+OptionValue3a=present
+OptionPrice3a=1500
+OptionValue3b=not present
+OptionPrice3b=0
+Option4=Side Impact Air Bags
+OptionValue4a=present
+OptionPrice4a=1000
+OptionValue4b=not present
+OptionPrice4b=0
+Option5=Navigation
+OptionValue5a=present
+OptionPrice5a=3000
+OptionValue5b=not present
+OptionPrice5b=0
+Option6=wheels
+OptionValue6a=20 inches
+OptionPrice6a=5000
+OptionValue6b=19 inches
+OptionPrice6b=0
+
+
