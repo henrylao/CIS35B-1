@@ -20,3 +20,9 @@ after execute once.
 
 Lab3:
 Using array list to manage the option set and options and using linked hash map to manage cars. 
+
+Lab4:
+Adding the editInterface so I can control what user accesses the data.
+Synchronized the methods that ​creating,​ ​reading,​ ​updating​ ​and​ ​deleting​  Automobile.
+Muli threading so the program could run fast when there are muli users. 
+The drive tests the methods by non-synchronized, and synchronized.

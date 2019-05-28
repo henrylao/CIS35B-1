@@ -59,11 +59,6 @@ public class AutoLHM <T extends Automobile>{
 			Map.Entry item = (Map.Entry) it.next();
 			if( ((T) item.getValue()).getModel().equals(name)) 
 				return true;
-			else {
-				System.out.print("Cannot find ");
-				System.out.println(name);
-				System.out.println("");
-			}
 		}
 		return false;		
 	}

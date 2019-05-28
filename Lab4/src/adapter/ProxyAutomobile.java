@@ -13,6 +13,7 @@ import java.io.*;
 import java.util.Arrays;
 import exception.*;
 import model.*;
+import scale.*;
 import util.*;
 
 public abstract class ProxyAutomobile  {//acting as a delegate
@@ -21,7 +22,22 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private AutoException e;
 	private String errorFile = "errorFile.txt";
 	
-	public void BuildAuto(String filename) {
+	public synchronized void editOptionSetName(int x, String model, String name, String newName) {
+	     Thread thread = new Thread(new EditOptions(x, model, name, newName));
+	     thread.start();
+	}
+	
+	public synchronized void editOptionName(int x, String model, String optionSetName, String optionName, String newOptionName) {
+        Thread thread = new Thread(new EditOptions(x, model, optionSetName, optionName, newOptionName));
+        thread.start();		
+	}
+
+	public synchronized void editOptionPrice(int x, String model, String optionSetName, String optionName, float newPrice) {
+        Thread thread = new Thread(new EditOptions(x, model, optionSetName, optionName, newPrice));
+        thread.start();
+  	}
+	
+	public synchronized void BuildAuto(String filename) {
 		FileIO file = new FileIO();
 		Automobile a1 = file.readFile(filename);
 		cars.adding(a1);
@@ -56,6 +72,19 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	public void updateOptionPrice(String modelName, String optionName, String option, float newPrice) {
 		if(cars.finding(modelName)) {
 			boolean isError = cars.returnObject(modelName).updateOptionPrice(optionName, option, newPrice);
+ 			if(error[3] == -1 && isError != true) {
+				System.out.println("UpdateOptionPrice fail, error number = 303" );
+				saveErrors(303); // 303
+			}
+		}else {
+			System.out.print("Cannot find ");
+			System.out.println(modelName);
+		}
+	}
+	
+	public void updateOptionName(String modelName, String optionName, String option, String newOptionName) {
+		if(cars.finding(modelName)) {
+			boolean isError = cars.returnObject(modelName).updateOptionName(optionName, option, newOptionName);
 			if(error[3] == -1 && isError != true) {
 				System.out.println("UpdateOptionPrice fail, error number = 303" );
 				saveErrors(303); // 303
@@ -65,8 +94,9 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 			System.out.println(modelName);
 		}
 	}
+	
 	//delete Auto
-	public void deleteAuto(String modelName) {
+	public synchronized void deleteAuto(String modelName) {
 		if(cars.finding(modelName)) {
 			cars.removing(modelName);
 		}else {
@@ -86,6 +116,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	//print choices
 	public void printChoices(String modelName) {
 		if(cars.finding(modelName)) {
+			
 			cars.returnObject(modelName).printChoices();
 		}else {
 			System.out.print("Cannot find ");

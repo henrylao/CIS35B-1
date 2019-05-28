@@ -241,6 +241,18 @@ public class Automobile implements Serializable{
 		return false;
 	}
 	
+	public boolean updateOptionName(String optionName, String option, String newName) {
+		int pos = findOptionSetByName(optionName);
+		if(pos != -1) {
+			int index = opset.get(pos).findOption(option);
+			if (index != -1) {
+				opset.get(pos).updateOptionName(index, newName);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public boolean updateOptionPrice(int i, int pos, float newPrice) {
 		if(checkValidIndex(i)) {
 			if(opset.get(i).checkValidIndex(pos)) {

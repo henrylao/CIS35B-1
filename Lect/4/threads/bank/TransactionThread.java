@@ -1,4 +1,5 @@
-package examples.threads;
+package bank;
+
 /**
  * Class TransactionThreads creates objects that 
  * contain ThreadLocal variables and illustrates 

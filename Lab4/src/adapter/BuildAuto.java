@@ -8,5 +8,8 @@
 // tow interface that CreateAuto and UpdateAuto
 //============================================================================
 package adapter;
-public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto, Choice{
+
+public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto, Choice, EditInterface{
+
+	
 }

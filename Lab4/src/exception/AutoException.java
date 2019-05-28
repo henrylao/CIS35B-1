@@ -1,5 +1,5 @@
 //============================================================================
-// Project     : Lab4
+//Project     : Lab4
 //Name        : FixProblems.java
 //Author      : Tianqi Yang
 //Time        : 5/6/2019
