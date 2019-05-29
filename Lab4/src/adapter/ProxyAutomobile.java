@@ -22,22 +22,28 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private AutoException e;
 	private String errorFile = "errorFile.txt";
 	
-	public synchronized void editOptionSetName(int x, String model, String name, String newName) {
-	     Thread thread = new Thread(new EditOptions(x, model, name, newName));
-	     thread.start();
+	protected AutoLHM<Automobile> getAuto() {
+		return cars;
 	}
 	
-	public synchronized void editOptionName(int x, String model, String optionSetName, String optionName, String newOptionName) {
-        Thread thread = new Thread(new EditOptions(x, model, optionSetName, optionName, newOptionName));
-        thread.start();		
+	public void editOptionSetName(int x, String model, String name, String newName) {
+	     //EditOptions t = new EditOptions(x, model, name, newName);
+	     Thread t = new Thread(new EditOptions(x, model, name, newName));
+	     t.start();
+	}
+	
+	public void editOptionName(int x, String model, String optionSetName, String optionName, String newOptionName) {
+		//EditOptions t = new EditOptions(x, model, optionSetName, optionName, newOptionName);
+		Thread t = new Thread(new EditOptions(x, model, optionSetName, optionName, newOptionName));
+		t.start();		
 	}
 
-	public synchronized void editOptionPrice(int x, String model, String optionSetName, String optionName, float newPrice) {
-        Thread thread = new Thread(new EditOptions(x, model, optionSetName, optionName, newPrice));
-        thread.start();
+	public void editOptionPrice(int x, String model, String optionSetName, String optionName, float newPrice) {
+		EditOptions t = new EditOptions(x, model, optionSetName, optionName, newPrice);
+		t.start();
   	}
 	
-	public synchronized void BuildAuto(String filename) {
+	public void BuildAuto(String filename) {
 		FileIO file = new FileIO();
 		Automobile a1 = file.readFile(filename);
 		cars.adding(a1);
