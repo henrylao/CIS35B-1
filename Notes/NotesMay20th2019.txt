@@ -1,0 +1,20 @@
+Native and Non-native
+Role of the OS
+Structure of process
+Context Switching
+Structure of memory
+Threading - Task inside a process.
+Non-pre and Pre.
+Scheduling algorithms
+Scheduler - JVM and OS
+
+thread safety
+re-entrant
+
+Threading - 
+1. how to work with 1 thread.
+2. how to work with n threads doing the same thing
+3. how to work n threads doing different things.
+4. shared memory and locking
+
+
