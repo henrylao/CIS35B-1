@@ -21,7 +21,11 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private static int [] error;
 	private AutoException e;
 	private String errorFile = "errorFile.txt";
-	
+
+	public void serve(int port) {
+		// TODO Auto-generated method stub
+		
+	}
 	protected AutoLHM<Automobile> getAuto() {
 		return cars;
 	}

@@ -6,7 +6,7 @@
 //IDE         : Eclipse
 //Description : it is the interface of EditOption 
 //============================================================================
-package adapter;
+package scale;
 
 public interface EditInterface{
 	public void editOptionSetName(int x, String model, String name, String newName);
