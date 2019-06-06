@@ -2,7 +2,10 @@
 
 package server;
 
+import java.util.Properties;
+
 import adapter.*;
+import model.Automobile;
 
 public class BuildCarModelOptions extends ProxyAutomobile {
 
@@ -27,10 +30,13 @@ public class BuildCarModelOptions extends ProxyAutomobile {
 
 		if (state == REQUEST_BUILD_AUTO) {
 		//add code to buildauto
+			AutoServer server = new BuildAuto();
+			Automobile auto = server.acceptPropertiesObject( (Properties) obj);
+
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";
 		}
-		else if (state == REQUEST_CONFIGURE_AUTO) {
+		else if (state == REQUEST_CONFIGURE_AUTO) { 
 		//add code for configureauto
 		}
 		else {

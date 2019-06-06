@@ -15,6 +15,7 @@ public class DefaultSocketClient extends Thread implements FixAuto {
 	private Socket clientSocket;
 	private BuildCarModelOptions protocol;
 	private boolean DEBUG = true;
+
 	////////// CONSTRUCTORS //////////
 
 	public DefaultSocketClient(Socket clientSocket) {
@@ -36,14 +37,14 @@ public class DefaultSocketClient extends Thread implements FixAuto {
 		}
 
 
-		protocol = new BuildCarModelOptions();
+		protocol = new BuildCarModelOptions(); 
 		String menu = "\nEnter 1 to upload a new Automobile\n"
 				+ "Enter 2 to configure an Automobile\n"
 				+ "Enter 0 to terminate connection\n";
 
 		try {
 			do {
-				if (DEBUG)
+				if (DEBUG )
 					System.out.println("Sending client interaction choices ... ");
 				sendOutput(menu);
 
@@ -110,7 +111,7 @@ public class DefaultSocketClient extends Thread implements FixAuto {
 					if (DEBUG)
 						System.out.println("Waiting for client to select Automobile ... ");
 					fromClient = Integer.parseInt(in.readObject().toString());
-					if (DEBUG)
+					if (DEBUG) 
 						System.out.println("Sending Automobile object to client ... ");
 					toClient = protocol.processRequest(fromClient);
 					sendOutput(toClient);

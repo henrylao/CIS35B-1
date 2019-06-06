@@ -1,15 +1,19 @@
 //============================================================================
 // Project     : Lab5
-// Name        : Driver5.java
+// Name        : Client.java
 // Author      : Tianqi Yang
 // Time        : 5/29/2019
 // IDE         : Eclipse
-// Description : it is  a client server application and testing its function
+// Description : it starts the client
 //============================================================================
-package driver;
+package client;
 
-public class Driver5 {
+import server.DefaultServerSocket;
+
+public class Client {
 	public static void main(String[] args) {
-		
+		DefaultSocketClient client = new DefaultSocketClient("127.0.0.1", 4501);//
+        Thread thread = new Thread(client);
+        thread.run();
 	}
 }

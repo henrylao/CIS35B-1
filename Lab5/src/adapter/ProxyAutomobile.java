@@ -11,6 +11,8 @@ package adapter;
 import java.io.*;
 
 import java.util.Arrays;
+import java.util.Properties;
+
 import exception.*;
 import model.*;
 import scale.*;
@@ -26,6 +28,14 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		// TODO Auto-generated method stub
 		
 	}
+	public Automobile acceptPropertiesObject(Properties props) {
+    	Automobile auto = null;
+    	auto = new FileIO().buildAutoProperties(props);
+    	if(auto != null){
+    		cars.adding(auto);
+    	}
+    	return auto;
+    }
 	protected AutoLHM<Automobile> getAuto() {
 		return cars;
 	}

@@ -20,14 +20,15 @@ public class KnockKnockServer {
             System.err.println("Accept failed.");
             System.exit(1);
         }
-
+        //
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(
 				new InputStreamReader(
 				clientSocket.getInputStream()));
         String inputLine, outputLine;
+        
         KnockKnockProtocol kkp = new KnockKnockProtocol();
-
+        //read data
         outputLine = kkp.processInput(null);
         out.println(outputLine);
 
@@ -39,6 +40,7 @@ public class KnockKnockServer {
         }
         out.close();
         in.close();
+        //
         clientSocket.close();
         serverSocket.close();
     }

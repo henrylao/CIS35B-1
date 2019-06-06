@@ -4,24 +4,19 @@ import adapter.*;
 import java.io.*;
 import java.net.*;
 
-public class DefaultServerSocket extends Thread implements FixAuto {
+public class DefaultServerSocket extends Thread implements FixAuto, Runnable {
 
 	////////// PROPERTIES //////////
 
 	private int port;
-	private ServerSocket server;
+	private static ServerSocket server;
 	private boolean DEBUG = true;
+
 	////////// CONSTRUCTORS //////////
 
 	public DefaultServerSocket(int port) {
 		this.port = port;
-		try {
-			this.server = new ServerSocket(port);
-		}
-		catch (IOException e) {
-			System.err.println("Could not listen on port " + port + " ... ");
-			System.exit(1);
-		}
+
 	}
 
 	////////// INSTANCE METHODS //////////
@@ -29,14 +24,20 @@ public class DefaultServerSocket extends Thread implements FixAuto {
 	@Override
 	public void run() {
 		Socket clientSocket = null;
-
-		while (true) {
+		try {
+			this.server = new ServerSocket(port); 
+		}
+		catch (IOException e) {
+			System.out.println("Could not listen on port " + port + " ... ");
+			System.exit(1);
+		}
+		while (DEBUG) {
 			//Accept client
 			try {
 				clientSocket = server.accept();
 			}
 			catch (IOException e) {
-				System.err.println("Error establishing client connection ... ");
+				System.out.println("Error establishing client connection ... ");
 				System.exit(1);
 			}
 
@@ -44,7 +45,6 @@ public class DefaultServerSocket extends Thread implements FixAuto {
 			if (DEBUG)
 				System.out.println(clientSocket.getLocalAddress());
 			new DefaultSocketClient(clientSocket).start();
-
 		}
 	}
 

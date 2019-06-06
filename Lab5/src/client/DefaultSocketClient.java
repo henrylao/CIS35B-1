@@ -3,9 +3,9 @@ package client;
 
 import java.net.*;
 import java.io.*;
-import adapter.Debuggable;
+import adapter.FixAuto;
 
-public class DefaultSocketClient extends Thread implements Debuggable {
+public class DefaultSocketClient extends Thread implements FixAuto {
 
 	////////// PROPERTIES //////////
 
@@ -17,12 +17,12 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 	private int iPort;
 	private CarModelOptionsIO clientFTP;
 	private SelectCarOptions clientProtocol;
-
+	private boolean DEBUG = true;
 	////////// CONSTRUCTORS //////////
 
 	public DefaultSocketClient(String strHost, int iPort) {
 		this.strHost = strHost;
-		this.iPort = iPort;
+		this.iPort = iPort; 
 	}
 
 	////////// INSTANCE METHODS //////////
@@ -71,7 +71,7 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 				if (toServer.toString().contains(".txt")) {
 					toServer = clientFTP.loadTextFile(toServer.toString());
 				}
-				if (DEBUG)
+				if (DEBUG) 
 					System.out.println("Sending " + toServer + " to server ... ");
 				sendOutput(toServer);
 				System.out.println("");
@@ -128,6 +128,18 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 			System.err.println("Error ending client connection ... ");
 			System.exit(1);
 		}
+	}
+
+	@Override
+	public String fix() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String fix(int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

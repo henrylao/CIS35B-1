@@ -172,5 +172,26 @@ public class FileIO {
         } 
 		return b;
 	}
+	public Automobile buildAutoProperties(Properties props) {
+    	Automobile auto = new Automobile();
+    	String CarMake = props.getProperty("Make");
+    	if(!CarMake.equals(null)) {
+    		auto.setMake(CarMake);
+    		auto.setModel(props.getProperty("Model"));
+    		auto.setYear(props.getProperty("Year"));
+    		auto.setBasePrice(Float.parseFloat(props.getProperty("BasePrice")));
+    		int setNum = Integer.parseInt(props.getProperty("00"));
+            for(int i = 1; i <= setNum; i++) {
+            	int opsSize = Integer.parseInt(props.getProperty(i+"0"));
+            	char character = 'a';
+            	for(int j = 0; j < opsSize; j++ ) {
+            	    auto.setValueOptionSet(props.getProperty(Integer.toString(i)));
+                    auto.setValuesOption(i,props.getProperty(Integer.toString(i)+character), Float.parseFloat(props.getProperty(Integer.toString(i)+character+1)));
+            		character += 1;
+            	}
+            }
+        }
+    	return auto;
+    }
 	
 }
