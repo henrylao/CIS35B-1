@@ -1,6 +1,9 @@
-import java.util.Arrays;
 
 public class FixProblems extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 364194537911949574L;
 	private int errorno;
 	private String errormsg;
 	

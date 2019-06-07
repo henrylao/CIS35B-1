@@ -1,6 +1,8 @@
 import java.io.*;
 public class CreateProblem {
 	private String fileName;
+	@SuppressWarnings("unused")
+	private FileInputStream a1;
 	
 	CreateProblem() { }
 	
@@ -19,7 +21,7 @@ public class CreateProblem {
 
 	boolean openFile() throws FixProblems
 	{
-		FileInputStream a1 = null;
+		a1 = null;
 		boolean flag = false;
 		try {
 			a1 = new FileInputStream(fileName);

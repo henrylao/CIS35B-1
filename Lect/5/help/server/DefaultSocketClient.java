@@ -4,7 +4,6 @@ package server;
 
 import java.net.*;
 import java.io.*;
-
 import adapter.Debuggable;
 
 public class DefaultSocketClient extends Thread implements Debuggable {
@@ -37,14 +36,14 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 		}
 
 
-		protocol = new BuildCarModelOptions(); 
+		protocol = new BuildCarModelOptions();
 		String menu = "\nEnter 1 to upload a new Automobile\n"
 				+ "Enter 2 to configure an Automobile\n"
 				+ "Enter 0 to terminate connection\n";
 
 		try {
 			do {
-				if (DEBUG )
+				if (DEBUG)
 					System.out.println("Sending client interaction choices ... ");
 				sendOutput(menu);
 
@@ -55,6 +54,7 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 					System.out.println(request);
 				if (request == 0)
 					break;
+
 				if (DEBUG)
 					System.out.println("Sending client request follow-up ... ");
 				sendOutput(protocol.setRequest(request));
@@ -110,7 +110,7 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 					if (DEBUG)
 						System.out.println("Waiting for client to select Automobile ... ");
 					fromClient = Integer.parseInt(in.readObject().toString());
-					if (DEBUG) 
+					if (DEBUG)
 						System.out.println("Sending Automobile object to client ... ");
 					toClient = protocol.processRequest(fromClient);
 					sendOutput(toClient);

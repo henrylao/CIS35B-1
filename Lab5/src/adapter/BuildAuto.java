@@ -9,9 +9,11 @@
 //============================================================================
 package adapter;
 
+import client.AutoClient;
 import scale.EditInterface;
-import server.*;
+import server.AutoServer;
 
-public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto, Choice, EditInterface, AutoServer{
-	
+public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto, Choice, EditInterface, AutoServer, AutoClient{
+
+
 }

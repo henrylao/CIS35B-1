@@ -7,7 +7,6 @@
 // Description : It is the driver of the project
 //============================================================================
 package driver;
-import java.io.*;
 
 import adapter.*;
 

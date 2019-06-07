@@ -3,7 +3,6 @@ package client;
 
 import java.net.*;
 import java.io.*;
-
 import adapter.Debuggable;
 
 public class DefaultSocketClient extends Thread implements Debuggable {
@@ -18,17 +17,18 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 	private int iPort;
 	private CarModelOptionsIO clientFTP;
 	private SelectCarOptions clientProtocol;
+
 	////////// CONSTRUCTORS //////////
- 
+
 	public DefaultSocketClient(String strHost, int iPort) {
 		this.strHost = strHost;
-		this.iPort = iPort; 
+		this.iPort = iPort;
 	}
 
 	////////// INSTANCE METHODS //////////
 
 	public void establishConnection() {
-		try { 
+		try {
 			if (DEBUG)
 				System.out.println("Connecting to host ... ");
 			this.sock = new Socket(strHost, iPort);

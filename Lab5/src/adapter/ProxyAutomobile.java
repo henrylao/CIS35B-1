@@ -13,29 +13,29 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Properties;
 
-import exception.*;
+import client.DefaultSocketClient;
 import model.*;
 import scale.*;
+import server.DefaultServerSocket;
 import util.*;
-
+ 
 public abstract class ProxyAutomobile  {//acting as a delegate
 	private static AutoLHM<Automobile> cars = new AutoLHM<Automobile>();
 	private static int [] error;
-	private AutoException e;
 	private String errorFile = "errorFile.txt";
-
-	public void serve(int port) {
-		// TODO Auto-generated method stub
-		
+ 
+	public void addAuto(Automobile auto) {
+		cars.adding(auto);
 	}
-	public Automobile acceptPropertiesObject(Properties props) {
-    	Automobile auto = null;
-    	auto = new FileIO().buildAutoProperties(props);
-    	if(auto != null){
-    		cars.adding(auto);
-    	}
-    	return auto;
-    }
+	public void serve(int port) {
+		System.out.println("Start server.");
+		new DefaultServerSocket(port).start();
+	}
+	
+	public void client(String host, int port) {
+		new DefaultSocketClient(host, port).start();
+	}
+
 	protected AutoLHM<Automobile> getAuto() {
 		return cars;
 	}

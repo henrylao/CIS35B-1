@@ -11,6 +11,11 @@ import java.io.*;
 
 public class Automotive implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3016048842921967121L;
+
 	private String name;
 	
 	private float baseprice;

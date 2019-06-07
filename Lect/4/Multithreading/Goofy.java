@@ -28,6 +28,7 @@ public Goofy(String id) {
     super(id);
 }
 
+@SuppressWarnings("static-access")
 void randomWait() {
     try {
         Thread.currentThread().sleep((long)(3000*Math.random()));

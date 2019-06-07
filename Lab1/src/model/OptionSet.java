@@ -12,6 +12,10 @@ package model;
 import java.io.Serializable;
 
 public class OptionSet implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5702014549117009505L;
 	private Option opt [];
 	private String name;
 	//Constructor
@@ -77,6 +81,10 @@ public class OptionSet implements Serializable{
 	}
 	//Inner class
 	protected class Option implements Serializable {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -4627553903186048433L;
 		private String name;
 		private float price; 
 		//Constructor

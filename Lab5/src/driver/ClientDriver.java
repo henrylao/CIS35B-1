@@ -1,19 +1,21 @@
 //============================================================================
 // Project     : Lab5
-// Name        : Client.java
+// Name        : ClientDriver.java
 // Author      : Tianqi Yang
 // Time        : 5/29/2019
 // IDE         : Eclipse
 // Description : it starts the client
 //============================================================================
-package client;
+package driver;
 
-import server.DefaultServerSocket;
+import adapter.BuildAuto;
+import client.AutoClient;
 
-public class Client {
+public class ClientDriver {
 	public static void main(String[] args) {
-		DefaultSocketClient client = new DefaultSocketClient("127.0.0.1", 4501);//
-        Thread thread = new Thread(client);
-        thread.run();
+		int port = 6666;
+		String host = "127.0.0.1";
+		AutoClient client = new BuildAuto();
+		client.client(host, port);
 	}
 }

@@ -77,4 +77,12 @@ public class AutoLHM <T extends Automobile>{
 		}
 		return null;		
 	}
+	public void printAllCar() {
+		Iterator<?> it = auto.entrySet().iterator();
+		while(it.hasNext()) {
+			@SuppressWarnings("rawtypes")
+			Map.Entry item = (Map.Entry) it.next();
+			System.out.println(((Automobile) item.getValue()).getModel() + ((Automobile) item.getValue()).getMake());
+		}
+	}
 }

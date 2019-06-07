@@ -12,7 +12,7 @@ public class CarModelOptionsIO {
 	////////// CONSTRUCTORS //////////
 
 	public CarModelOptionsIO() {
- 
+
 	}
 
 	////////// INSTANCE METHODS //////////
@@ -21,7 +21,7 @@ public class CarModelOptionsIO {
 		Properties props = new Properties();
 		try {
 			props.load(new FileInputStream(fname));
-		} 
+		}
 		catch (FileNotFoundException e) {
 			System.err.println("Error in file directory ... ");
 			System.exit(1);
@@ -34,7 +34,7 @@ public class CarModelOptionsIO {
 		return props;
 	}
 
-	public Object loadTextFile(String fname) { 
+	public Object loadTextFile(String fname) {
 		StringBuffer sbuff = new StringBuffer();
 		try {
 			BufferedReader buff = new BufferedReader(new FileReader(fname));

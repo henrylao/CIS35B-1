@@ -1,2 +1,10 @@
 2019.05.27.22.27.21 FixProblems errorno = 101, errormsg = Cannot find the option set name
 2019.05.27.22.30.54 FixProblems errorno = 101, errormsg = Cannot find the option set name
+2019.06.06.18.24.19 FixProblems errorno = 2, errormsg = First line is not correct
+2019.06.06.18.28.48 FixProblems errorno = 2, errormsg = First line is not correct
+2019.06.06.18.30.51 FixProblems errorno = 2, errormsg = First line is not correct
+2019.06.06.18.31.25 FixProblems errorno = 2, errormsg = First line is not correct
+2019.06.06.18.33.54 FixProblems errorno = 2, errormsg = First line is not correct
+2019.06.06.18.34.17 FixProblems errorno = 2, errormsg = First line is not correct
+2019.06.06.19.11.43 FixProblems errorno = 2, errormsg = First line is not correct
+2019.06.06.19.12.33 FixProblems errorno = 4, errormsg = Cannot create option

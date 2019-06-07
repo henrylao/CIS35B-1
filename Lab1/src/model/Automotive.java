@@ -9,6 +9,10 @@ package model;
 import java.io.*;
 
 public class Automotive implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3142649335657545269L;
 	private String name;
 	private float baseprice;
 	private OptionSet opset[];

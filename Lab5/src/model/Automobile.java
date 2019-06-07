@@ -33,7 +33,7 @@ public class Automobile implements Serializable{
 	private ArrayList<Option> choice;
 	
 	private float total;
-	
+	 
 	//Constructor
 	public Automobile(){};
 	

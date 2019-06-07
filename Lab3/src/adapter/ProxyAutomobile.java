@@ -11,14 +11,12 @@ package adapter;
 import java.io.*;
 
 import java.util.Arrays;
-import exception.*;
 import model.*;
 import util.*;
 
 public abstract class ProxyAutomobile  {//acting as a delegate
 	private static AutoLHM<Automobile> cars = new AutoLHM<Automobile>();
 	private static int [] error;
-	private AutoException e;
 	private String errorFile = "errorFile.txt";
 	
 	public void BuildAuto(String filename) {

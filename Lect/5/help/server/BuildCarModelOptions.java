@@ -2,13 +2,9 @@
 
 package server;
 
-import java.util.Properties;
-
 import adapter.*;
-import model.Automobile;
-import util.FileIO;
 
-public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
+public class BuildCarModelOptions extends ProxyAutomobile {
 
 	////////// PROPERTIES //////////
 
@@ -17,7 +13,7 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 	private static final int REQUEST_CONFIGURE_AUTO = 2;
 
 	private int state = WAITING;
-	private Automobile auto;
+
 	////////// CONSTRUCTORS //////////
 
 	public BuildCarModelOptions() {
@@ -25,31 +21,20 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 	}
 
 	////////// INSTANCE METHODS //////////
-	public Automobile buildAuto(Object obj) {
-    	try {
-    		Properties props = (Properties) obj;
-        	auto = new FileIO().buildAutoProperties(props);
-    	}
-		catch (ClassCastException e) {
-			auto = new FileIO().buildAutoText((StringBuffer) obj);
-		}
-    	return auto;
-	}
-	
+
 	public Object processRequest(Object obj) {
 		Object toClient = null;
 
 		if (state == REQUEST_BUILD_AUTO) {
-			auto = buildAuto(obj);
-	    	new BuildAuto().addAuto(auto);
+		//add code to buildauto
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";
 		}
-		else if (state == REQUEST_CONFIGURE_AUTO) { 
-			
+		else if (state == REQUEST_CONFIGURE_AUTO) {
+		//add code for configureauto
 		}
 		else {
- 
+
 		}
 
 		this.state = WAITING;
@@ -67,7 +52,7 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 		else if (i == 2) {
 			this.state = REQUEST_CONFIGURE_AUTO;
 			output = "Select an Automobile from the following list to configure: \n" +
-					super.getAuto();
+					super.getAllModels();
 		}
 		else {
 			output = "Invalid request";

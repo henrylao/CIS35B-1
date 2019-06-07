@@ -13,7 +13,7 @@ import exception.*;
 import java.io.*;
 import java.util.*;
 
-public class FileIO {
+public class FileIO { 
 	
 	public Automobile readFile(String fileName) {
 		Automobile a = null;
@@ -172,6 +172,7 @@ public class FileIO {
         } 
 		return b;
 	}
+	
 	public Automobile buildAutoProperties(Properties props) {
     	Automobile auto = new Automobile();
     	String CarMake = props.getProperty("Make");
@@ -193,5 +194,50 @@ public class FileIO {
         }
     	return auto;
     }
-	
+
+	public Automobile buildAutoText(StringBuffer str) {
+		Automobile a = null;
+    	String arr[] = str.toString().split("\\n");
+    	int i = 0;
+        boolean nextStep = false;
+        String line;
+    	while(nextStep == false){
+			try {
+				a = buildObject(a, arr[i]);
+		        nextStep = true;
+			}catch(AutoException | NumberFormatException e) {
+				line = ((AutoException) e).fix();
+			} 
+        }
+    	i++; 
+		nextStep = false;
+		int index=-1;
+		while(i < arr.length) {
+			line = arr[i];
+			i++;
+			if(line.charAt(0) == '0'){ 
+				while(nextStep == false ) {
+					try {
+						createOptionSet( a, line);
+						index++;
+						nextStep = true;
+					} catch (AutoException | NumberFormatException e) {
+						line = ((AutoException) e).fix();
+					}
+				}
+				nextStep = false;
+			}else{
+				while(nextStep == false ) {
+					try {
+						createOption( a, line, index);
+						nextStep = true;
+					} catch (AutoException | NumberFormatException e) {
+						line = ((AutoException) e).fix();
+					}
+				}
+				nextStep = false;
+			}
+		}
+		return a;
+	}
 }
