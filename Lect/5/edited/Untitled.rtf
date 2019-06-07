@@ -1,0 +1,59 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-BoldItalic;\f4\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red106\green62\blue62;\red127\green0\blue85;\red0\green0\blue192;
+\red42\green0\blue255;}
+{\*\expandedcolortbl;;\csgenericrgb\c41569\c24314\c24314;\csgenericrgb\c49804\c0\c33333;\csgenericrgb\c0\c0\c75294;
+\csgenericrgb\c16471\c0\c100000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0     
+\f1 ServerSocket \cf2 serverSocket\cf0  = 
+\f2\b \cf3 null
+\f1\b0 \cf0 ;\
+\pard\pardeftab720\partightenfactor0
+\cf0         
+\f2\b \cf3 try
+\f1\b0 \cf0  \{\
+            \cf2 serverSocket\cf0  = 
+\f2\b \cf3 new
+\f1\b0 \cf0  ServerSocket(4444);\
+        \} 
+\f2\b \cf3 catch
+\f1\b0 \cf0  (IOException \cf2 e\cf0 ) \{\
+            System.
+\f3\i\b \cf4 err
+\f1\i0\b0 \cf0 .println(\cf5 "Could not listen on port: 4444."\cf0 );\
+            System.
+\f4\i exit
+\f1\i0 (1);\
+        \}\
+in the server class : declareing server caling server to constrctor\
+create onw server classs\
+===\
+ Socket \cf2 clientSocket\cf0  = 
+\f2\b \cf3 null
+\f1\b0 \cf0 ;\
+        
+\f2\b \cf3 try
+\f1\b0 \cf0  \{\
+            \cf2 clientSocket\cf0  = \cf2 serverSocket\cf0 .accept();\
+        \} 
+\f2\b \cf3 catch
+\f1\b0 \cf0  (IOException \cf2 e\cf0 ) \{\
+            System.
+\f3\i\b \cf4 err
+\f1\i0\b0 \cf0 .println(\cf5 "Accept failed."\cf0 );\
+            System.
+\f4\i exit
+\f1\i0 (1);\
+        \}\
+create socket in the server which is client\
+accept return socket object\
+\
+object strings\
+\
+set up printWriter before bufferedReader\
+\
+}
