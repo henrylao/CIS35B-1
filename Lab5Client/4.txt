@@ -1,0 +1,18 @@
+Tesla,Long Range,2019,38950
+0Color
+Solid Black,0
+Midnight Silver Metallic,1000
+Deep Blue Metallic,1000
+Pearl White Multi-Coat,1500
+Red Multi-Coat,2000
+0Wheel
+18" Aero Wheels,0
+19" Sport Wheels,1500
+0Premium Interior
+All Black,0
+Black and White,1000
+0Autopilot
+Present,0
+0Full Self-Driving Capability
+Present,6000
+Not Present,0

@@ -1,0 +1,35 @@
+Make=Tesla
+Model=Model 3
+Year=2019
+BasePrice=36200
+00=4
+1=Color
+10=5
+1a=Solid Black
+1a1=0
+1b=Deep Blue Metallic
+1b1=0
+1c=Midnight Silver Metallic
+1c1=100
+1d=Pearl White Multi-Coat
+1d1=100
+1e=Red Multi-Coat
+1e1=100
+2=Powertrain
+20=2
+2a=AC Electric Motor
+2a1=0
+2b=Single-Speed Fixed Gear
+2b1=200
+3Tires
+30=2
+3a=18''
+3a1=0
+3b=19''
+3b1=200
+4Wheels
+40=2
+4a=Normal
+4a1=0
+4baSport Alloy
+4b1=200

@@ -2,12 +2,8 @@
 
 package server;
 
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.Properties;
-
 import adapter.*;
-import client.SelectCarOptions;
 import model.Automobile;
 import util.FileIO;
 
@@ -27,6 +23,7 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 	}
 
 	////////// INSTANCE METHODS //////////
+
 	public Automobile buildAuto(Object obj) {
     	try {
     		Properties props = (Properties) obj;
@@ -50,6 +47,7 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 		}
 		else if (state == REQUEST_CONFIGURE_AUTO) {
 			Automobile a = new BuildAuto().getAuto( (String) (obj));
+			
 			toClient = a;
 		}
 

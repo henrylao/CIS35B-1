@@ -8,4 +8,5 @@ public interface AutoServer {
 	public void serve(int port);
 	public void addAuto(Automobile auto);
 	public String avaliableAuto();
+	public Automobile getAuto(String modelName);
 }

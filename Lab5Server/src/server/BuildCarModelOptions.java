@@ -2,12 +2,8 @@
 
 package server;
 
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.Properties;
-
 import adapter.*;
-import client.SelectCarOptions;
 import model.Automobile;
 import util.FileIO;
 
@@ -27,9 +23,6 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 	}
 
 	////////// INSTANCE METHODS //////////
-	public Object sendSerializatedObj(String car) {
-		return null;
-	}
 
 	public Automobile buildAuto(Object obj) {
     	try {
