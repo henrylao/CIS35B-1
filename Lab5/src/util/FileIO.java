@@ -174,24 +174,19 @@ public class FileIO {
 	}
 	
 	public Automobile buildAutoProperties(Properties props) {
-    	Automobile auto = new Automobile();
+    	Automobile auto = null;
     	String CarMake = props.getProperty("Make");
-    	if(!CarMake.equals(null)) {
-    		auto.setMake(CarMake);
-    		auto.setModel(props.getProperty("Model"));
-    		auto.setYear(props.getProperty("Year"));
-    		auto.setBasePrice(Float.parseFloat(props.getProperty("BasePrice")));
-    		int setNum = Integer.parseInt(props.getProperty("00"));
-            for(int i = 1; i <= setNum; i++) {
-            	int opsSize = Integer.parseInt(props.getProperty(i+"0"));
-            	char character = 'a';
-            	for(int j = 0; j < opsSize; j++ ) {
-            	    auto.setValueOptionSet(props.getProperty(Integer.toString(i)));
-                    auto.setValuesOption(i,props.getProperty(Integer.toString(i)+character), Float.parseFloat(props.getProperty(Integer.toString(i)+character+1)));
-            		character += 1;
-            	}
-            }
-        }
+    	auto = new Automobile( CarMake, props.getProperty("Model"), props.getProperty("Year"), Float.parseFloat(props.getProperty("BasePrice"))); 	
+    	int setNum = Integer.parseInt(props.getProperty("00"));
+    	for(int i = 1; i <= setNum; i++) {
+    		auto.setValueOptionSet(props.getProperty(i+""));//Integer.toString(i)
+    		int opsSize = Integer.parseInt(props.getProperty(i+"0"));
+    		char character = 'a';
+    		for(int j = 0; j < opsSize; j++ ) {
+    			auto.setValuesOption(i-1,props.getProperty(Integer.toString(i)+character), Float.parseFloat(props.getProperty(Integer.toString(i)+character+1)));
+    			character += 1;
+    		}
+    	}    
     	return auto;
     }
 

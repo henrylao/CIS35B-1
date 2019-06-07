@@ -35,7 +35,7 @@ public class Automobile implements Serializable{
 	private float total;
 	 
 	//Constructor
-	public Automobile(){};
+	//public Automobile(){};
 	
 	public Automobile(String m, String n, String y, float p)
 	{
@@ -60,7 +60,7 @@ public class Automobile implements Serializable{
 	public void setValueOptionSet(String n){ 
 		opset.add(new OptionSet(n)); 
 		choice.add(new Option());
-	}
+	} 
 	
 	public void setValuesOption(int i, String n, float p){ opset.get(i).setOption(n, p); }
 	
