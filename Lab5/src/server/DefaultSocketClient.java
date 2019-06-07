@@ -17,10 +17,10 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 	private BuildCarModelOptions protocol;
 
 	////////// CONSTRUCTORS //////////
-
+ 
 	public DefaultSocketClient(Socket clientSocket) {
 		this.clientSocket = clientSocket;
-	}
+	} 
 
 	////////// INSTANCE METHODS //////////
 
@@ -50,7 +50,17 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 
 				if (DEBUG)
 					System.out.println("Reading client request ... ");
-				int request = Integer.parseInt(in.readObject().toString());
+				int request=0;
+				boolean is_digit = false;
+				do {
+					try {
+						request = Integer.parseInt(in.readObject().toString());
+						is_digit = true;
+					}catch(Exception e) {
+						sendOutput("Enter again!\nReading client request ...");
+					}
+				}while(is_digit == false);
+				
 				if (DEBUG)
 					System.out.println(request);
 				if (request == 0)
@@ -61,7 +71,7 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 
 				if (request >= 1 && request <= 2)
 					handleInput(request);
-
+ 
 			} while (in.readObject() != null);
 
 			if (DEBUG)
@@ -109,7 +119,8 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 				case 2: //Client request to configure Automobile
 					if (DEBUG)
 						System.out.println("Waiting for client to select Automobile ... ");
-					fromClient = Integer.parseInt(in.readObject().toString());
+					//fromClient = Integer.parseInt(in.readObject().toString());
+					fromClient = in.readObject().toString();
 					if (DEBUG) 
 						System.out.println("Sending Automobile object to client ... ");
 					toClient = protocol.processRequest(fromClient);

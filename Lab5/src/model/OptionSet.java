@@ -38,10 +38,13 @@ public class OptionSet implements Serializable{
 	protected void setOption(String n, float p ){ opt.add(new Option(n, p)); }
 	
 	protected void setOptionChoice(String optionName) {
-		int pos = findOption(optionName);
+		int pos = findOption(optionName); 
 		if (pos != -1) {
 			choice = opt.get(pos);
 		}
+	}
+	protected void setOptionChoice(int option) {
+		choice = opt.get(option);
 	}
 	//Getter
 	protected String getOptionSetName(){ return name; }
@@ -50,6 +53,7 @@ public class OptionSet implements Serializable{
 	
 	public Option getOptionChoice() { return choice; }
 	
+	public int getSize() { return opt.size(); }
 	//Find
 	protected int findOption(String n){
 		for(int j = 0; j< opt.size(); j++){

@@ -19,7 +19,7 @@ BasePrice=18555
 2a1=0
 2b=Manual
 2b1=-815
-3Brakes/Traction Control
+3=Brakes/Traction Control
 30=3
 3a=Standard
 3a1=0
@@ -27,13 +27,13 @@ BasePrice=18555
 3b1=400
 3c=ABS with Advance Trac
 3c1=1625
-4Side Impact Air Bags
+4=Side Impact Air Bags
 40=2
 4a=Present
 4a1=350
 4b=Not Present
 4b1=0
-5Power Moonroof
+5=Power Moonroof
 50=2
 5a=Present
 5a1=595

@@ -40,7 +40,7 @@ public class CarModelOptionsIO {
 			BufferedReader buff = new BufferedReader(new FileReader(fname));
 			boolean eof = false;
 			int counter = 0;
-			while (!eof) {
+			while (!eof) { 
 				String line = buff.readLine();
 				if (line == null)
 					eof = true;

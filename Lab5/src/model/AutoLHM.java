@@ -77,12 +77,16 @@ public class AutoLHM <T extends Automobile>{
 		}
 		return null;		
 	}
-	public void printAllCar() {
+	public String getAllCar() {
+		StringBuffer buf = new StringBuffer(""); 
 		Iterator<?> it = auto.entrySet().iterator();
+		int i = 1;
 		while(it.hasNext()) {
 			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
-			System.out.println(((Automobile) item.getValue()).getModel() + ((Automobile) item.getValue()).getMake());
+			buf.append(i++).append('.').append(((Automobile) item.getValue()).getModel()).append("\n");
 		}
+		return buf.toString();
 	}
+	
 }

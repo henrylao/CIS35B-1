@@ -34,7 +34,7 @@ public class EditOptions extends ProxyAutomobile implements Runnable{
         newOptionName = null;
         newPrice = -1;
         t = new Thread(this);
-        auto = getAuto();
+        auto = getAutoLHM(); 
     }
 
 	public EditOptions(int x, String m, String osn, String on, String non) {
@@ -47,7 +47,7 @@ public class EditOptions extends ProxyAutomobile implements Runnable{
         newOptionName = non;
         newPrice = -1;
         t = new Thread(this);
-        auto = getAuto();
+        auto = getAutoLHM();
     }
     
     public EditOptions(int x, String m, String osn, String on, float nv) {
@@ -60,7 +60,7 @@ public class EditOptions extends ProxyAutomobile implements Runnable{
         newOptionName = null;
         newPrice = nv;
         t = new Thread(this);
-        auto = getAuto();
+        auto = getAutoLHM();
     }
     
     public void run() {

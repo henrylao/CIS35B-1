@@ -41,7 +41,7 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 
 			clientFTP = new CarModelOptionsIO();
 			clientProtocol = new SelectCarOptions();
-		}
+		} 
 		catch (IOException e) {
 			System.err.println("Error obtaining I/O for connection to host ... ");
 			System.exit(1);
@@ -60,10 +60,12 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 					System.out.println("Received server response ... ");
 				System.out.println(fromServer.toString());
 
-				if (clientProtocol.isAutomobile(fromServer))
+				if (clientProtocol.isAutomobile(fromServer)) {
 					clientProtocol.configureAuto(fromServer);
-
-				System.out.println("Response to server: ");
+					System.out.println("Press any key to return to main menu");
+				}
+				if (DEBUG)
+					System.out.println("Response to server: ");
 				toServer = stdIn.readLine();
 				if (toServer.toString().contains(".prop")) {
 					toServer = clientFTP.loadPropsFile(toServer.toString());
@@ -75,7 +77,6 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 					System.out.println("Sending " + toServer + " to server ... ");
 				sendOutput(toServer);
 				System.out.println("");
-
 				if (toServer.equals("0")) {
 					break;
 				}
@@ -115,11 +116,9 @@ public class DefaultSocketClient extends Thread implements Debuggable {
 			if (DEBUG)
 				System.out.println("Closing client output stream ... ");
 			out.close();
-
 			if (DEBUG)
 				System.out.println("Closing client console input stream ... ");
 			stdIn.close();
-
 			if (DEBUG)
 				System.out.println("Closing client socket ... ");
 			sock.close();

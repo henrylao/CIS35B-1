@@ -24,6 +24,10 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private static int [] error;
 	private String errorFile = "errorFile.txt";
  
+	public String avaliableAuto() {
+		return cars.getAllCar();
+	}
+
 	public void addAuto(Automobile auto) {
 		cars.adding(auto);
 	}
@@ -36,8 +40,16 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		new DefaultSocketClient(host, port).start();
 	}
 
-	protected AutoLHM<Automobile> getAuto() {
-		return cars;
+	public Automobile getAuto(String modelName) {
+		if(cars.finding(modelName)) {
+			return cars.returnObject(modelName);
+		}
+		else {
+			//System.out.println("Connot find object");
+			//e.fix(304);
+			//saveErrors(304);//no such object
+		}
+		return null;
 	}
 	
 	public void editOptionSetName(int x, String model, String name, String newName) {
@@ -68,15 +80,16 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		clearError();
 	}
 	//print Auto
-	public void printAuto(String modelName) {
+	public String printAuto(String modelName) {
 		if(cars.finding(modelName)) {
-			System.out.println(cars.returnObject(modelName).toString());
+			return cars.returnObject(modelName).toString();
 		}
 		else {
 			//System.out.println("Connot find object");
 			//e.fix(304);
 			//saveErrors(304);//no such object
 		}
+		return null;
 	}
 	//update
 	public void updateOptionSetName(String modelName, String OptionSetname, String newName) {
@@ -133,6 +146,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 			System.out.println(modelName);
 		}
 	}
+	
 	//print choices
 	public void printChoices(String modelName) {
 		if(cars.finding(modelName)) {
@@ -144,14 +158,14 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		}
 	}
 	//get the total of car
-	public float getTotal(String modelName) {
+	public String getTotal(String modelName) {
 		if(cars.finding(modelName)) {
 			return cars.returnObject(modelName).getTotalPrice();
 		}else {
 			System.out.print("Cannot find ");
 			System.out.println(modelName);
 		}
-		return -1;
+		return "";
 	}
 	
 	public void getErrors() {
@@ -215,4 +229,9 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	public String fix(int i) {
 		return null;
 	}
+	
+	protected AutoLHM<Automobile> getAutoLHM() {
+		return cars;
+	}
+	
 }

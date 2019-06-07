@@ -64,11 +64,12 @@ public class Automobile implements Serializable{
 	
 	public void setValuesOption(int i, String n, float p){ opset.get(i).setOption(n, p); }
 	
-	public void setOptionChoice(String setName, String optName) {
+	public boolean setOptionChoice(String setName, String optName) {
 		int pos = findOptionSetByName(setName);
 		if(pos != -1){
 			opset.get(pos).setOptionChoice(optName);
 			choice.set(pos, opset.get(pos).getOptionChoice());
+			return true;
 		}else{
 			try {
 				throw new AutoException(101, "Cannot find the option set name");
@@ -76,9 +77,28 @@ public class Automobile implements Serializable{
 			catch(AutoException e) {
 				e.fix();
 			}
+			return false;
 		}
 	}
 
+	public boolean setOptionChoice(int i, String optName) {
+		int pos = findOptionByName(i, optName);
+		if(pos!=-1) {
+			opset.get(i).setOptionChoice(pos);
+			choice.set(i, opset.get(i).getOptionChoice());
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean setOptionChoice(int i, int index) {
+		if(checkValidOption(i, index)) {
+			opset.get(i).setOptionChoice(index);
+			choice.set(i, opset.get(i).getOptionChoice());
+			return true;
+		}
+		return false;
+	}
 	//Getter
 	public String getMake() { return make;}
 	
@@ -120,9 +140,9 @@ public class Automobile implements Serializable{
 		}
 		return total;
 	}
-	public float getTotalPrice() { 
+	public String getTotalPrice() { 
 		caulateTotal();
-		return total;
+		return "Total is: " + total;
 	}
 	
 	//Find
@@ -279,18 +299,22 @@ public class Automobile implements Serializable{
 	public boolean checkValidIndex(int i){
 		return i >= 0 && i < opset.size();
 	}
-	
-	//Print
-	public void printChoices() {
-		System.out.println("Choices");
-		System.out.println("----------------------------------------------");
-		for( int i = 0; i< choice.size(); i++ ) {
-			System.out.println(String.format( "Optionset:%36s" ,opset.get(i).getOptionSetName()));
-			System.out.println(choice.get(i));
-			System.out.println("----------------------------------------------");
-		}
+	public boolean checkValidOption(int pos, int i) {
+		return i>=0 && i <opset.get(pos).getSize();
 	}
-	
+	//Print
+	public String printChoices() {
+		StringBuffer s = new StringBuffer("Choices").append("\n----------------------------------------------");
+		for( int i = 0; i< choice.size(); i++ ) {
+			s.append(String.format( "\nOptionset:%36s\n" ,opset.get(i).getOptionSetName())).append(choice.get(i)).append("\n----------------------------------------------");
+		}
+		return s.toString();
+	}
+	public String printOneSet(int i) {
+		StringBuffer s = new StringBuffer();
+		s.append(opset.get(i).toString()).append("----------------------------------------------");
+		return s.toString();
+	}
 	@Override
 	public String toString(){
 		StringBuffer s = new StringBuffer(String.format("Model Make:%35s\nModel Name:%35s\nYear:%41s\nBase Price:%35.2f\n\n", getMake(), getModel(), getYear(), getbaseprice()));
@@ -299,4 +323,6 @@ public class Automobile implements Serializable{
 		}
 		return s.toString();
 	}
+
+
 }
