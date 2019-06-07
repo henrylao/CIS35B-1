@@ -54,10 +54,12 @@ public class FileIO {
         a.setValueOptionSet(index, name, size);//optionSetIndex, optionSetName, optionSetSize
         return size;
 	}
+	
 	public void createOption(Automotive a, String line, int index, int pos) {
 		StringTokenizer stk = new StringTokenizer(line, ",");
 		a.setValuesOption(index, pos, stk.nextToken(), Float.parseFloat(stk.nextToken()));//optionSetIndex, optionIndex, optionName, optionPrice
 	}
+	
 	public void serializeAuto(Automotive a, String fileName) throws IOException{
 		  try
 		  {    
