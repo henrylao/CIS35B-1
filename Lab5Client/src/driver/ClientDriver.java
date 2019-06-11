@@ -13,9 +13,9 @@ import client.AutoClient;
 
 public class ClientDriver {
 	public static void main(String[] args) {
-		int port = 4500;
-		String host = "10.44.3.26";
-		//String host = "127.0.0.1";//"10.44.3.26"
+		int port = 6666;
+		//String host = "10.44.3.26";
+		String host = "127.0.0.1";//"10.44.3.26"
 		AutoClient client = new BuildAuto();
 		client.client(host, port);
 	}
