@@ -1,0 +1,422 @@
+/* CSS Document */
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+}
+table {
+	table-layout: fixed;
+}
+.button {
+	border: #533859 1px solid;
+	height: 19px;
+	background-color: #CCCCCC;
+	color: #800080;
+	font-size: 9px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: lowercase;
+	padding-bottom: 2px;
+}
+legend {
+  font-weight: bold;
+  color: black;
+  background-color: #eeeeee;
+  border: 1px solid #999999;
+  padding: 3px 2px;
+}
+
+/*format banner*/
+
+#logo {
+	width: 772px;
+	}
+#banner_bg {
+	background: url(../images/banner_bg.jpg) repeat;
+	}
+#martyPic {
+	width: 96px;
+	}
+#subnav {
+	text-align: right;
+	word-spacing: 20px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 7pt;
+	font-weight: bold;
+	padding: 1px 0px 1px 0px;	
+	}
+#subnav a:link, #subnav a:visited {
+	color: #000000;
+	text-decoration: none;
+	}
+#subnav a:hover {
+	color: #CCCCCC;
+	text-decoration: none;
+	}
+
+/*format navigation bar*/
+#navbar {
+	background: #9B9B9B url(../images/nav_bg.gif) repeat;
+	font-family: "Courier New", Courier, mono;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 1px 0px 1px 0px;
+	}
+#nav_training, #nav_tutorials, #nav_books, #nav_consulting, #nav_resources, #nav_jobs {
+	text-align: center;
+	border-right: 1px solid #FFFFFF;
+	}
+#nav_training, #nav_tutorials {
+	width: 110px;
+	}
+#nav_consulting {
+	width: 220px;
+	}	
+#nav_resources {
+	width: 200px;
+	}
+#nav_books {
+	width: 75px;
+	}
+#nav_jobs {
+	width: 65px;
+	}
+
+/* format navbar links */
+#navbar a {
+	display: block;
+	zoom: 100%;
+	}
+#navbar a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+	background: #9B9B9B url(../images/nav_bg.gif) repeat;
+	}
+#navbar a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+	background: #9B9B9B url(../images/nav_bg.gif) repeat;
+	}
+#navbar a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+	background: #666666 url(../images/over_nav_bg.gif) repeat;
+	}
+
+/* format search */
+#search {
+	font-size: 12px;
+	height: 12px;
+	color: #000000;
+	margin: 0px 1px 0px 0px;
+	padding: 0px;
+	}
+#search_button {
+	width: auto;
+	height: 16px;
+	margin: 1px 1px 0px 0px;
+	padding: 0px;
+	font-size: 9px;
+	letter-spacing: 1px;
+	width: 55px;
+	border: #533859 1px solid;
+	background-color: #CCCCCC;
+	color: #800080;
+	font-weight: bold;
+	}
+#search_cell {
+	text-align: right;
+	width: 190px;
+	height: 12px;
+	}
+form {
+	margin: 0px;
+	}
+
+/*format drop-down menu*/
+#submenu_training, #submenu_tutorials, #submenu_books, #submenu_consulting, #submenu_resources, #submenu_jobs {
+	border: 1px solid #666666;
+	color: #FFFFFF;
+	background-color: #666666;
+	font-size: 10px;
+	line-height: 1.5em;
+	display: none;
+	position: absolute;
+	}
+#submenu a {
+	display: block;
+	padding: 0px 5px 0px 5px;
+	border-bottom: 1px solid #999999;
+	zoom: 100%;
+	color: #FFFFFF;
+	background-color: #666666;
+	text-decoration: none;
+	}
+#submenu a:hover {
+	background-color: #999999;
+	}
+	
+/*format drop down menus */
+#submenu_training, #submenu_tutorials, #submenu_books {
+	width: 165px;
+	z-index: 100;
+	}
+#submenu_resources {
+	width: 198px;
+	z-index: 100;
+	}
+/*format side navigation*/
+#sidebar_left, #sidebar_right {
+	vertical-align: top;
+	font-size: 10px;
+	font-weight: bold;
+	}
+#sidebar_left {
+	font-variant: small-caps;
+	background-color: #CCCCCC;
+	border: 1px solid #9B9B9B;
+	width: 165px;
+	}
+#sidebar_right {
+	background-color: #DCCEE0;
+	border: 1px solid #533859;
+	width: 165px;
+	z-index: 10;
+	}
+#announcements, #sidebar_left_heading, .sidebar_left_heading2 {
+	font-size: 10px;
+	color: #908F8F;
+	background-color: #EBE9EB;
+	border-bottom: 1px solid #908F8F;
+	text-transform: uppercase;
+	font-variant: normal;
+	text-align: center;
+	vertical-align: middle;
+	padding: 1px 0px 1px 0px;
+	}
+#sidebar_left_heading {
+	letter-spacing: 3px;
+	padding-left: 2px;
+	}
+.sidebar_left_heading2 {
+	letter-spacing: 4px;
+	}
+#sidebar_left_heading a:link, #sidebar_left_heading a:visited, .sidebar_left_heading2 a:link, .sidebar_left_heading2 a:visited {
+	color: #908F8F;
+	text-decoration: none;
+	}
+#sidebar_left_heading a:hover, .sidebar_left_heading2 a:hover {
+	color: #333333;
+	text-decoration: none;
+	}
+#announcements {
+	letter-spacing: 4px;
+	padding-left: 2px;
+	background-color: #533859;
+	color: #FFFFFF;
+	}
+#announcements_intro {
+	margin-left: 6px;
+  margin-top: 3px;
+	font-size: 11px;
+	font-style: italic;
+	}
+.course_title {
+	text-align: left;
+	font-size: 12px;
+	margin-left: 10px;
+	}
+.course_info {
+	font-size: 11px;
+	text-align: left;
+	font-style: normal;
+	font-weight: bold;
+	color: #000000;
+} 
+#sidebar_left .list {
+	font-size: 8px;
+	color: #333333;
+	line-height: 1.75em;
+	list-style-type: none;
+	margin-top: 3px;
+	padding-left: 5px;
+	}
+.list a:link, .list a:visited {
+	color: #333333;
+	text-decoration: none;
+	}
+.list a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+	}
+.smallCaps {
+	font-size: 10px;
+	}
+.hide {
+	display: none;
+	}
+
+/*format content*/
+#content {
+	padding: 0px 15px 10px 15px;
+	border-bottom: 1px solid #CCCCCC;
+	line-height: 1.5em;
+	vertical-align: top;
+	}
+.content_heading, .highlight_heading, .book_title, .archive_heading {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom:: 0px;
+	}
+.archive_heading {
+	font-size: 24px;
+	color: #800080;
+	}
+.content_subheading {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+	}
+#copyright {
+	text-align: center;
+	font-size: 7pt;
+	padding: 7px 0px 0px 0px;
+	}
+a:link, a:visited {
+	color: #800080;
+	}
+a:hover {
+	color: #533859;
+	text-decoration: none;
+	}
+.highlight_heading {
+	color: #800080;
+	line-height: 1em;
+	margin: 0px;
+	}
+.book_title {
+	font-variant: small-caps;
+	font-size: 24px;
+	line-height: 1em;
+	}
+.byline, .subtitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	text-align: center;
+	line-height: 2em;
+	}
+.subtitle {
+	margin: 0px;
+	line-height: 1.5em;
+	}
+.book_part {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	line-height: 1.5em;
+	font-weight: bold;
+	text-align: center;
+	background-color: #DCCEE0;
+	border-bottom: 1px solid #000000;
+	clear: both;
+	}
+.book_image {
+	float: left;
+	margin-bottom: 5px;
+	}
+.topics, .colorSubheading {
+	font-weight: bold;
+	font-size: 13px;
+	}
+.colorSubheading {
+	color: #800080;
+	}
+ul {
+	margin-top: -10px;
+	}
+ul ul {
+	margin-top: 0px;
+	}
+.intro {
+	font-weight: bold;
+	text-align: left;
+	line-height: 1.2em;
+	}
+.pull_quote, .testimonial, .testimonial2 {
+	float: left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	text-align: right;
+	color: #C790B9;
+	font-style: italic;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 1.25em;
+	}
+.testimonial, .testimonial2 {
+	text-align: left;
+	float: none;
+	font-weight: bold;
+	}
+.testimonial2 {
+	color: #7D7D7D;
+	}
+.underline {
+	text-decoration: underline;
+	}
+.content_imgR {
+	float: right;
+	padding-left: 8px;
+	margin-bottom: 5px;
+	}
+.content_imgL {
+	float: left;
+	padding-right: 20px;
+	margin: 5px 0px 5px 0px;
+	}
+.caption {
+	font-size: 9px;
+	font-weight: bold;
+	margin-top: 2px;
+	}
+#translations img {
+	text-align: center;
+	border: #666666 1px solid;
+	margin: 7px;
+	}
+.public_course_heading {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: -5px;
+	}
+.public_course_info {
+	font-weight: bold;
+	color: #333333;
+	}
+	
+/*format table of contents*/
+#tocBar {
+	width: 15px;
+	height: 150px;
+	position: absolute;
+	}
+#toc {
+	display: none;
+	padding: 5px 8px 10px 13px;
+	background-color: #DCCEE0;
+	border: #533859 1px solid;
+	font-size: 10px;
+	}
+#toc_heading {
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	margin-top: -5px;
+	}
+#close_box {
+	text-align: right;
+	cursor: pointer;
+	}

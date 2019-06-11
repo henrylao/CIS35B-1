@@ -1,0 +1,92 @@
+/* CSS Document */
+.ui-accordion-content { display: block !important } /* So jQuery accordion content is printed regardless of which panels are open */
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	}
+table {
+	table-layout: fixed;
+	}
+#banner_Table {
+	display: none;
+	}
+#subnav_Table {
+	display: none;
+	}
+#navbar_Table {
+	display: none;
+	}
+#submenu {
+	display: none;
+	}
+#sidebar_left, #sidebar_right, #copyright {
+	display: none;
+	}
+#toc, #tocBar {
+	display: none;
+	}
+.GoogleAd {
+	display: none;
+	}
+.content {
+	width: 100%;
+	padding: 0px 15px 10px 15px;
+	line-height: 1.5em;
+	}
+.content_heading {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 18pt;
+	font-weight: bold;
+	text-align: center;
+	margin: 0px 0px -7px 0px;
+	}
+.content_subheading {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14pt;
+	font-weight: bold;
+	margin-bottom: -12px;
+	}
+.highlight_heading {
+	color: #800080;
+	line-height: 1.5em;
+	margin: 15px 0px 0px 0px;
+	}
+.book_title {
+	font-variant: small-caps;
+	font-size: 24px;
+	line-height: 1.5em;
+	}
+.byline {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	text-align: center;
+	line-height: 2em;
+	margin: 0px 0px 25px 0px;
+	}
+.book_part {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #dccee0;
+	border-bottom: 1px solid #000000;
+	}
+.book_image {
+	float: left;
+	z-index: 100;
+	margin-right: 5px;
+	}
+.topics {
+	font-weight: bold;
+	}
+.intro {
+	font-weight: bold;
+	text-align: left;
+	line-height: 1em;
+	}
+.hide {
+	display: none;
+	}
+
+

@@ -1,0 +1,1253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0061)http://courses.coreservlets.com/Course-Materials/csajsp2.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__courses_coreservlets_com"><link type="text/css" id="dark-mode" rel="stylesheet" href="http://courses.coreservlets.com/Course-Materials/csajsp2.html"><style type="text/css" id="dark-mode-custom-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level.</title>
+<meta name="description" content="Extensive series of tutorials on a wide range of servlet and JSP topics. From popular author and developer Marty Hall. Covers servlets 3.0 (Tomcat 7). Complete source code included.">
+<script src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/sniffer.js" type="text/javascript"></script>
+<script src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/menus.js" type="text/javascript"></script>
+<script src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/toc.js" type="text/javascript"></script>
+<link href="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/screen.css" rel="stylesheet" type="text/css" media="screen">
+<link href="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/print.css" rel="stylesheet" type="text/css" media="print">
+<script type="text/javascript">
+<!--
+chooseCss();
+//-->
+</script><link href="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/otherBrowsers.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  .norway { font-size: xx-small;
+	          color: #330066 }
+</style>
+
+<script src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/jquery.js" type="text/javascript"></script>
+<script src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/jquery-ui.js" type="text/javascript"></script>
+<script src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/setup.js" type="text/javascript"></script>
+<link href="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/current-theme.css" rel="stylesheet" type="text/css" media="screen">
+<style type="text/css">
+#content {
+	padding-left: 30px;
+	}
+</style>
+<script type="text/javascript" src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/lat"></script><script type="text/javascript" src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/lt"></script></head>
+
+<body data-gr-c-s-loaded="true">
+<!-- Begin Banner Table -->
+<a name="top"></a>
+<table id="banner_Table" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+  <td id="logo"><a href="http://www.coreservlets.com/"><img src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/banner.jpg" alt="logo" width="601" height="86" border="0"></a><img src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/Gosling.jpg" alt="Hall and Gosling"></td>
+  <td id="martyPic"><img src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/marty-hall.jpg" alt="Marty Hall" width="96" height="86"></td>
+  <td id="banner_bg">&nbsp;</td>
+  </tr>
+</tbody></table>
+<!-- End Banner Table -->
+
+<!-- Begin SubNav Table -->
+<table id="subnav_Table" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+  <td id="subnav"><a href="http://www.coreservlets.com/">home</a> <a href="mailto:hall@coreservlets.com">contact</a> <a href="http://www.coreservlets.com/sitemap.html">sitemap</a> </td>
+  </tr>
+</tbody></table>
+<!-- End SubNav Table -->
+
+<!-- Begin Nav Bar Table with Google search -->
+<form method="get" action="http://www.google.com/search">
+<table id="navbar_Table" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr id="navbar">
+  <td id="nav_training" nowrap="nowrap"><a href="http://courses.coreservlets.com/" onmouseover="showTrainingMenu();" onmouseout="hideTrainingMenu();">Training</a></td>
+  <td id="nav_tutorials" nowrap="nowrap"><a href="http://courses.coreservlets.com/Course-Materials/" onmouseover="showTutorialsMenu();" onmouseout="hideTutorialsMenu();">Tutorials</a></td>
+  <td id="nav_books" nowrap="nowrap"><a href="http://books.coreservlets.com/" onmouseover="showBooksMenu();" onmouseout="hideBooksMenu();">Books</a></td>
+  <td id="nav_consulting" nowrap="nowrap"><a href="http://consulting.coreservlets.com/">Consulting&nbsp;&amp;&nbsp;Outsourcing</a></td>
+  <td id="nav_resources" nowrap="nowrap"><a href="http://resources.coreservlets.com/" onmouseover="showResourcesMenu();" onmouseout="hideResourcesMenu();">Programming Resources</a></td>
+  <td id="nav_jobs" nowrap="nowrap"><a href="http://jobs.coreservlets.com/">Jobs</a></td>
+  <td colspan="2"></td>
+  <td id="search_cell" colspan="2" nowrap="nowrap">
+<!-- SiteSearch Google -->
+<input type="hidden" name="ie" value="iso-8859-1">
+<input type="hidden" name="oe" value="iso-8859-1">
+<input id="search" type="text" name="q" maxlength="255" value=""><input id="search_button" type="submit" name="btnG" value="search">
+<input type="hidden" name="sitesearch" value="coreservlets.com">
+<!-- SiteSearch Google -->
+  </td>
+  </tr>
+  <tr>
+  <td colspan="9">&nbsp;</td>
+  </tr>
+</tbody></table>
+</form>
+<!-- End Nav Bar Table with Google search -->
+
+<!-- Begin Drop-down Menus -->
+<div id="submenu">
+<div id="submenu_training" onmouseover="showTrainingMenu();" onmouseout="hideTrainingMenu();">
+<a href="http://www.courses.coreservlets.com/about-instructor.html">About the Instructor</a>
+<a href="http://www.courses.coreservlets.com/student-reviews.html">Training Course Reviews</a>
+<a href="http://courses.coreservlets.com/jsf-training.html">JSF 2 Training<br>&amp; PrimeFaces Training</a>
+<a href="http://courses.coreservlets.com/java-training.html">Java Training<br>(Java 7 &amp; 8 Programming)</a>
+<a href="http://courses.coreservlets.com/android-training.html">Android Training</a>
+<a href="http://courses.coreservlets.com/ajax-training.html">Ajax Training<br>(w/ jQuery, HTML5, etc.)</a>
+<a href="http://courses.coreservlets.com/hadoop-training.html">Hadoop Training</a>
+<a href="http://courses.coreservlets.com/web-services-training.html">Web Services Training<br>(RESTful &amp; SOAP-Based)</a>
+<a href="http://courses.coreservlets.com/spring-training.html">Spring Training</a>
+<a href="http://courses.coreservlets.com/hibernate-training.html">Hibernate &amp; JPA Training</a>
+<a href="http://courses.coreservlets.com/gwt-training.html">GWT Training</a>
+<a href="http://courses.coreservlets.com/servlet+jsp-training.html">Servlet &amp; JSP Training</a>
+<a href="http://courses.coreservlets.com/scwcd-training.html">SCWCD Training</a>
+<a href="http://courses.coreservlets.com/">Customized On-Site Training</a> 
+<a href="http://courses.coreservlets.com/public-courses/">Public Course Schedule</a>
+</div>
+<div id="submenu_tutorials" onmouseover="showTutorialsMenu();" onmouseout="hideTutorialsMenu();">
+<a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/">
+Tomcat &amp; Eclipse Tutorial</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/">
+JSF (JavaServer Faces)</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+&nbsp;&nbsp;&nbsp;JSF 2 Tutorial<br>&nbsp;&nbsp;&nbsp;(with Eclipse)</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">
+&nbsp;&nbsp;&nbsp;PrimeFaces Tutorial<br>&nbsp;&nbsp;&nbsp;(with Eclipse)</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/jsf1/">
+&nbsp;&nbsp;&nbsp;JSF 1 Tutorial<br>&nbsp;&nbsp;&nbsp;(with Eclipse)</a>
+<a href="http://courses.coreservlets.com/Course-Materials/java.html">
+Java 7 and Java 8 Programming Tutorial</a>
+<a href="http://www.coreservlets.com/android-tutorial/">
+Android Programming Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/ajax.html">
+Ajax Tutorial (&amp; GWT)</a>
+<a href="http://courses.coreservlets.com/Course-Materials/ajax-basics.html">
+&nbsp;&nbsp;&nbsp;Basics &amp; JavaScript</a>
+<a href="http://courses.coreservlets.com/Course-Materials/prototype.html">
+&nbsp;&nbsp;&nbsp;Prototype Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/scriptaculous.html">
+&nbsp;&nbsp;&nbsp;Scriptaculous Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/jquery.html">
+&nbsp;&nbsp;&nbsp;jQuery Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/dojo.html">
+&nbsp;&nbsp;&nbsp;Dojo Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/gwt.html">
+&nbsp;&nbsp;&nbsp;GWT Tutorial</a>
+<a href="http://www.coreservlets.com/html5-tutorial/">
+HTML5 Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/spring.html">
+Spring Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/hibernate.html">
+JPA &amp; Hibernate Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html">
+Intermediate Servlets &amp; JSP</a>
+<a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">
+Advanced Servlets &amp; JSP</a>
+<a href="http://courses.coreservlets.com/Course-Materials/java-ee.html">
+EJB3 &amp; Web Services</a>
+<a href="http://courses.coreservlets.com/Course-Materials/scwcd.html">
+SCWCD Tutorial</a>
+<a href="http://www.courses.coreservlets.com/Course-Materials/struts.html">
+Jakarta Struts Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/chinese.html">
+Tutorials in Chinese</a>
+<a href="http://courses.coreservlets.com/Course-Materials/japanese.html">
+Tutorials in Japanese</a>	
+</div>
+<div id="submenu_books" onmouseover="showBooksMenu();" onmouseout="hideBooksMenu();">
+<a href="http://volume1.coreservlets.com/">Core Servlets &amp; JSP Vol I</a>
+<a href="http://volume2.coreservlets.com/">Core Servlets &amp; JSP Vol II</a>
+<a href="http://www.moreservlets.com/">More Servlets &amp; JSP</a>
+<a href="http://pdf.coreservlets.com/">Core Servlets &amp; JSP E-Book</a>
+<a href="http://pdf.moreservlets.com/">More Servlets &amp; JSP E-Book</a>
+<a href="http://resources.coreservlets.com/java-ee-books.html">Recommended Java EE Books</a>
+<a href="http://www.corewebprogramming.com/">Core Web Programming</a>
+<a href="http://www.coreservlets.com/first-edition.html">Core Servlets &amp; JSP 1st Ed.</a>
+</div>
+<div id="submenu_resources" onmouseover="showResourcesMenu();" onmouseout="hideResourcesMenu();">
+<a href="http://resources.coreservlets.com/quick-summary.html">Quick Ref to APIs &amp; Docs</a>
+<a href="http://resources.coreservlets.com/jsp-docs.html">Specifications &amp; Documentation</a>
+<a href="http://resources.coreservlets.com/jsp-servers.html">Servers</a>
+<a href="http://resources.coreservlets.com/jsp-ides.html">IDEs</a>
+<a href="http://resources.coreservlets.com/j2ee-jobs.html">Java-Related Jobs</a>
+<a href="http://resources.coreservlets.com/jsf.html">JSF (JavaServer Faces)</a>
+<a href="http://resources.coreservlets.com/java-ee-books.html">Books</a>
+<a href="http://resources.coreservlets.com/jsp-hosting.html">Web Hosting Providers</a>
+<a href="http://www.apl.jhu.edu/~hall/java/">Java Programming</a>
+<a href="http://coreservlets.tradepub.com/">Free trade magazines &amp; whitepapers</a>
+</div>
+</div>
+<!-- End Drop-down Menus -->
+
+<div id="main_table">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">  
+<tbody><tr>
+<!-- Begin Left Sidebar -->
+<td id="sidebar_left" nowrap="nowrap"><!-- #BeginLibraryItem "/Library/TutorialsSideLinks.lbi" -->    <div class="sidebar_left_heading2"><a href="http://courses.coreservlets.com/Course-Materials/">free tutorials</a></div>
+<div class="list"> 
+
+<a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/">
+<span class="smallCaps">T</span>OMCAT WITH <span class="smallCaps">E</span>CLIPSE</a><br>
+
+<a href="http://www.coreservlets.com/JSF-Tutorial/">
+<span class="smallCaps">J</span>AVA<span class="smallCaps">S</span>ERVER <span class="smallCaps">F</span>ACES <span class="smallCaps">(JSF)</span></a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+<span class="smallCaps">JSF</span> <span class="smallCaps">2</span></a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">
+<span class="smallCaps">P</span>RIME<span class="smallCaps">F</span>ACES</a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/JSF-Tutorial/jsf1/">
+<span class="smallCaps">JSF</span> <span class="smallCaps">1</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/java.html">
+<span class="smallCaps">J</span>AVA <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+&nbsp;&nbsp;<a href="http://courses.coreservlets.com/Course-Materials/java.html">
+<span class="smallCaps">G</span>ENERAL <span class="smallCaps">J</span>AVA <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/java-8-tutorial/">
+<span class="smallCaps">J</span>AVA <span class="smallCaps">8</span> <span class="smallCaps">L</span>AMBDAS &amp; <span class="smallCaps">S</span>TREAMS</a><br>
+
+<a href="http://www.coreservlets.com/javascript-jquery-tutorial/">
+<span class="smallCaps">J</span>AVA<span class="smallCaps">S</span>CRIPT &amp;
+J<span class="smallCaps">Q</span>UERY<br>
+&nbsp;&nbsp; (WITH J<span class="smallCaps">Q</span>UERY <span class="smallCaps">UI</span>)
+</a><br>
+
+<a href="http://www.coreservlets.com/android-tutorial/">
+<span class="smallCaps">A</span>NDROID <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+<a href="http://www.coreservlets.com/hadoop-tutorial/">
+<span class="smallCaps">H</span>ADOOP</a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/gwt.html">
+<span class="smallCaps">GWT</span></a><br>
+
+<a href="http://www.coreservlets.com/html5-tutorial/">
+<span class="smallCaps">HTML 5</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html">
+<span class="smallCaps">I</span>NTERMEDIATE <span class="smallCaps">S</span>ERVLETS &amp; <span class="smallCaps">JSP</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">
+<span class="smallCaps">A</span>DVANCED <span class="smallCaps">S</span>ERVLETS &amp; <span class="smallCaps">JSP</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/spring.html">
+<span class="smallCaps">S</span>PRING</a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/hibernate.html">
+<span class="smallCaps">H</span>IBERNATE &amp; <span class="smallCaps">JPA</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/struts.html">
+<span class="smallCaps">J</span>AKARTA <span class="smallCaps">S</span>TRUTS</a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/scwcd.html">
+<span class="smallCaps">SCWCD</span></a><br>
+</div><!-- #EndLibraryItem --><!-- #BeginLibraryItem "/Library/TrainingSideLinks.lbi" -->      
+<div id="sidebar_left_heading"><a href="http://courses.coreservlets.com/">training courses</a></div>
+<div class="list">
+
+<a href="http://courses.coreservlets.com/about-instructor.html"><span class="smallCaps">A</span>BOUT THE <span class="smallCaps">I</span>NSTRUCTOR</a><br>
+  
+<a href="http://courses.coreservlets.com/student-reviews.html"><span class="smallCaps">C</span>OURSE <span class="smallCaps">R</span>EVIEWS</a><br>
+  
+<a href="http://courses.coreservlets.com/jsf-training.html">
+<span class="smallCaps">JSF</span> <span class="smallCaps">2</span> &amp;
+<span class="smallCaps">P</span>RIME<span class="smallCaps">F</span>ACES</a><br>
+
+<a href="http://courses.coreservlets.com/java-training.html"><span class="smallCaps">J</span>AVA  <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+<a href="http://courses.coreservlets.com/java-training.html"><span class="smallCaps">J</span>AVA 8 <span class="smallCaps">L</span>AMBDAS &amp; <span class="smallCaps">S</span>TREAMS</a><br>
+
+<a href="http://courses.coreservlets.com/javascript-jquery-training.html">
+<span class="smallCaps">J</span>AVA<span class="smallCaps">S</span>CRIPT &amp; J<span class="smallCaps">Q</span>UERY</a><br>
+
+<a href="http://courses.coreservlets.com/android-training.html"><span class="smallCaps">A</span>NDROID <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+<a href="http://courses.coreservlets.com/hadoop-training.html"><span class="smallCaps">H</span>ADOOP</a><br>
+
+<a href="http://courses.coreservlets.com/hadoop-training.html"><span class="smallCaps">R</span>ESTful
+<span class="smallCaps">W</span>EB <span class="smallCaps">S</span>ERVICES</a><br>
+
+<a href="http://courses.coreservlets.com/gwt-training.html">
+<span class="smallCaps">GWT</span></a><br>
+
+<a href="http://courses.coreservlets.com/spring-training.html"><span class="smallCaps">S</span>PRING 
+<span class="smallCaps">F</span>RAMEWORK</a><br>
+
+<a href="http://courses.coreservlets.com/hibernate-training.html"><span class="smallCaps">H</span>IBERNATE &amp; <span class="smallCaps">JPA</span></a><br>
+
+<a href="http://courses.coreservlets.com/servlet+jsp-training.html"><span class="smallCaps">S</span>ERVLETS &amp; <span class="smallCaps">JSP</span></a><br>
+
+<a href="http://courses.coreservlets.com/scwcd-training.html"><span class="smallCaps">SCWCD</span></a><br>
+
+<a href="http://courses.coreservlets.com/"><span class="smallCaps">C</span>USTOMIZED <span class="smallCaps">O</span>N-SITE</a><br>
+  
+<a href="http://courses.coreservlets.com/public-courses/"><span class="smallCaps">P</span>UBLIC <span class="smallCaps">T</span>RAINING <span class="smallCaps">S</span>CHEDULE</a><br><br>
+</div><!-- #EndLibraryItem --><br><p>&nbsp;</p>
+  </td>
+<!-- End Left Sidebar -->
+
+<!-- Begin Main Content -->
+<td id="content" colspan="7"><h1 class="content_heading" style="line-height:normal;">Building Web Apps in Java:<br> 
+  Beginning &amp; Intermediate Servlet &amp; JSP Tutorials</h1>
+<!-- #BeginLibraryItem "/Library/ServletTrainingHeader.lbi" -->
+<h2 class="content_subheading" align="center"><font color="#0000ff">Interested in training from the author of these tutorials?
+See the upcoming <a href="http://courses.coreservlets.com/public-courses/">public J2EE training courses</a> 
+in Maryland (co-sponsored by Johns Hopkins <i>Engineering for Professionals</i>, 
+or contact <a href="mailto:hall@coreservlets.com">hall@coreservlets.com</a> for info 
+on customized courses at <i>your</i> location.</font></h2><br>
+<!-- #EndLibraryItem --><!--
+-->
+<p>Following is an extensive series of tutorials on servlets and JSP, aimed at developers that already 
+  <a href="http://courses.coreservlets.com/Course-Materials/java.html">know Java</a> but who have
+  little or no experience with servlets and JSP. Since each section includes
+  exercises and exercise solutions, this can also be viewed as a self-paced JSP and servlet training course.
+  All the slides, source code, exercises, and exercise solutions are free for unrestricted use.
+  Click on a section below to expand its content. The relatively few parts on IDE development and deployment use
+  Eclipse, but of course none of the actual code is Eclipse-specific. Also, although servlets and JSP are
+  very widely used, new projects should seriously consider <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">the JSF 2 framework</a>
+  as a higher-level alternative to servlets and JSP.
+</p>
+
+<div class="accordion-div ui-accordion ui-widget ui-helper-reset" role="tablist">
+  <h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="0"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Overview"><b>Overview of the Servlet and JSP Tutorial Series</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>The beginning and intermediate-level tutorials on this page were originally based on the second edition of Marty's book
+  <i>Core Servlets and JavaServer Pages</i>, but have been extensively upgraded since then, including
+    coverage of servlets 3.0 and JSP 2.2 (e.g., for Tomcat 7).
+    The materials have been tested by Marty in live training courses
+    in Canada, Australia, Puerto Rico, Japan, Cambodia, Mexico, India, Norway, the Philippines, and dozens of US venues. 
+    Click on a topic below to get the detailed tutorial, download the source code, or get the exercises on the topic. 
+  <i>Practice is the key to learning, so if you serious about learning the technology, you should do at least some of the exercises
+    in each topic before moving on to the next topic.</i> These tutorials assume that you already know Java; they definitely move too fast
+    for those without prior Java experience. If you don't already know the Java language, please see
+  <a href="http://courses.coreservlets.com/Course-Materials/java.html">the Java programming tutorial series</a>.
+  </p>
+  <p>
+    Also see
+  <a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">the advanced servlet and JSP tutorials</a> for topics like filters,
+    Web app security, listeners, custom tag libraries, JDBC, and use of the Spring Framework in Web applications.
+    In addition, 
+  <a href="http://courses.coreservlets.com/Course-Materials/index.html">the training materials home page</a> has tutorials on many other Java-related topics,
+    including Ajax (with jQuery), one of the recommended next steps after learning servlets and JSP.
+    Also, as stated previously, for new projects, JSF 2 should be seriously considered as a higher-level 
+    alternative to servlets and JSP. A few JSF2 topics like session tracking and cookie handling use the underlying
+    servlet API, but for the most part, it is not necessary to learn servlets and JSP first: you can dive straight into JSF 2.
+    See the <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">JSF 2 tutorial series</a> for details.
+  </p>
+  <p>
+    To arrange a customized course at <i>your</i> organization on servlets and JSP, JSF 2, Ajax, Android programming, or another Java EE topic, contact
+  <a href="mailto:hall@coreservlets.com">hall@coreservlets.com</a>. These courses can be customized to 
+    use any combination of the materials on the <a href="http://courses.coreservlets.com/Course-Materials/index.html">J2EE tutorials site</a>,
+    and new materials can be added for specific client needs. To learn more details about the instructor, 
+    the curriculum for the live training courses, or the public course schedule, please see
+  <a href="http://courses.coreservlets.com/">http://courses.coreservlets.com</a>.
+  </p>    
+  <p>If you find these free tutorials helpful, we would appreciate it if you would
+  <a href="http://courses.coreservlets.com/Course-Materials/link-to-us.html">link to us</a>. Send corrections or feedback on any tutorial to
+  <a href="mailto:hall@coreservlets.com">hall@coreservlets.com</a>.
+    You can also <a href="http://www.linkedin.com/in/j2eetraining">add Marty on LinkedIn</a>.
+  </p>
+</div> <!-- Accordion content -->
+
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Setup"><b>Servlets &amp; JSP: Overview and Setup</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>If you don't already know how to use a Java-enabled server (such as Tomcat) with an IDE (such as Eclipse), please see
+  <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/">the Tomcat and Eclipse setup tutorial</a>.
+    Covers both Tomcat 6 (for servlets 2.5 and 2.5) and Tomcat 7 (for servlets 3.0). Tomcat 7 recommended.</p>
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/01-Overview-and-Setup.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-overview-installation-and-setup" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>  
+    <li>Topics covered:
+      <ul>
+        <li>What servlets and JSP are all about
+          <ul>
+            <li>Understanding the role of servlets</li>
+            <li>Building Web pages dynamically</li>
+            <li>Evaluating servlets vs. other technologies</li>
+            <li>Understanding the role of JSP</li>
+            </ul>
+          </li>
+        <li>Testing Tomcat with Eclipse
+          <ul>
+            <li>Installing Tomcat 7</li>
+            <li>Installing and starting Eclipse 3.6 (Helios)</li>
+            <li>Telling Eclipse about Tomcat</li>
+            <li>Deploying and running Web apps from Eclipse</li>
+            <li>Making new Web apps in Eclipse</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/test-app.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/test-app2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li>Useful files for building your own Web apps in Eclipse
+      <ul>
+        <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/servlet-3.0-web.xml">web.xml file for servlet 3.0 projects.</a></li>
+        <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/servlet-2.5-web.xml">web.xml file for servlet 2.5 projects.</a></li>
+        <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/servlet-2.4-web.xml">web.xml file for servlet 2.4 projects.</a></li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-getting-started.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+  </ul>
+</div> <!-- Accordion content -->
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Servlet-Basics"><b>Servlet Basics</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>Again, if you don't already know how to use a Java-enabled server (such as Tomcat) with an IDE (such as Eclipse), please see
+  <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/">the Tomcat and Eclipse setup tutorial</a>.</p>
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/02-Servlet-Basics.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-servlet-basics" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>The basic structure of servlets</li>
+        <li>A simple servlet that generates plain text</li>
+        <li>A servlet that generates HTML</li>
+        <li>Using helper classes</li>
+        <li>Giving URLs to servlets
+          <ul>
+            <li>@WebServlet annotation</li>
+            <li>web.xml file</li>
+            </ul>
+          </li>
+        <li>The servlet life cycle</li>
+        <li>Servlet debugging strategies</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/test-app.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/test-app2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-servlet-basics.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/basics-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/test-app/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/basics-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Form-Data"><b>Handling the Client Request: Form Data</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/03-Form-Data.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-handling-the-client-request-form-data" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>The role of form data</li>
+        <li>Creating and submitting HTML forms</li>
+        <li>Reading individual request parameters</li>
+        <li>Reading the entire set of request parameters</li>
+        <li>Handling missing and malformed data</li>
+        <li>Dealing with incomplete form submissions</li>
+        <li>Filtering special characters out of the request parameters</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/forms.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/forms2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-form-data.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/forms-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/forms/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/forms-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Request-Headers"><b>Handling the Client Request: HTTP Request Headers</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/04-Request-Headers.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-handling-the-client-request-http-request-headers" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Reading HTTP request headers</li>
+        <li>Building a table of all the request headers</li>
+        <li>Understanding the various request headers</li>
+        <li>Reducing download times by compressing pages</li>
+        <li>Differentiating among types of browsers</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/request-headers.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/request-headers2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-request-headers.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/request-headers-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/request-headers/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/request-headers-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Status-Codes"><b>Generating the Server Response: HTTP Status Codes</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/05-Status-Codes.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-generating-the-server-response-http-status-codes" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Format of the HTTP response</li>
+        <li>How to set status codes</li>
+        <li>What the status codes are good for</li>
+        <li>Shortcut methods for redirection and error pages</li>
+        <li>A servlet that redirects users to browser-specific pages</li>
+        <li>A front end to various search engines</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/status-codes.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/status-codes2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-status-codes.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/status-codes-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/status-codes/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/status-codes-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Response-Headers"><b>Generating the Server Response: HTTP Response Headers</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/06-Response-Headers.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-generating-the-server-response-http-response-headers" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Format of the HTTP response</li>
+        <li>Setting response headers</li>
+        <li>Understanding what response headers are good for</li>
+        <li>Building Excel spread sheets</li>
+        <li>Generating JPEG images dynamically</li>
+        <li>Sending incremental updates to the browser</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/response-headers.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/response-headers2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-response-headers.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/response-headers-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/response-headers/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/response-headers-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Handling-Cookies"><b>Handling Cookies</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/07-Cookies.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-handling-cookies" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Understanding the benefits and drawbacks of cookies</li>
+        <li>Sending outgoing cookies</li>
+        <li>Receiving incoming cookies</li>
+        <li>Tracking repeat visitors</li>
+        <li>Specifying cookie attributes</li>
+        <li>Differentiating between session cookies and persistent cookies</li>
+        <li>Simplifying cookie usage with utility classes</li>
+        <li>Modifying cookie values</li>
+        <li>Remembering user preferences</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/cookies.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/cookies2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-cookies.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/cookies-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/cookies/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/cookies-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Session-Tracking"><b>Session Tracking</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/08-Session-Tracking.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-session-tracking" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Implementing session tracking from scratch</li>
+        <li>Using basic session tracking</li>
+        <li>Understanding the session-tracking API</li>
+        <li>Differentiating between server and browser sessions</li>
+        <li>Encoding URLs</li>
+        <li>Tracking user access counts</li>
+        <li>Accumulating user purchases</li>
+        <li>Implementing a shopping cart</li>
+        <li>Building an online store</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/session-tracking.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/session-tracking2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-session-tracking.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/session-tracking-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/session-tracking/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/session-tracking-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="JSP-Intro"><b>JSP Introduction &amp; Overview</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/09-JSP-Intro.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-jsp-introduction-and-overview" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Understanding the need for JSP</li>
+        <li>Evaluating the benefits of JSP</li>
+        <li>Comparing JSP to other technologies</li>
+        <li>Avoiding JSP misconceptions</li>
+        <li>Understanding the JSP lifecycle</li>
+        <li>Installing JSP pages</li>
+        <li>Looking at JSP in the real world</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/jsp-intro.zip">Source code of examples in this section.</a>
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-jsp-intro.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+  </ul>
+</div> <!-- Accordion content -->
+			
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="JSP-Scripting"><b>Invoking Java Code with JSP Scripting Elements</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/10-JSP-Scripting-Elements.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-invoking-java-code-with-jsp-scripting-elements" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Static vs. dynamic text</li>
+        <li>Dynamic code and good JSP design</li>
+        <li>JSP expressions</li>
+        <li>Servlets vs. JSP pages for similar tasks</li>
+        <li>JSP scriptlets</li>
+        <li>JSP declarations</li>
+        <li>Predefined variables</li>
+        <li>Comparison of expressions, scriptlets, and declarations</li>
+        <li>JSP pages in XML syntax</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/jsp-scripting.zip">Source code of examples in this section.</a>
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-jsp-scripting.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/jsp-scripting-exercises.zip">Exercise solutions.</a></li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/jsp-scripting/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/jsp-scripting-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+		
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span>
+  <a name="Page-Directive"><b>Controlling the Structure of Generated Servlets: The JSP page Directive</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/11-page-Directive.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-the-jsp-page-directive" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Understanding the purpose of the <code>page</code> directive</li>
+        <li>Designating which classes are imported</li>
+        <li>Specifying the MIME type of the page</li>
+        <li>Generating Excel spreadsheets</li>
+        <li>Participating in sessions</li>
+        <li>Setting the size and behavior of the output buffer</li>
+        <li>Designating pages to handle JSP errors</li>
+        <li>Controlling threading behavior</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/page-directive.zip">Source code of examples in this section.</a>
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-page-directive.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/page-directive-exercises.zip">Exercise solutions.</a></li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/page-directive/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/page-directive-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Including-Files"><b>Including Files and Applets in JSP Pages</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/12-File-Inclusion.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-including-files-and-applets-in-jsp-pages" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Using <code>jsp:include</code> to include pages at request time</li>
+        <li>Using <code>&lt;%@ include ... %&gt;</code> (the include directive)
+          to include files at page translation time</li>
+        <li>Understanding why <code>jsp:include</code> is usually
+          better than the include directive</li>
+        <li>Using <code>jsp:plugin</code> to include applets for the Java Plug-in</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/file-inclusion.zip">Source code of examples in this section.</a>
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-file-inclusion.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/file-inclusion-exercises.zip">Exercise solutions.</a></li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/file-inclusion/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/file-inclusion-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="JavaBeans"><b>Using JavaBeans Components in JSP Documents</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+  <b>Note:</b> in modern app servers that support the JSP expression language, there is little need to use
+    beans using these somewhat old-fashioned tags. So, you might want to skip this section and move
+    on to the next section on MVC, which uses beans in a more modern way.
+  </p>
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/13-JavaBeans.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-using-javabeans-components-in-jsp-documents" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Understanding the benefits of beans</li>
+        <li>Creating beans</li>
+        <li>Installing bean classes on your server</li>
+        <li>Accessing bean properties</li>
+        <li>Explicitly setting bean properties</li>
+        <li>Automatically setting bean properties from request parameters</li>
+        <li>Sharing beans among multiple servlets and JSP pages</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/beans.zip">Source code of examples in this section.</a>
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-beans.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/beans-exercises.zip">Exercise solutions.</a></li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/beans/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/beans-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+		
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span>
+  <a name="MVC"><b>The Model View Controller (MVC) Architecture: Integrating Servlets and JSP</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+  <b>This is the most important section in this entire tutorial. And doing the exercises in this section is
+    the most important practice you can do.</b>
+  </p>
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/14-MVC.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-the-model-view-controller-mvc-architecture-integrating-servlets-and-jsp" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Understanding the benefits of MVC</li>
+        <li>Using <code>RequestDispatcher</code> to implement MVC</li>
+        <li>Forwarding requests from servlets to JSP pages</li>
+        <li>Handling relative URLs</li>
+        <li>Choosing among different display options</li>
+        <li>Comparing data-sharing strategies</li>
+        <li>Tutorials on MVC frameworks:
+          <ul>
+            <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">JSF (JavaServer Faces) 2.0 Tutorial.</a>
+              JSF 2.0 is a serious alternative to servlets and JSP, and has strong MVC support.
+              JSF 2.0 requires servlets 2.5 (e.g., Tomcat 6) or later. JSF 2.0 is also built in
+              to all Java EE 6 servers. <b>This is the framework that I recommend for most new applications.</b>
+              <b>Many modern apps should consider using JSF 2.0 instead of servlets and JSP.</b></li>
+            <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf1/">JSF (JavaServer Faces) 1.<i>x</i> Tutorial.</a>
+              Unless you are running an older server that supports only servlets 2.4 or earlier (e.g., Tomcat 5),
+              you should use JSF 2.0 instead of JSF 1.<i>x</i>.</li>
+            <li><a href="http://courses.coreservlets.com/Course-Materials/struts.html">Jakarta Struts (Action Framework) Tutorial.</a></li>
+            </ul></li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/mvc.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/mvc2.zip">Earlier version of source code for examples in this section.</a> 
+      This code is a tiny bit out of date, but it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-mvc.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/mvc-exercises.zip">Exercise solutions.</a> Uses @WebServlet, so runs only on Tomcat 7
+      or other servlet 3.0 containers. However, code could be easily adapted to servlet 2.4 or 2.5 containers by 
+      deleting @WebServlet (and the associated import statement) and adding a web.xml file with servlet mappings.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/mvc/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/mvc-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span>
+  <a name="JSP-EL"><b>The JSP 2 Expression Language: Simplifying MVC and Access to Java Code</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <ul>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/15-Expression-Language.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+    <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-the-jsp2-expression-language-simplifying-mvc-and-access-to-java-code" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+    <li>Topics covered:
+      <ul>
+        <li>Motivating use of the expression language</li>
+        <li>Understanding the basic syntax</li>
+        <li>Understanding the relationship of the expression language to the MVC architecture</li>
+        <li>Referencing scoped variables</li>
+        <li>Accessing bean properties, array elements, <code>List</code> elements, and <code>Map</code> entries</li>
+        <li>Using expression language operators</li>
+        <li>Evaluating expressions conditionally</li>
+        <li>Comparing MVC pages: with and without the EL</li>
+        </ul>
+      </li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/el.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/el2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+    <li><a href="http://www.java-programming.info/tutorial/pdf/csajsp2/exercises/exercises-el.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+    <li><a href="http://www.java-programming.info/tutorial/servlet+jsp-code/el-exercises.zip">Exercise solutions.</a>
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+    <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+      <ul>
+        <li><a href="http://apps.coreservlets.com/el/" target="_blank">App from the lecture</a></li>
+        <li><a href="http://apps.coreservlets.com/el-exercises/" target="_blank">Exercise solutions</a></li>
+        </ul>
+      </li>
+  </ul>
+</div> <!-- Accordion content -->
+<!-- 
+--><!-- #BeginLibraryItem "/Library/BasicTags.lbi" --><h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Tags-Basics"><b>Creating Custom JSP Tag Libraries: The Basics</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+<ul>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/pdf/msajsp/07-Basic-Custom-Tags.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+  <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-creating-custom-jsp-tag-libraries-taglibs-the-basics" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+  <li>Topics covered:
+    <ul>
+      <li>Java-based tags
+        <ul>
+          <li>Components of a tag library</li>
+          <li>Basic tags</li>
+          <li>Tags that use attributes</li>
+          <li>Tags that use body content</li>
+        <li>Tags that optionally use body content</li>
+        </ul></li>
+      <li>JSP-based tags (tag files)
+        <ul>
+          <li>Components of a tag library</li>
+          <li>Basic tags</li>
+          <li>Tags that use attributes</li>
+          <li>Tags that use body content</li>
+        </ul></li>
+    </ul>
+  </li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/basicTags.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/basicTags2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/pdf/msajsp/exercises/exercises-basic-tags.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/basic+advancedTags-exercises.zip">Exercise solutions.</a></li>
+  <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+    <ul>
+      <li><a href="http://apps.coreservlets.com/basicTags/" target="_blank">App from the lecture</a></li>
+      <li><a href="http://apps.coreservlets.com/basic+advancedTags-exercises/" target="_blank">Exercise solutions</a></li>
+    </ul>
+  </li>
+</ul>
+</div> <!-- Accordion content --><!-- #EndLibraryItem --><!-- 
+--><!-- #BeginLibraryItem "/Library/AdvancedTags.lbi" --><h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Tags-Advanced"><b>Creating Custom JSP Tag Libraries: Advanced Topics</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+<ul>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/pdf/msajsp/08-Advanced-Custom-Tags.pdf" target="_blank">
+      Tutorial section in PDF</a> (best for printing and saving).</li>
+  <li><a href="http://www.slideshare.net/martyhall/jsp-and-servlet-tutorial-creating-custom-jsp-tag-libraries-taglibs-advanced-topics" target="_blank">
+      Tutorial section on SlideShare</a> (preferred by some for online viewing).</li>
+  <li>Topics covered:
+    <ul>
+      <li>Manipulating the tag body</li>
+      <li>Tags with dynamic attribute values</li>
+      <li>Tags with complex objects for attributes</li>
+      <li>Looping tags</li>
+      <li>Nested tags</li>
+      <li>Using TagLibraryValidator to validate tag library syntax</li>
+    </ul>
+  </li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/advancedTags.zip">Source code of examples in this section.</a> This is the exact
+      code shown in the tutorial, and it runs only on Tomcat 7 or another server that supports servlets 3.0.
+      Bundled as an <a href="http://courses.coreservlets.com/Course-Materials/eclipse-code.html">Eclipse project</a>.</li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/advancedTags2.zip">Slightly modified source code for examples in this section.</a> 
+      This code has a few small changes so that it runs on Tomcat 6 or any other servlet 2.4 or 2.5 container.</li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/pdf/msajsp/exercises/exercises-advanced-tags.pdf" target="_blank">Exercises to reinforce the concepts in this section.</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/basic+advancedTags-exercises.zip">Exercise solutions.</a></li>
+  <li>Online apps. Downloading the source code (above) and using it for your own apps
+      is probably what most developers want to do. But if you just want to see the
+      apps in action, try the following links.
+    <ul>
+      <li><a href="http://apps.coreservlets.com/advancedTags/" target="_blank">App from the lecture</a></li>
+      <li><a href="http://apps.coreservlets.com/basic+advancedTags-exercises/" target="_blank">Exercise solutions</a></li>
+    </ul>
+  </li>
+</ul>
+</div> <!-- Accordion content --><!-- #EndLibraryItem --><!-- 
+-->
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Advanced-Topics"><b>Advanced Topics</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  The tutorials in this section cover basic and intermediate servlet and JSP programming
+  techniques. See <a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">the advanced servlet and JSP tutorials section</a> for
+  information on JSTL, filters, listeners, web.xml details, declarative security, programmatic security, custom tag libraries, JDBC,
+  using the Spring Framework in Web applications, and more. For those supporting very, 
+  <i>very</i> old servers, you can also access the version 1.0
+  <a href="http://www.apl.jhu.edu/~hall/java/Servlet-Tutorial/">servlet tutorial and JSP tutorial</a>.
+  <br><br>
+  Also, for advanced applications, you should strongly consider the use of
+  JSF 2 as an alternative to servlets and JSP. See the <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">JSF 2 tutorial</a> for more info.
+</div> <!-- Accordion content -->
+<!--
+-->
+<!-- #BeginLibraryItem "/Library/PPT-for-Faculty.lbi" -->
+<h2 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a class="accordionLink" href="http://courses.coreservlets.com/Course-Materials/csajsp2.html#PPT" name="PPT"><b>PowerPoint Files for University Faculty</b></a></h2>
+<p class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;">
+The PDF files in this tutorial contain the complete text of the original
+PowerPoint files, so if your goal is <i>learning</i> this technology, just stick
+with this tutorial. However, as a service to instructors teaching
+full-semester courses at accredited universities, coreservlets.com
+will release the original PowerPoint files for free. Please
+see <a href="http://courses.coreservlets.com/Course-Materials/instructor-materials.html">the instructor materials page</a>
+for details.
+</p><!-- #EndLibraryItem -->
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a class="accordionLink" href="http://courses.coreservlets.com/Course-Materials/csajsp2.html#More-Info" name="More-Info"><b>More Information</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"><!-- #BeginLibraryItem "/Library/MoreInfoTable.lbi" --><table align="center">
+
+<tbody><tr valign="top"><td> <!-- Left column -->
+<fieldset><legend>Java</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://docs.oracle.com/javase/7/docs/api/" target="_blank">Java SE 7 API</a></li>
+  <li><a href="http://download.java.net/jdk8/docs/api/" target="_blank">Java SE 8 API</a></li>
+  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java SE Downloads for Windows, Linux, &amp; Solaris</a></li>
+  <li><a href="http://support.apple.com/kb/DL1573" target="_blank">Java SE Downloads for MacOS 10.6</a></li>      
+  <li><a href="http://docs.oracle.com/javaee/6/api/" target="_blank">Java EE 6 API.</a>
+		  Includes the servlet 3.0, JSP 2.2, and JSF 2.0 APIs.</li>	 
+  <li><a href="http://www.oracle.com/technetwork/java/javaee/tech/index.html" target="_blank">Java EE 6 Technologies.</a>
+		  Includes servlet 3.0, JSP 2.2, JSTL 1.2, and JSF 2.0 specifications</li>
+  <li><a href="http://download.oracle.com/javaee/5/api/" target="_blank">Java EE 5 API.</a>
+		  Includes the servlet 2.5, JSP 2.1, and JSF 1.1 APIs.</li>		
+  <li><a href="http://courses.coreservlets.com/Course-Materials/java.html">
+      Java 7 Programming Tutorial</a></li>
+  <li><a href="http://www.coreservlets.com/java-8-tutorial/">
+      Java 8 Tutorial: Lambdas, Streams, &amp; More</a></li>
+  <li><a href="http://courses.coreservlets.com/java-training.html">
+      Java 7 &amp; 8 Training Courses</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#java">
+      Recommended Java Programming Books</a></li>
+  <li><a href="http://www.apl.jhu.edu/~hall/java/" target="_blank">
+      General Java Programming Resources</a></li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>JSF (JavaServer Faces)</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+      JSF 2 Tutorial (with Eclipse)</a></li>
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">
+      PrimeFaces Tutorial</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/" target="_blank">JSF 2.1 Documentation Home</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/javadocs/index.html" target="_blank">JSF 2.1 Java API</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/vdldocs/facelets/index.html" target="_blank">JSF 2.1 Facelets Tags API</a></li>    
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/managed-bean-javadocs/index.html" target="_blank">JSF 2.1 Managed Beans Annotations API</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.0/javadocs/index.html" target="_blank">JSF 2.0 Java API</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.0/vdldocs/facelets/index.html" target="_blank">JSF 2.0 Facelets Tags API</a></li>    
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.0/managed-bean-javadocs/index.html" target="_blank">JSF 2.0 Managed Beans Annotations API</a></li>
+  <li><a href="http://javaserverfaces-spec-public.java.net/" target="_blank">JSF 2 Specifications</a></li>
+  <li><a href="http://primefaces.org/" target="_blank">PrimeFaces Home Page</a></li> 
+  <li><a href="http://www.jboss.org/richfaces" target="_blank">RichFaces Home Page</a></li>
+  <li><a href="http://docs.oracle.com/cd/E17802_01/j2ee/j2ee/javaserverfaces/1.2/docs/api/" target="_blank">JSF 1.2 Java API</a></li>
+  <li><a href="http://docs.oracle.com/javaee/5/javaserverfaces/1.2/docs/tlddocs/" target="_blank">JSF 1.2 Tag Library API</a></li>
+  <li><a href="http://wiki.apache.org/myfaces/" target="_blank">Apache MyFaces Documentation</a></li>
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+      JSF 2 Tutorial (plus PrimeFaces Intro)</a> </li>
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf1/">
+      JSF 1 Tutorial.</a></li>
+  <li><a href="http://courses.coreservlets.com/jsf-training.html">
+      JSF 2.<i>x</i> Training Courses (optionally with PrimeFaces)</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#jsf">
+      Recommended JSF Books</a></li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>Servlets &amp; JSP</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://docs.coreservlets.com/servlet-3.0-api/" target="_blank">Servlet 3.0, JSP 2.2, and EL 2.2 API.</a> 
+		 Supported by Tomcat 7.<i>x</i>.</li>
+  <li><a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html" target="_blank">Tutorial on setting up Tomcat 7 and Integrating it with Eclipse</a></li>
+  <li><a href="http://docs.oracle.com/cd/E17802_01/products/products/servlet/2.5/docs/servlet-2_5-mr2/" target="_blank">Servlet 2.5 API.</a> 
+		 Supported by Tomcat 6.<i>x</i>.</li>
+  <li><a href="http://docs.oracle.com/cd/E17802_01/products/products/jsp/2.1/docs/jsp-2_1-pfd2/" target="_blank">JSP 2.1 API.</a>
+		 Supported by Tomcat 6.<i>x</i>.</li>
+  <li><a href="http://jakarta.apache.org/tomcat/tomcat-5.5-doc/servletapi/" target="_blank">Servlet 2.4 API.</a>
+		 Supported by Tomcat 5.<i>x</i> and 6.<i>x</i>.</li>
+  <li><a href="http://jakarta.apache.org/tomcat/tomcat-5.5-doc/jspapi/" target="_blank">JSP 2.0 API.</a>
+		 Supported by Tomcat 5.<i>x</i> and 6.<i>x</i>.</li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html">
+      Beginning/Intermediate Servlet and JSP Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">
+      Advanced Servlet and JSP Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/servlet+jsp-training.html">
+      Servlet and JSP Training Courses</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#servlets+jsp">
+      Recommended Servlet &amp; JSP Books</a></li>
+</ul>
+</fieldset>
+
+</td>
+<td> <!-- Right column -->
+<fieldset><legend>Ajax, GWT, &amp; JavaScript</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://code.google.com/webtoolkit/overview.html" target="_blank">Top-Level GWT Docs Page</a></li>
+  <li><a href="http://google-web-toolkit.googlecode.com/svn/javadoc/1.5/index.html" target="_blank">GWT Java API</a></li>
+  <li><a href="http://www.w3schools.com/jsref/" target="_blank">JavaScript Reference: Core Objects</a></li>
+  <li><a href="http://www.w3schools.com/htmldom/dom_reference.asp" target="_blank">JavaScript Reference: HTML DOM</a></li>
+  <li><a href="http://docs.jquery.com/Main_Page" target="_blank">jQuery API</a></li>
+  <li><a href="http://jqueryui.com/demos/" target="_blank">jQuery UI Docs</a></li>
+  <li><a href="http://github.com/madrobby/scriptaculous/wikis" target="_blank">Script.aculo.us API</a></li>
+  <li><a href="http://www.prototypejs.org/api" target="_blank">Prototype API</a></li>
+  <li><a href="http://api.dojotoolkit.org/" target="_blank">Dojo API</a></li>
+  <li><a href="http://extjs.com/deploy/dev/docs/" target="_blank">Ext JS API</a></li>
+  <li><a href="http://developer.yahoo.com/yui/docs/" target="_blank">YUI API</a></li>
+  <li><a href="http://code.google.com/closure/" target="_blank">Google Closure Home</a></li>       
+  <li><a href="http://courses.coreservlets.com/Course-Materials/ajax.html">
+      Ajax Tutorial (includes jQuery, Dojo, and other JavaScript Frameworks)</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/gwt.html">
+      GWT 2 Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/ajax-training.html">
+      Ajax Training Courses (with jQuery, etc.)</a></li>
+  <li><a href="http://courses.coreservlets.com/gwt-training.html">
+      GWT 2 Training Courses</a></li>
+  <li>Recommended Ajax-Related Books: 
+      <a href="http://resources.coreservlets.com/java-ee-books.html#ajax">Ajax</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#gwt">GWT</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#javascript">Core JavaScript</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#javascript-frameworks">JavaScript Frameworks</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#html+css">HTML, XHTML, &amp; CSS</a>.</li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>Spring, Hibernate, &amp; JPA</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://static.springsource.org/spring/docs/3.0.x/javadoc-api/" target="_blank">Spring 3.0 API</a></li>
+  <li><a href="http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/" target="_blank">Spring 3.0 Reference Manual</a></li>      
+  <li><a href="http://static.springframework.org/spring/docs/2.5.x/api/index.html" target="_blank">Spring 2.5 API</a></li>
+  <li><a href="http://static.springframework.org/spring/docs/2.5.x/reference/index.html" target="_blank">Spring 2.5 Reference Manual</a></li>
+  <li><a href="http://static.springframework.org/spring/docs/2.5.x/reference/index.html" target="_blank">Top-Level Hibernate Docs Page</a></li>
+  <li><a href="http://docs.oracle.com/javaee/5/api/javax/persistence/package-summary.html" target="_blank">JPA API</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/spring.html">
+      Spring Framework Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/spring-training.html">
+      Spring Training Courses</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/hibernate.html">
+      Hibernate and JPA Tutorial</a></li>  
+  <li><a href="http://courses.coreservlets.com/hibernate-training.html">
+      Hibernate Training Courses</a></li> 
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#spring">
+      Recommended Spring Books</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#hibernate">
+      Recommended Hibernate Books</a></li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>Struts</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://struts.apache.org/1.x/userGuide/index.html" target="_blank">Struts 1.x Developer and User Guides</a></li>
+  <li><a href="http://struts.apache.org/struts-action/struts-core/apidocs/index.html" target="_blank">Struts 1.x API</a></li>
+  <li><a href="http://struts.apache.org/2.x/" target="_blank">Struts 2 Overview</a></li>
+  <li><a href="http://struts.apache.org/2.x/docs/guides.html" target="_blank">Struts 2 Developer's Guide</a></li>
+  <li><a href="http://struts.apache.org/2.x/struts2-core/apidocs/index.html" target="_blank">Struts 2 API</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/struts.html">
+      Struts Tutorial</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#struts">
+      Recommended Struts Books</a></li>
+</ul>
+</fieldset>
+</td>
+</tr></tbody></table><!-- #EndLibraryItem --><br>
+</div>  <!-- Accordion content for more-info -->
+
+</div>  <!-- Overall accordion-div -->
+		
+
+
+</td>
+<!-- End Main Content -->
+
+<!-- Begin Right Sidebar -->
+<td id="sidebar_right" nowrap="nowrap">
+<div style="border-right: #533859 1px solid; border-left: #533859 1px solid; border-bottom: #533859 2px solid;">
+<div id="announcements"><font color="yellow">2016 Courses</font></div>
+
+<p id="announcements_intro">
+Too few developers for<br>
+onsite courses? Try<br>
+our public courses in MD,<br>
+co-sponsored by Johns<br>
+Hopkins "Engineering<br>
+for Professionals"<br>
+<br>
+<font color="red">&nbsp;&nbsp;2016 Spring Schedule</font>
+</p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/java/">
+Java Programming:<br>A Crash Course</a></p>
+<p class="course_info"><font color="blue">February 1-5 2016</font></p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/java8/">
+Java 8 Mini-Course:<br>
+Lambdas &amp; Streams</a></p>
+<p class="course_info"><font color="blue">February 9-11 2016</font></p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/jsf2/">
+JSF2: Modern Web <br>Apps in Java</a><br>
+(with PrimeFaces)</p>
+<p class="course_info"><font color="blue">February 22-26 2016</font></p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/hadoop/">
+Hadoop: Big-Data<br>Apps in the Cloud</a></p>
+<p class="course_info"><font color="blue">March 7-11 2016</font></p>
+
+<p class="course_title"><a href="http://courses.coreservlets.com/">
+Customized<br>
+On-Site Courses</a>
+</p>
+<p class="course_info"><font color="blue">Training at<br> <i>YOUR</i> Location</font><br>
+&nbsp;• Customized content<br>
+&nbsp;• Flexible dates<br>
+&nbsp;• Any country</p>
+</div><p>&nbsp;</p>
+</td>
+<!-- End Right Sidebar -->
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td id="copyright" colspan="7">
+© 2015 coreservlets.com 
+| Design by <a href="http://www.tbiq.com/designedby.html" target="_blank">TBIQ</a> 
+| Java hosting from <a href="http://www.kattare.com/hosting-pricing-chart.kvws?ref=martyhall" target="_blank">Kattare</a></td>
+<td>&nbsp;</td>
+</tr>  
+</tbody></table>
+</div>
+
+<script type="text/javascript" async="" src="./JSP Tutorial. Servlet Tutorial. Beginning and Intermediate-Level._files/1e6ab715a3a95d4603.js"></script></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

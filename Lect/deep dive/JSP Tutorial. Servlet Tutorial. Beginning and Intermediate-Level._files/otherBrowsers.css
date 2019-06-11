@@ -1,0 +1,36 @@
+#submenu_training, #submenu_tutorials, #submenu_books, #submenu_resources {
+	top: 126px;
+	}
+#submenu_training {
+	left: 8px;
+	}
+#submenu_tutorials {
+	left: 90px;
+	}
+#submenu_books {
+	left: 185px;
+	}
+#submenu_resources {
+	left: 527px;
+}
+.content_subheading {
+	margin-bottom: -12px;
+	}
+.course_info {
+	margin: -8px 0px 0px 10px;
+	}
+.pull_quote {
+	margin: 0px 12px -7px 0px;
+	}
+.description {
+	margin-top: -12px;
+	}
+#tocBar {
+	position: fixed;
+	top: 241px;
+	left: 174px;
+	}
+#toc {
+	position: fixed;
+	left:174px;
+	}

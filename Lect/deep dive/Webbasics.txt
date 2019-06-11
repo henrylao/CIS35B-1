@@ -1,0 +1,1685 @@
+Unedited Notes Feb. 11th 2014
+Agenda
+>>Web basics (http, webserver and tomcat)
+>>Form basics
+>>tomcat setup
+>>Servlets
+>>JSPs
+>>JavaBeans
+
+
+Servlet LifeCycle - 
+1. A servlet engine loads and initializes the servlet
+2. The Servlet handles zero or more client requests
+3. The Servlet engine removes the servlet from its memory. Unload sometime occurs when the servlet engine shuts down
+
+
+1. Initially when the servlet starts - the servlet initializes using the init() method. 
+2. Then client requests are handled.
+        The client requests are handled thru the service() method which supports         HTTP requests by using the following methods.
+        Overridden methods        
+        doGet()
+        doPost()
+        doPut()
+        doDelete()
+
+
+        Generally not overridden.
+        doOption() - handles OPTIONS request. The HTTP Options are determined automatically by this method.
+        doTrace() - handles the Trace request. The response typcially contains all of the headers in the trace request
+
+
+3. When the server removes the servlet it runs the destroy() method.
+
+
+//Program 1
+//A plain old Servlet
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+public class Program1 extends HttpServlet {
+  public void doGet(HttpServletRequest request,
+                    HttpServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    String docType =
+      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " +
+      "Transitional//EN\">\n";
+    out.println(docType +
+                "<HTML>\n" +
+                "<HEAD><TITLE>Hello</TITLE></HEAD>\n" +
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H1>Hello</H1>\n" +
+                "</BODY></HTML>");
+  }
+}
+
+
+HTTPServletRequest Object
+        provides access to HTTP header data: such as  
+                cookies.
+                the HTTP method with which the request is made.
+                obtain args that the client sent as part of the request.
+
+
+        Methods -  getparameter - returns value of named parameters
+                getParameterValues returns the array of values for the named parameter
+                getParameterNames returns the names of the parameters
+                getQueryString returns a String of raw data from the client
+        
+                FOR HTTP POST, PUT and DELETE requests
+                the text data is handled by getReader() method that provides you with BufferedReader object to                 read raw data.
+                the binary data is handled in getInputStream() method that provides a ServletInputStream to read the raw data.
+        
+HTTPServletResponse Object
+        Two ways are available for returning the data from the user.
+        getWriter() method returns a writer for text data
+        getOutputStream returns a ServletOutputStream for binary data
+
+
+        Closing these streams allows the server to know the the response is complete.
+
+
+//Program 2
+//Reading Parameters in Servlets
+import java.io.IOException;
+
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class Program2 extends HttpServlet {
+
+
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+
+    ServletOutputStream out = response.getOutputStream();
+    String fileName = request.getParameter("file");
+
+
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<title>Welcome</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h2>The File</h2>");
+    out.println(fileName);
+    out.println("</body>");
+    out.println("</html>");
+    out.close();
+
+
+  }
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    doGet(request, response);
+  }
+}
+
+
+//Program 3
+//Using Init Method
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+public class Program3 extends HttpServlet 
+{
+    String msg = "";
+
+
+    public void init(ServletConfig config)
+    {
+        msg = "Hello from Java servlets!";
+    }
+
+
+    public void doGet(HttpServletRequest request,
+        HttpServletResponse response)
+        throws IOException, ServletException
+    {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+
+        out.println("<HTML>");
+        out.println("<HEAD>");
+        out.println("<TITLE>");
+        out.println("Using the init Method");
+        out.println("</TITLE>");
+        out.println("</HEAD>");
+        out.println("<BODY>");
+        out.println("<H1>Using the init Method</H1>");
+        out.println(msg);
+        out.println("</BODY>");
+        out.println("</HTML>");
+    }
+}
+
+
+
+
+Creating packages for your servlets - 
+Create a directory  in the document root where all .class files go.
+set the classpath -
+change the .java file to contain the name of the package
+compile the program 
+and invoke the servlet in HTTP using the packagename.ObjectName.
+Once the application package is created - one can write utility classes to create repeated methods to be used in different objects in one area.
+ServletUtilities.java - is an example of such utility (attached in zip file)
+
+
+//Program4.java
+// Simple servlet for testing the use of packages
+//   and utilities from the same package.
+
+
+package coreservlets;
+
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+
+
+public class Program4 extends HttpServlet {
+  public void doGet(HttpServletRequest request,
+                    HttpServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    String title = "Hello (3)";
+    out.println(ServletUtilities.headWithTitle(title) + 
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H1>" + title + "</H1>\n" +
+                "</BODY></HTML>");
+  }
+}
+
+
+Debugging Servlets
+1. Look at the HTML Source - to see if the tags are coded properly.
+2. Return error pages to the client - typically send error code -
+3. Look at the server running in command line for any apparent errors when the call to the servlet is made.
+4. HTTPServlet object has a method called log that allows you to log information to the server. Location of the file is specific to Servlet Engines
+5. Printout request data separately
+6. print out response data separately.
+7. Restarting the webserver is also a good idea: unless the webserver support automatic reload.
+
+
+-----Accessing the CGI Standard Variables
+CGI - Common Gateway Interface allows execution of several types of programs and is  collection of information about the current request.
+
+
+Information is collected for HTTP request header or thru sockets by connecting to the requesting host.
+
+
+Following is the collection of CGI Variables
+AUTH_TYPE         - Gives authorization type in Authorization header, if one is available(basic or digest.)        
+CONTENT_LENGTH        - For POST Requests only. Size in Bytes indicating the size of data in POST.
+CONTENT_TYPE         - designate the MIME Type of attached data.
+DOCUMENT_ROOT        - Provides name of the real directory corresponding to the URL
+HTTO_XXX_YYYY        - gives information on HTTP Request header
+PATH_INFO        - gives path information attached to the URL after the address of the servlet - but before query data
+PATH_TRANSLATED        - gives path information mapped to the real path on the server
+QUERY_STRING        - Provides raw data in the servlet
+REMOTE_ADDR         - Indicates the IP Address of the client that made the request
+REMOTE_HOST        - Indicates fully qualified Domain name
+REMOTE_USER        - If authorization header is available, then the user information accessed can be used for session tracking
+REQUEST_METHOD         - gives information on the method type.
+SCRIPT_NAME            - gives path to the servlet name
+SERVER_NAME         - host name
+SERVER_PORT         - information about the port that the server is listening on
+SERVER_PROTOCOL - gives protocol name and version egHTTP/1.0 or 1.1
+SERVER_SOFTWARE - information about webserver
+
+
+//Program5.java
+package coreservlets;
+
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.util.*;
+
+
+
+
+public class ShowCGIVariables extends HttpServlet {
+  public void doGet(HttpServletRequest request,
+                    HttpServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    String[][] variables =
+      { { "AUTH_TYPE", request.getAuthType() },
+        { "CONTENT_LENGTH",
+          String.valueOf(request.getContentLength()) },
+        { "CONTENT_TYPE", request.getContentType() },
+        { "DOCUMENT_ROOT",
+          getServletContext().getRealPath("/") },
+        { "PATH_INFO", request.getPathInfo() },
+        { "PATH_TRANSLATED", request.getPathTranslated() },
+        { "QUERY_STRING", request.getQueryString() },
+        { "REMOTE_ADDR", request.getRemoteAddr() },
+        { "REMOTE_HOST", request.getRemoteHost() },
+        { "REMOTE_USER", request.getRemoteUser() },
+        { "REQUEST_METHOD", request.getMethod() },
+        { "SCRIPT_NAME", request.getServletPath() },
+        { "SERVER_NAME", request.getServerName() },
+        { "SERVER_PORT",
+          String.valueOf(request.getServerPort()) },
+        { "SERVER_PROTOCOL", request.getProtocol() },
+        { "SERVER_SOFTWARE",
+          getServletContext().getServerInfo() }
+      };
+    String title = "Servlet Example: Showing CGI Variables";
+    out.println(ServletUtilities.headWithTitle(title) +
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H1 ALIGN=\"CENTER\">" + title + "</H1>\n" +
+                "<TABLE BORDER=1 ALIGN=\"CENTER\">\n" +
+                "<TR BGCOLOR=\"#FFAD00\">\n" +
+                "<TH>CGI Variable Name<TH>Value");
+    for(int i=0; i<variables.length; i++) {
+      String varName = variables[i][0];
+      String varValue = variables[i][1];
+      if (varValue == null)
+        varValue = "<I>Not specified</I>";
+      out.println("<TR><TD>" + varName + "<TD>" + varValue);
+    }
+    out.println("</TABLE></BODY></HTML>");
+  }
+
+
+  /** POST and GET requests handled identically. */
+  
+  public void doPost(HttpServletRequest request,
+                     HttpServletResponse response)
+      throws ServletException, IOException {
+    doGet(request, response);
+  }
+}
+
+
+
+
+Session Tracking API
+Used by Servlets to maintain the state about a series of requests from the same user.
+This is similar to working with files.
+
+
+You can look up the session object associated with the current request.
+or create new session
+
+
+lookup information associated with the session
+store information in a session
+discard or abandon a session
+
+
+HttpSession Object Associated with current request
+getSession()
+isNew()
+
+
+getAttribute()
+removeAttribute()
+getAttributeNames()
+putAttribute()
+
+
+getID()
+
+
+getCreationTime()
+LastAccessedTime(0
+
+
+geMaxInactiveIntervals()
+setMaxInactiveIntervals()
+
+
+invalidate()
+
+
+Intro to Session
+Sessions help you remember the application state and can help deal with many transactions.
+javax.servlet.http.HttpSession - Interface allows.
+
+
+getsession( )
+putValue ( name, value) where name is the parameter name of type String and value is of type Object.
+
+
+getValue - retrieve information from a session.
+        Object HttpSession.getValue(name)
+
+
+getValueName - returns a String array that provides a list of all parameters passed.
+
+
+removeValues(name) - will remove the value from the session object - good for memory optimization.
+
+
+Session alive - 
+HttpSession methods that help poll the information regarding a particular session.
+1. getId() - if the request to a sessioobject is invalid, in that case the request can get the sessionid from the servlet by using this method.
+
+
+2. getSessionContext() - Information on the context of all valid Session.
+
+
+3. isNew() return true or false: if the browser has never seen the session then this function returns true or it returns false.
+
+
+4. getCreationTime - time when the session was created
+
+
+5. getLastAccessedTime()
+
+
+6. getMaxInactiveInterval()
+
+
+To destroy the session use the method called 
+        invalidate()
+
+
+//Program6.java
+package coreservlets;
+
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.net.*;
+import java.util.*;
+
+
+Simple example of session tracking. 
+
+
+public class Program6 extends HttpServlet {
+  public void doGet(HttpServletRequest request,
+                    HttpServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    String title = "Session Tracking Example";
+    HttpSession session = request.getSession(true);
+    String heading;
+    // Use getAttribute instead of getValue in version 2.2.
+    Integer accessCount =
+      (Integer)session.getValue("accessCount");
+    if (accessCount == null) {
+      accessCount = new Integer(0);
+      heading = "Welcome, Newcomer";
+    } else {
+      heading = "Welcome Back";
+      accessCount = new Integer(accessCount.intValue() + 1);
+    }
+    // Use setAttribute instead of putValue in version 2.2.
+    session.putValue("accessCount", accessCount); 
+      
+    out.println(ServletUtilities.headWithTitle(title) +
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H1 ALIGN=\"CENTER\">" + heading + "</H1>\n" +
+                "<H2>Information on Your Session:</H2>\n" +
+                "<TABLE BORDER=1 ALIGN=\"CENTER\">\n" +
+                "<TR BGCOLOR=\"#FFAD00\">\n" +
+                "  <TH>Info Type<TH>Value\n" +
+                "<TR>\n" +
+                "  <TD>ID\n" +
+                "  <TD>" + session.getId() + "\n" +
+                "<TR>\n" +
+                "  <TD>Creation Time\n" +
+                "  <TD>" +
+                new Date(session.getCreationTime()) + "\n" +
+                "<TR>\n" +
+                "  <TD>Time of Last Access\n" +
+                "  <TD>" +
+                new Date(session.getLastAccessedTime()) + "\n" +
+                "<TR>\n" +
+                "  <TD>Number of Previous Accesses\n" +
+                "  <TD>" + accessCount + "\n" +
+                "</TABLE>\n" +
+                "</BODY></HTML>");
+
+
+  }
+
+
+  /** Handle GET and POST requests identically. */
+  
+  public void doPost(HttpServletRequest request,
+                     HttpServletResponse response)
+      throws ServletException, IOException {
+    doGet(request, response);
+  }
+}
+
+
+
+
+
+
+4 different ways of having a smart browser that will help identify itself.
+
+
+1 set cookies
+-----Working with Cookies
+Small bit of Textual information sent to the browser by the WebServer.
+Advantages 
+        1. Identify a user during an E-Commerce Session
+        2. Avoid Username and password for a session - if already logged in
+        3. Customization of site visit - like in my.yahoo.com - portal allowing customization of content
+        4. Focused Advertising - Based on Search done - display the ads for the given context
+Disadvantages
+        1. Search for particular topics is remembered inside a cookie
+        2. Health Sensitive information can be shared between different sites. Leads to Email Spamming.
+
+
+Because of the disadvantages - people turn off cookies usage in the browser.
+As a Servlet Programmer, be careful not to use cookies for sensitive information.
+
+
+Cookie API
+Create a cookie
+        new Cookie(name, value)
+        Following characters are not allowed: [](),"/?@:;
+
+
+Setting additional attributes - 
+        cookie.setXxx() - applies to outgoing cookie(server to client).
+
+
+Inserting the cookie into response header
+        response.addCookie(cookie)
+        
+Reading incoming cookies 
+        request.getCookies - returns an array of cookie objects which can later be traversed for usage.
+
+
+Adding comment with a cookie
+        Public String getComment()
+        public void setComment(String comment)
+        used for information about the cookie.
+
+
+getting and setting domain for the cookie
+        Public String getDomain()
+        public void setDomain(String domainpattern)
+        Normally the browser will return cookies to exact same host. This method can be used to instruct the browser         to return them to other hosts within the same domain. For eg cookie.setDomain(".database.com") would send cookies to singh.database.com or oracle.database.com etc.
+        
+setting the age of cookies
+        Public String getMaxAge()
+        public void setMaxAge(int lifetime)
+        This allow the programmer to set the time in seconds before the cookie expires. 
+        A negative value indicates that the cookie last through the end of session.
+        A 0 value indicates the browser to delete the cookie.
+        A longlivedcookie can be set to leave the cookie inside the browser for a week, month or year - by specifying a large int value.
+
+
+Setting Cookie name
+        Public String getName()
+        public void setName(String cookieName)
+        This set the name of the cookie.
+        Name is typically supplied in cookie constructor. getName is used to         traverse through the list array of 
+        cookie objects returned by getCookies.
+
+
+Setting/Getting path to which the cookie applies
+        Public String getPath()
+        public void setPath(String path)
+                This method should be used to set the cookies for all pages in a website for a group of pages or                 just for one page.
+
+
+                For eg cookiename.setPath("?")  specifies that all pages on the server should receive the cookie.
+
+
+Setting cookies over secure connections
+        Public Boolean getSecure()
+        public void setComment(Boolean secureFlag)
+        This flag sets a flag to indicate if the cookie should be sent over encrypted (SSL) Connections.
+        default is false. If set, the cookie should apply to all connections.
+
+
+getting and setting values from cookies 
+        Public String getValue()
+        public void setValue(String cookieValue)
+        getVlaue looks up the value and setValue sets the value.
+
+
+Setting the version
+        Public int getVersion()
+        public void setVersion(String comment)
+        These two method get/set the cookie protocol version that the cookie complies with.Version 0 follow the Netscape Specification. Version 1 follows RFC2109 specification. Version 1 is not widely implemented yet.
+
+
+//Program7.java
+package coreservlets;
+
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+
+
+
+
+public class Program7 extends HttpServlet {
+  public void doGet(HttpServletRequest request,
+                    HttpServletResponse response)
+      throws ServletException, IOException {
+    for(int i=0; i<3; i++) {
+      // Default maxAge is -1, indicating cookie
+      // applies only to current browsing session.
+      Cookie cookie = new Cookie("Session-Cookie-" + i,
+                                 "Cookie-Value-S" + i);
+      response.addCookie(cookie);
+      cookie = new Cookie("Persistent-Cookie-" + i,
+                          "Cookie-Value-P" + i);
+      // Cookie is valid for an hour, regardless of whether
+      // user quits browser, reboots computer, or whatever.
+      cookie.setMaxAge(3600);
+      response.addCookie(cookie);
+    } 
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    String title = "Setting Cookies";
+    out.println
+      (ServletUtilities.headWithTitle(title) +
+       "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+       "<H1 ALIGN=\"CENTER\">" + title + "</H1>\n" +
+       "There are six cookies associated with this page.\n" +
+       "To see them, visit the\n" +
+       "<A HREF=\"ShowCookies\">\n" +
+       "<CODE>ShowCookies</CODE> servlet</A>.\n" +
+       "<P>\n" +
+       "Three of the cookies are associated only with the\n" +
+       "current session, while three are persistent.\n" +
+       "Quit the browser, restart, and return to the\n" +
+       "<CODE>ShowCookies</CODE> servlet to verify that\n" +
+       "the three long-lived ones persist across sessions.\n" +
+       "</BODY></HTML>");
+  }
+}
+
+
+//ShowCookies.java
+package coreservlets;
+
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+
+
+public class ShowCookies extends HttpServlet {
+  public void doGet(HttpServletRequest request,
+                    HttpServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    String title = "Active Cookies";
+    out.println(ServletUtilities.headWithTitle(title) +
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H1 ALIGN=\"CENTER\">" + title + "</H1>\n" +
+                "<TABLE BORDER=1 ALIGN=\"CENTER\">\n" +
+                "<TR BGCOLOR=\"#FFAD00\">\n" +
+                "  <TH>Cookie Name\n" +
+                "  <TH>Cookie Value");
+    Cookie[] cookies = request.getCookies();
+    Cookie cookie;
+    for(int i=0; i<cookies.length; i++) {
+      cookie = cookies[i];
+      out.println("<TR>\n" +
+                  "  <TD>" + cookie.getName() + "\n" +
+                  "  <TD>" + cookie.getValue());
+    }
+    out.println("</TABLE></BODY></HTML>");
+  }
+}
+
+
+2----URL -Rewriting
+Works well if cookies are disabled in browser.
+Essentially the client appends some extra data in the end of each URL that identifies the session.
+Not Very secure
+Example - http://localhost:8080/somepath/servlet/abc.html?sessionid=1234
+
+
+3----Usage of hidden fields
+<INPUT TYPE="HIDDEN" NAME='SESSION" VALUE="...">
+The hidden field can used for storing the session id and only works for those pages that are generted dynamically.
+
+
+4 - User Authentication
+
+
+//Reading data from a config file
+//Reading parameters from a file
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import java.io.PrintWriter;
+import java.io.IOException;
+
+
+public class Program8 extends HttpServlet 
+{
+  public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException 
+  {
+
+
+    res.setContentType("text/plain");
+    PrintWriter out = res.getWriter();
+
+
+    String url = getInitParameter("URL");
+
+
+    ServletConfig config = getServletConfig();
+    ServletContext context = getServletContext();
+    String uid = config.getInitParameter("UID");
+    String pwd = config.getInitParameter("PWD");
+    String port = context.getInitParameter("some-port");
+
+
+    out.println("Values retrieved for the init parameters are: ");
+    out.println("URL: " + url);
+    out.println("UID: " + uid);
+    out.println("PWD: " + pwd);
+    out.println("some-port: " + port);
+  }
+}
+
+
+Servlet Architecture  + Working with Servlets.
+..httpServlet, httpServletRequest and httpServletResponse::
+..httpSession
+
+
+Working with Java Server Pages
+JSP Architecture
+        JSP is a Servlet with the following differences:
+        JSP = HTML code + Java Code.
+        WS - receives the request -- parse HTML and strip out Java --> Pass to appserver
+        generate a java file (builds a java file + compiles) - generatea .java + .class file (work directory)
+        JSP is loaded as a Servlet -- service the requests.
+        
+        Access to API is built in. 
+                ..httpServlet, httpServletRequest and httpServletResponse::
+                ..httpSession        
+        Page executes -- compiles a response. .. [code execution]
+
+
+        response is fed back to WS -- takes the output of java code excution and adds         it with HTML -- posts a response to a browser.
+
+
+JSP workflow is complete.        
+
+
+JSP Class notes 
+Introduction to the usage of JSP's
+
+
+scripting elements
+<%  code goes here  %> 
+begin and end token - this refers to the service method.
+Expression tag
+<%= ... %>
+declarations
+<%! ... %> --treated as instance variable in a Servlet (JSP is a servlet) but these static to all requests.
+
+
+JSP Comment
+<% //JSP Comment ------  %>
+<!--HTML Comments-->
+
+
+
+
+
+
+request - HttpServletRequest Object
+response - HTTPServletResponse
+session - associated with a http session. http session can be         disabled - value is a boolean.
+out - for doing output.
+application - defines the servletcontext
+config - refers to the servletcontext configuration object.
+pageContext - single entry point for various JSP's
+page - similar to "this" reference.
+
+
+//Program 9
+<HTML>
+<HEAD>
+<TITLE>JSP Expressions</TITLE>
+</HEAD>
+
+
+<BODY>
+<H2>JSP Expressions</H2>
+<UL>
+  <LI>Current time: <%= new java.util.Date() %>
+  <LI>Your hostname: <%= request.getRemoteHost() %>
+  <LI>Your session ID: <%= session.getId() %>
+  <LI>The <CODE>testParam</CODE> form parameter:
+      <%= request.getParameter("testParam") %>
+</UL>
+</BODY>
+</HTML>
+
+
+//add jsp files in following folder:
+C:\tomcat332\webapps\examples\jsp
+URL to execute should have :
+http://localhost:8080/examples/jsp/
+
+
+
+
+//Program 10
+<HTML>
+<HEAD>
+  <TITLE>Color Testing</TITLE>
+</HEAD>
+
+
+<%
+String bgColor = request.getParameter("bgColor");
+boolean hasExplicitColor;
+if (bgColor != null) {
+  hasExplicitColor = true;
+} else {
+  hasExplicitColor = false;
+  bgColor = "WHITE";
+}
+%>
+<BODY BGCOLOR="<%= bgColor %>">
+<H2 ALIGN="CENTER">Color Testing</H2>
+
+
+<%
+if (hasExplicitColor) {
+  out.println("You supplied an explicit background color of " +
+              bgColor + ".");
+} else {
+  out.println("Using default background color of WHITE. " +
+              "Supply the bgColor request attribute to try " +
+              "a standard color, an RRGGBB value, or to see " +
+              "if your browser supports X11 color names.");
+}
+%>
+
+
+</BODY>
+</HTML>
+
+
+//Usage of ! to declare variables
+
+
+//Program 11
+<HTML>
+<HEAD>
+<TITLE>JSP Declarations</TITLE>
+
+
+</HEAD>
+
+
+<BODY>
+<H1>JSP Declarations</H1>
+
+
+<%! private int accessCount = 0; %>
+<H2>Accesses to page since server reboot: 
+<%= ++accessCount %></H2>
+
+
+</BODY>
+</HTML>
+
+
+
+
+Attribute called import - 
+imports classes - existing servlets that are available in the classpath or tomcat classpath:
+        ../webpages/web-inf/classes/<packages> or just         .class files.
+
+
+        <% @page  import="packagename.class, .. , ... " %>
+
+
+Tomcat - when the class changes - tomcat doesnot         automatically reload.
+        Available from the JSP Pages.
+
+// Makes methods in the package available for usage in JSP.
+
+//Add the following servlet in coreservlets package
+package coreservlets;
+
+import javax.servlet.http.*;
+
+public class LongLivedCookie extends Cookie {
+  public static final int SECONDS_PER_YEAR = 60*60*24*365;
+  
+  public LongLivedCookie(String name, String value) {
+    super(name, value);
+    setMaxAge(SECONDS_PER_YEAR);
+  }
+}
+
+//Add the following servlet in coreservlets package
+package coreservlets;
+
+import javax.servlet.http.*;
+
+/** Two static methods for use in cookie handling.
+ *  <p>
+ *  From <a href="http://courses.coreservlets.com/Course-Materials/">the
+ *  coreservlets.com tutorials on servlets, JSP, Struts, JSF, Ajax, GWT, and Java</a>.
+ */
+
+public class CookieUtilities {
+
+  /** Given the request object, a name, and a default value,
+   *  this method tries to find the value of the cookie with
+   *  the given name. If no cookie matches the name,
+   *  the default value is returned.
+   */
+
+  public static String getCookieValue
+                           (HttpServletRequest request,
+                            String cookieName,
+                            String defaultValue) {
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+      for(Cookie cookie: cookies) {
+        if (cookieName.equals(cookie.getName())) {
+          return(cookie.getValue());
+        }
+      }
+    }
+    return(defaultValue);
+  }
+
+  /** Given the request object and a name, this method tries
+   *  to find and return the cookie that has the given name.
+   *  If no cookie matches the name, null is returned.
+   */
+
+  public static Cookie getCookie(HttpServletRequest request,
+                                 String cookieName) {
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+      for(Cookie cookie: cookies) {
+        if (cookieName.equals(cookie.getName())) {
+          return(cookie);
+        }
+      }
+    }
+    return(null);
+  }
+}
+
+//Program 12
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- 
+Example of the import attribute of the page directive. 
+-->
+<HTML>
+<HEAD>
+<TITLE>The import Attribute</TITLE>
+<LINK REL=STYLESHEET
+      HREF="JSP-Styles.css"
+      TYPE="text/css">
+</HEAD>
+<BODY>
+<H2>The import Attribute</H2>
+<%-- JSP page Directive --%>
+<%@ page import="java.util.*,coreservlets.*" %>
+<%-- JSP Declaration --%>
+<%!
+private String randomID() {
+  int num = (int)(Math.random()*10000000.0);
+  return("id" + num);
+}
+private final String NO_VALUE = "<I>No Value</I>";
+%>
+<%-- JSP Scriptlet --%>
+<%
+String oldID = 
+  CookieUtilities.getCookieValue(request, "userID", NO_VALUE);
+if (oldID.equals(NO_VALUE)) {
+  String newID = randomID();
+  Cookie cookie = new LongLivedCookie("userID", newID);
+  response.addCookie(cookie);
+}
+%>
+<%-- JSP Expressions --%>
+This page was accessed on <%= new Date() %> with a userID
+cookie of <%= oldID %>.
+
+</BODY></HTML>
+
+****************
+contenttype attributes 
+        set contentType = "text/plain"
+
+
+        @page set contentType="application/vnd.ms-excel"
+//Program 13
+<HTML>
+<HEAD>
+<TITLE>Comparing Apples and Oranges</TITLE>
+<LINK REL=STYLESHEET
+      HREF="JSP-Styles.css"
+      TYPE="text/css">
+</HEAD>
+
+
+<BODY>
+<CENTER>
+<H2>Comparing Apples and Oranges</H2>
+
+
+<% 
+String format = request.getParameter("format");
+if ((format != null) && (format.equals("excel"))) { 
+  response.setContentType("application/vnd.ms-excel");
+}  
+%>
+
+
+<TABLE BORDER=1>
+  <TR><TH></TH><TH>Apples<TH>Oranges
+  <TR><TH>First Quarter<TD>2307<TD>4706
+  <TR><TH>Second Quarter<TD>2982<TD>5104
+  <TR><TH>Third Quarter<TD>3011<TD>5220
+  <TR><TH>Fourth Quarter<TD>3055<TD>5287
+</TABLE>
+
+
+</CENTER>
+</BODY>
+</HTML>
+****************        
+isThreadSafe - true / false //
+<%@ page isThreadSafe="true" %> <!--Default --%>
+<%@ page isThreadSafe="false" %>
+
+
+synchronized(this)
+        public synchronize int dowork()
+        {
+                //do some work
+        }
+<%!        private int idNum = 0
+        synchronize(this) {
+        String userid ="userid" +idNum;
+        out.println("your id is " + userid);
+        idNum++;
+}
+
+
+%>
+****************        
+<session attribute
+< @page session="true" %>
+This attribute defines if the page should participate in a session.
+
+
+****************        
+buffer attribute - used for specifying the size of the buffer 
+<%@ page buffer="sizeinkb" %>
+<%@ page buffer="none" %>
+defines the size of the buffer used by out variable which is used by JspWriter ( a sub class of PrinterWriter)
+akamai.com
+****************        
+autoflush=true - default
+the buffer is automatically flushed.
+<%@ page autoflush="true" %> <!--Default --%>
+<%@ page autoflush="false" %>
+
+
+****************        
+extends 
+indicates that the superclass for the given servlet that will be generated for the JSP page.
+<%@ page extends="someclass.class" %> 
+****************        
+info
+brings the info defines a string that can be retreived from the servlet by means of getServletInfo method.
+<%@ page info="some message" %> 
+
+
+***********************
+errorpage
+specifies if JSP page should process any exceptions or not.
+
+
+        <%@page errorpage="URL" %> 
+
+
+isErrorPage
+        an attribute used in a page that is the error page.
+        <%@page isErrorpage=true %>
+        <%@page isErrorpage=false %> <!--Default --%>
+
+
+//Program 14
+<HTML>
+<HEAD>
+<TITLE>Computing Speed</TITLE>
+<LINK REL=STYLESHEET
+      HREF="JSP-Styles.css"
+      TYPE="text/css">
+</HEAD>
+
+
+<BODY>
+
+
+<%@ page errorPage="Error.jsp" %>
+
+
+<TABLE BORDER=5 ALIGN="CENTER">
+  <TR><TH CLASS="TITLE">
+      Computing Speed</TABLE>
+
+
+<%! 
+// Note lack of try/catch for NumberFormatException if
+// value is null or malformed.
+
+
+private double toDouble(String value) {
+  return(Double.valueOf(value).doubleValue());
+}
+%>
+
+
+<% 
+double furlongs = toDouble(request.getParameter("furlongs")); 
+double fortnights = toDouble(request.getParameter("fortnights"));
+double speed = furlongs/fortnights;
+%>
+
+
+<UL>
+  <LI>Distance: <%= furlongs %> furlongs.
+  <LI>Time: <%= fortnights %> fortnights.
+  <LI>Speed: <%= speed %> furlongs per fortnight.
+</UL>
+
+
+</BODY>
+</HTML>
+
+
+//Supporting program  - Error.jsp
+<HTML>
+<HEAD>
+<TITLE>Error Computing Speed</TITLE>
+<LINK REL=STYLESHEET
+      HREF="JSP-Styles.css"
+      TYPE="text/css">
+</HEAD>
+
+
+<BODY>
+
+
+<%@ page isErrorPage="true" %>
+
+
+<TABLE BORDER=5 ALIGN="CENTER">
+  <TR><TH CLASS="TITLE">
+      Error Computing Speed</TABLE>
+<P>
+ComputeSpeed.jsp reported the following error:
+<I><%= exception %></I>. This problem occurred in the
+following place:
+<PRE>
+<% exception.printStackTrace(new PrintWriter(out)); %>
+</PRE>
+
+
+</BODY>
+</HTML>
+
+
+***********************
+Capabilities of JSP 
+***********************
+Usage of include directive
+<%@ include file="Navbar.jsp" %>
+gives a structured programming approach to jsp. common header can be written and one file and can be included on need basis.
+include can be used in run time to include files.
+For eg.
+<OL>
+  <LI><jsp:include page="news/Item1.html" flush="true" />
+  <LI><jsp:include page="news/Item2.html" flush="true" />
+  <LI><jsp:include page="news/Item3.html" flush="true" />
+  <LI><jsp:include page="news/Item4.html" flush="true" />
+</OL>
+
+
+
+
+
+
+
+
+***********************        
+>>Including Applets
+Applet inside the jsp:
+<APPLET CODE="FILENAME.CLASS"
+                WIDTH=475 HEIGHT=375>
+
+
+<jsp:plugin type="applet"
+         code="filename.class"
+        WIDTH=475 HEIGHT=375>        
+<jsp:plugin>
+
+
+here are some property
+align, hspace, vspace, archive, name, title, jreversion, iepluginurl, nspluginurl
+
+
+<PARAM NAME="param1" value="value1">
+
+
+
+
+***********************        
+<PARAM NAME="param1" value="value1">
+Usage of jsp:param and jsp:params Elements
+Example shadowedtextapplet.jsp refers to ShadowtextApplet.java
+
+
+Information on JavaBeans
+java.sun.com/beans/docs
+
+
+***********************        
+What is JavaBean
+It's an API to implement objects in java.
+JavaBeans components define a convention for making a Java class instance customizable by design tools, allowing the tools to link these customized objects via events. 
+A bean has an empty constructor
+A bean has no public instance variables
+Persistant values are always accessed through methods. - a good oop technique. use getxxx or setxxx methods to do the job
+
+
+public class a {
+ private int b;
+ a() { }
+ public setb(int a1)
+ {
+        b = a1;
+ }
+}
+
+
+//boundary object - refers to a class that has getter/setter methods and exposes a Java Object through javabean tags
+
+
+To use a JavaBean 
+<jsp:useBean id="book1" class="package.Class" />
+
+
+which is the same as
+<jsp:useBean id="book1" class="coreservlets.Book" />
+<% coreservlets.Book book1= new coreservlets.Book(); %>
+
+
+
+
+When working with attribute values some character may require special handling
+', ", \, %  > 
+to get %> use %\> and so on.
+
+
+***********************        
+Accessing properties
+to get use jsp:getProperty
+to set use jsp:setProperty
+
+
+<jsp:getProperty name="book1" property="title" />
+
+
+<%= book1.getTitle() %>
+
+
+or
+
+
+<jsp:setProperty         name="book1"
+                 property="firstName"
+                value="sukhjit" />
+
+
+<%@= book1.setTitle("sukhjit") %>        
+
+
+Sharing Objects - 
+scope attribute - optional - 
+        scope can be page, application, session or request
+
+
+***********************        
+Forwarding to next page - 
+this occurs with the usage of RequestDispatcher. RequestDispatcher is obtained by calling getRequestDispatcher Method. as follows
+
+
+String url="/abc/cd/ef.html"
+
+
+RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+and then to forward the request you simply say - 
+
+
+dispatcher.forward(request,response);
+- goes inside doGet or doPost:
+
+
+doGet method 
+
+
+
+
+String operation= request.getParameter("Operation");
+        if (operation=null)
+                operation="unknown"
+        if (operation="operation1"
+                gotoPage("/operation/p1.jsp", req, resp)
+        ....
+        ...
+        
+        private void gotoPage(String add, HttpServletRequest req, HttpServletResponse, resp)
+        {        
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(add);
+                dispatcher.forward(request,response);
+        }
+
+
+
+
+
+
+http://localhost:8080/
+        servlets/tomcat/webapps/Examples/Web-Inf/index.html
+
+
+
+
+//Program15*********************
+
+
+<html>
+
+
+<% 
+   double freeMem = Runtime.getRuntime().freeMemory();
+   double totlMem = Runtime.getRuntime().totalMemory();
+   double percent = freeMem/totlMem;
+   if (percent < 0.5) { 
+%>
+
+
+<jsp:forward page="one.jsp"/>
+
+
+<% } else { %>
+
+
+<jsp:forward page="two.html"/>
+
+
+<% } %>
+
+
+</html>
+
+
+//Supporting files:
+//File: one.jsp
+<html>
+
+
+<body bgcolor="white">
+<font color="red">
+
+
+VM Memory usage < 50%.
+</html>
+//File: two.html
+
+
+<html>
+
+
+<body bgcolor="white">
+<font color="red">
+
+
+VM Memory usage > 50%.
+</html>
+
+
+//Program16*************************
+//Message.java
+package beans;
+public class Message
+{
+  public String msg() {
+    return "Hello from JSP!";
+  }
+
+
+  public Message() 
+  {
+  }
+}
+
+
+//Model class
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import beans.Message;
+
+
+//ServletForwardJsp.java
+
+
+public class ServletForwardJsp extends HttpServlet 
+{
+
+
+    String target = "forward.jsp";
+
+
+    Message model1 = new Message();
+
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException 
+    {
+        request.setAttribute("message", model1.msg());
+        RequestDispatcher dispatcher = 
+            request.getRequestDispatcher(target);
+        dispatcher.forward(request, response);
+    } 
+}
+
+
+
+
+//forward.jsp
+<HTML>
+  <HEAD>
+    <TITLE>Using MVC Architecture</TITLE>
+  </HEAD>
+
+
+    <BODY>
+        <H1>Using MVC Architecture</H1>
+        The message is 
+        <% out.println(request.getAttribute("message")); %>
+   </BODY>
+</HTML>
+
+
+
+
+//Program 17
+//Redirecting Pages with Response.Redirect
+//redirect.jsp
+<%
+   String name = (String)request.getParameter("name");
+   String choice = (String)request.getParameter("choice");
+%>
+<%
+   if((name == null) || (name.length() == 0)) {
+      response.sendRedirect("errorName.html");
+   }
+   else if(choice.equals("NONE")) {
+      response.sendRedirect("errorChoice.html");     
+   }
+%>
+
+
+<h4> Hello <%= name %></h4>
+<%
+   out.println("Glad you could join us. Here's the news you requested..");
+%>
+<hr>
+
+
+<%
+   pageContext.include(choice + ".html");
+%>
+
+
+//Several html files to redirect to
+//errorChoice.html
+<html>
+
+
+<head><title>No Choice</title></head>
+
+
+<body>
+
+
+<h3> No topic was selected. </h3>
+
+
+Would you like to <a href="index.html"> start again? </a>
+
+
+</body>
+</html>
+
+
+//Several html files to redirect to
+//errorName.html
+
+
+<html>
+<body>
+
+
+    <h3> A valid name is required before entering the news service. </h3>
+    
+    Would you like to <a href="index.html"> start again? </a>
+
+
+</body>
+</html>
+
+
+//Program 18.jsp
+//URL Rewrite
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class Program18 extends HttpServlet {
+
+
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, java.io.IOException {
+
+
+    response.setContentType("text/html");
+    java.io.PrintWriter out = response.getWriter();
+    String contextPath = request.getContextPath();
+    String encodedUrl = response.encodeURL(contextPath + "/default.jsp");
+
+
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<title>URL Rewriter</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>This page will use URL rewriting if necessary</h2>");
+    out.println("Go to the default.jsp page <a href=\"" + encodedUrl
+        + "\">here</a>.");
+    out.println("</body>");
+    out.println("</html>");
+
+
+  }
+
+
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, java.io.IOException {
+    doGet(request, response);
+
+
+  }
+}
+
+
+//Program 19
+//Refreshing a page automatically
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+public class AutoServlet extends HttpServlet {
+
+
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, java.io.IOException {
+
+
+    //client browser will request the page every 60 seconds
+    HttpSession session = request.getSession();
+    Long times = (Long) session.getAttribute("times");
+    if (times == null)
+      session.setAttribute("times", new Long(0));
+    long temp = 1;
+    if (times != null)
+      temp = (times.longValue()) + 1;
+
+
+    if (temp < 5)
+      response.addHeader("Refresh", "15");
+
+
+    response.setContentType("text/html");
+    java.io.PrintWriter out = response.getWriter();
+    out.println("<html><head><title>Client Refresh</title></head><body>");
+
+
+    //More HTML or dynamic content
+    out.println("You've viewed this page " + temp + " times.");
+    session.setAttribute("times", new Long(temp));
+    out.println("</body></html>");
+
+
+  } //end doGet
+}
+
+
+//Program 20
+<HTML>
+    <HEAD>
+        <TITLE>Reading Password Controls</TITLE>
+    </HEAD>
+
+
+    <BODY>
+        <H1>Using Password Controls</H1>
+        <FORM ACTION="formAction.jsp" METHOD="POST">
+            Please enter your password:
+            <INPUT TYPE="PASSWORD" NAME="password">
+            <BR>
+            <INPUT TYPE="SUBMIT" VALUE="Submit">
+        </FORM>
+        <%! private int count = 1; %>
+        <%
+                if(count++ == 1)
+                        out.println("Pl. use the form.");
+                else
+                {
+        %>
+                <H1>Reading Password Controls</H1>
+                <% 
+                        if(request.getParameter("password").equals("Open Sesame")) 
+                        {
+                            out.println("You're in!"); 
+                        } 
+                        else 
+                        {
+                               out.println("I don't think so!"); 
+                        } 
+                }
+        %>
+    </BODY>
+</HTML>
+
+
+//Program 21
+//setProperty and getProperty tags
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<%@ page language="java" %>
+
+
+<jsp:useBean id="counter" scope="session" class="beans.Counter" />
+
+
+<jsp:setProperty name="counter" property="count" param="count" />
+<%
+
+
+    out.println("Count from scriptlet code : "
+      + counter.getCount() + "<BR>");
+
+
+%>
+
+
+Count from jsp:getProperty :
+  <jsp:getProperty name="counter" property="count" /><BR>
+
+
+</BODY>
+</HTML>

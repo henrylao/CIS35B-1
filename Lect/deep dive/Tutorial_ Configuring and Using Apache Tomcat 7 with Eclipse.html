@@ -1,0 +1,982 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0077)http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__coreservlets_com"><link type="text/css" id="dark-mode" rel="stylesheet" href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html"><style type="text/css" id="dark-mode-custom-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+<title>Tutorial: Configuring and Using Apache Tomcat 7 with Eclipse</title>
+<meta name="description" content="Easy step-by-step instructions on installing and configuring Tomcat 7 and using Eclipse to start/stop it and deploy apps to it">
+<script src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/sniffer.js" type="text/javascript"></script>
+<script src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/menus.js" type="text/javascript"></script>
+<script src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/toc.js" type="text/javascript"></script>
+<link href="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/screen.css" rel="stylesheet" type="text/css" media="screen">
+<link href="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/print.css" rel="stylesheet" type="text/css" media="print">
+<script type="text/javascript">
+<!--
+chooseCss();
+//-->
+</script><link href="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/otherBrowsers.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  .norway { font-size: xx-small;
+	          color: #330066 }
+</style>
+
+<script src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/jquery.js" type="text/javascript"></script>
+<script src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/jquery-ui.js" type="text/javascript"></script>
+<script src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/setup.js" type="text/javascript"></script>
+<link href="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/current-theme.css" rel="stylesheet" type="text/css" media="screen">
+<style type="text/css">
+#content {
+	padding-left: 30px;
+	}
+#toc {
+	width: 275px;
+	}
+</style>
+</head>
+
+<body data-gr-c-s-loaded="true">
+<!-- Begin Banner Table -->
+<a name="top"></a>
+<table id="banner_Table" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+  <td id="logo"><a href="http://www.coreservlets.com/"><img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/banner.jpg" alt="logo" width="601" height="86" border="0"></a><img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/Gosling.jpg" alt="Hall and Gosling"></td>
+  <td id="martyPic"><img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/marty-hall.jpg" alt="Marty Hall" width="96" height="86"></td>
+  <td id="banner_bg">&nbsp;</td>
+  </tr>
+</tbody></table>
+<!-- End Banner Table -->
+
+<!-- Begin SubNav Table -->
+<table id="subnav_Table" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+  <td id="subnav"><a href="http://www.coreservlets.com/">home</a> <a href="mailto:hall@coreservlets.com">contact</a> <a href="http://www.coreservlets.com/sitemap.html">sitemap</a> </td>
+  </tr>
+</tbody></table>
+<!-- End SubNav Table -->
+
+<!-- Begin Nav Bar Table with Google search -->
+<form method="get" action="http://www.google.com/search">
+<table id="navbar_Table" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr id="navbar">
+  <td id="nav_training" nowrap="nowrap"><a href="http://courses.coreservlets.com/" onmouseover="showTrainingMenu();" onmouseout="hideTrainingMenu();">Training</a></td>
+  <td id="nav_tutorials" nowrap="nowrap"><a href="http://courses.coreservlets.com/Course-Materials/" onmouseover="showTutorialsMenu();" onmouseout="hideTutorialsMenu();">Tutorials</a></td>
+  <td id="nav_books" nowrap="nowrap"><a href="http://books.coreservlets.com/" onmouseover="showBooksMenu();" onmouseout="hideBooksMenu();">Books</a></td>
+  <td id="nav_consulting" nowrap="nowrap"><a href="http://consulting.coreservlets.com/">Consulting&nbsp;&amp;&nbsp;Outsourcing</a></td>
+  <td id="nav_resources" nowrap="nowrap"><a href="http://resources.coreservlets.com/" onmouseover="showResourcesMenu();" onmouseout="hideResourcesMenu();">Programming Resources</a></td>
+  <td id="nav_jobs" nowrap="nowrap"><a href="http://jobs.coreservlets.com/">Jobs</a></td>
+  <td colspan="2"></td>
+  <td id="search_cell" colspan="2" nowrap="nowrap">
+<!-- SiteSearch Google -->
+<input type="hidden" name="ie" value="iso-8859-1">
+<input type="hidden" name="oe" value="iso-8859-1">
+<input id="search" type="text" name="q" maxlength="255" value=""><input id="search_button" type="submit" name="btnG" value="search">
+<input type="hidden" name="sitesearch" value="coreservlets.com">
+<!-- SiteSearch Google -->
+  </td>
+  </tr>
+  <tr>
+  <td colspan="9">&nbsp;</td>
+  </tr>
+</tbody></table>
+</form>
+<!-- End Nav Bar Table with Google search -->
+
+<!-- Begin Drop-down Menus -->
+<div id="submenu">
+<div id="submenu_training" onmouseover="showTrainingMenu();" onmouseout="hideTrainingMenu();">
+<a href="http://www.courses.coreservlets.com/about-instructor.html">About the Instructor</a>
+<a href="http://www.courses.coreservlets.com/student-reviews.html">Training Course Reviews</a>
+<a href="http://courses.coreservlets.com/jsf-training.html">JSF 2 Training<br>&amp; PrimeFaces Training</a>
+<a href="http://courses.coreservlets.com/java-training.html">Java Training<br>(Java 7 &amp; 8 Programming)</a>
+<a href="http://courses.coreservlets.com/android-training.html">Android Training</a>
+<a href="http://courses.coreservlets.com/ajax-training.html">Ajax Training<br>(w/ jQuery, HTML5, etc.)</a>
+<a href="http://courses.coreservlets.com/hadoop-training.html">Hadoop Training</a>
+<a href="http://courses.coreservlets.com/web-services-training.html">Web Services Training<br>(RESTful &amp; SOAP-Based)</a>
+<a href="http://courses.coreservlets.com/spring-training.html">Spring Training</a>
+<a href="http://courses.coreservlets.com/hibernate-training.html">Hibernate &amp; JPA Training</a>
+<a href="http://courses.coreservlets.com/gwt-training.html">GWT Training</a>
+<a href="http://courses.coreservlets.com/servlet+jsp-training.html">Servlet &amp; JSP Training</a>
+<a href="http://courses.coreservlets.com/scwcd-training.html">SCWCD Training</a>
+<a href="http://courses.coreservlets.com/">Customized On-Site Training</a> 
+<a href="http://courses.coreservlets.com/public-courses/">Public Course Schedule</a>
+</div>
+<div id="submenu_tutorials" onmouseover="showTutorialsMenu();" onmouseout="hideTutorialsMenu();">
+<a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/">
+Tomcat &amp; Eclipse Tutorial</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/">
+JSF (JavaServer Faces)</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+&nbsp;&nbsp;&nbsp;JSF 2 Tutorial<br>&nbsp;&nbsp;&nbsp;(with Eclipse)</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">
+&nbsp;&nbsp;&nbsp;PrimeFaces Tutorial<br>&nbsp;&nbsp;&nbsp;(with Eclipse)</a>
+<a href="http://www.coreservlets.com/JSF-Tutorial/jsf1/">
+&nbsp;&nbsp;&nbsp;JSF 1 Tutorial<br>&nbsp;&nbsp;&nbsp;(with Eclipse)</a>
+<a href="http://courses.coreservlets.com/Course-Materials/java.html">
+Java 7 and Java 8 Programming Tutorial</a>
+<a href="http://www.coreservlets.com/android-tutorial/">
+Android Programming Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/ajax.html">
+Ajax Tutorial (&amp; GWT)</a>
+<a href="http://courses.coreservlets.com/Course-Materials/ajax-basics.html">
+&nbsp;&nbsp;&nbsp;Basics &amp; JavaScript</a>
+<a href="http://courses.coreservlets.com/Course-Materials/prototype.html">
+&nbsp;&nbsp;&nbsp;Prototype Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/scriptaculous.html">
+&nbsp;&nbsp;&nbsp;Scriptaculous Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/jquery.html">
+&nbsp;&nbsp;&nbsp;jQuery Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/dojo.html">
+&nbsp;&nbsp;&nbsp;Dojo Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/gwt.html">
+&nbsp;&nbsp;&nbsp;GWT Tutorial</a>
+<a href="http://www.coreservlets.com/html5-tutorial/">
+HTML5 Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/spring.html">
+Spring Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/hibernate.html">
+JPA &amp; Hibernate Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html">
+Intermediate Servlets &amp; JSP</a>
+<a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">
+Advanced Servlets &amp; JSP</a>
+<a href="http://courses.coreservlets.com/Course-Materials/java-ee.html">
+EJB3 &amp; Web Services</a>
+<a href="http://courses.coreservlets.com/Course-Materials/scwcd.html">
+SCWCD Tutorial</a>
+<a href="http://www.courses.coreservlets.com/Course-Materials/struts.html">
+Jakarta Struts Tutorial</a>
+<a href="http://courses.coreservlets.com/Course-Materials/chinese.html">
+Tutorials in Chinese</a>
+<a href="http://courses.coreservlets.com/Course-Materials/japanese.html">
+Tutorials in Japanese</a>	
+</div>
+<div id="submenu_books" onmouseover="showBooksMenu();" onmouseout="hideBooksMenu();">
+<a href="http://volume1.coreservlets.com/">Core Servlets &amp; JSP Vol I</a>
+<a href="http://volume2.coreservlets.com/">Core Servlets &amp; JSP Vol II</a>
+<a href="http://www.moreservlets.com/">More Servlets &amp; JSP</a>
+<a href="http://pdf.coreservlets.com/">Core Servlets &amp; JSP E-Book</a>
+<a href="http://pdf.moreservlets.com/">More Servlets &amp; JSP E-Book</a>
+<a href="http://resources.coreservlets.com/java-ee-books.html">Recommended Java EE Books</a>
+<a href="http://www.corewebprogramming.com/">Core Web Programming</a>
+<a href="http://www.coreservlets.com/first-edition.html">Core Servlets &amp; JSP 1st Ed.</a>
+</div>
+<div id="submenu_resources" onmouseover="showResourcesMenu();" onmouseout="hideResourcesMenu();" style="display: none;">
+<a href="http://resources.coreservlets.com/quick-summary.html">Quick Ref to APIs &amp; Docs</a>
+<a href="http://resources.coreservlets.com/jsp-docs.html">Specifications &amp; Documentation</a>
+<a href="http://resources.coreservlets.com/jsp-servers.html">Servers</a>
+<a href="http://resources.coreservlets.com/jsp-ides.html">IDEs</a>
+<a href="http://resources.coreservlets.com/j2ee-jobs.html">Java-Related Jobs</a>
+<a href="http://resources.coreservlets.com/jsf.html">JSF (JavaServer Faces)</a>
+<a href="http://resources.coreservlets.com/java-ee-books.html">Books</a>
+<a href="http://resources.coreservlets.com/jsp-hosting.html">Web Hosting Providers</a>
+<a href="http://www.apl.jhu.edu/~hall/java/">Java Programming</a>
+<a href="http://coreservlets.tradepub.com/">Free trade magazines &amp; whitepapers</a>
+</div>
+</div>
+<!-- End Drop-down Menus -->
+
+<div id="main_table">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">  
+<tbody><tr>
+<!-- Begin Left Sidebar -->
+<td id="sidebar_left" nowrap="nowrap"><!-- #BeginLibraryItem "/Library/TutorialsSideLinks.lbi" -->    <div class="sidebar_left_heading2"><a href="http://courses.coreservlets.com/Course-Materials/">free tutorials</a></div>
+<div class="list"> 
+
+<a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/">
+<span class="smallCaps">T</span>OMCAT WITH <span class="smallCaps">E</span>CLIPSE</a><br>
+
+<a href="http://www.coreservlets.com/JSF-Tutorial/">
+<span class="smallCaps">J</span>AVA<span class="smallCaps">S</span>ERVER <span class="smallCaps">F</span>ACES <span class="smallCaps">(JSF)</span></a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+<span class="smallCaps">JSF</span> <span class="smallCaps">2</span></a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">
+<span class="smallCaps">P</span>RIME<span class="smallCaps">F</span>ACES</a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/JSF-Tutorial/jsf1/">
+<span class="smallCaps">JSF</span> <span class="smallCaps">1</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/java.html">
+<span class="smallCaps">J</span>AVA <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+&nbsp;&nbsp;<a href="http://courses.coreservlets.com/Course-Materials/java.html">
+<span class="smallCaps">G</span>ENERAL <span class="smallCaps">J</span>AVA <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+&nbsp;&nbsp;<a href="http://www.coreservlets.com/java-8-tutorial/">
+<span class="smallCaps">J</span>AVA <span class="smallCaps">8</span> <span class="smallCaps">L</span>AMBDAS &amp; <span class="smallCaps">S</span>TREAMS</a><br>
+
+<a href="http://www.coreservlets.com/javascript-jquery-tutorial/">
+<span class="smallCaps">J</span>AVA<span class="smallCaps">S</span>CRIPT &amp;
+J<span class="smallCaps">Q</span>UERY<br>
+&nbsp;&nbsp; (WITH J<span class="smallCaps">Q</span>UERY <span class="smallCaps">UI</span>)
+</a><br>
+
+<a href="http://www.coreservlets.com/android-tutorial/">
+<span class="smallCaps">A</span>NDROID <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+<a href="http://www.coreservlets.com/hadoop-tutorial/">
+<span class="smallCaps">H</span>ADOOP</a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/gwt.html">
+<span class="smallCaps">GWT</span></a><br>
+
+<a href="http://www.coreservlets.com/html5-tutorial/">
+<span class="smallCaps">HTML 5</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html">
+<span class="smallCaps">I</span>NTERMEDIATE <span class="smallCaps">S</span>ERVLETS &amp; <span class="smallCaps">JSP</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">
+<span class="smallCaps">A</span>DVANCED <span class="smallCaps">S</span>ERVLETS &amp; <span class="smallCaps">JSP</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/spring.html">
+<span class="smallCaps">S</span>PRING</a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/hibernate.html">
+<span class="smallCaps">H</span>IBERNATE &amp; <span class="smallCaps">JPA</span></a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/struts.html">
+<span class="smallCaps">J</span>AKARTA <span class="smallCaps">S</span>TRUTS</a><br>
+
+<a href="http://courses.coreservlets.com/Course-Materials/scwcd.html">
+<span class="smallCaps">SCWCD</span></a><br>
+</div><!-- #EndLibraryItem --><!-- #BeginLibraryItem "/Library/TrainingSideLinks.lbi" -->      
+<div id="sidebar_left_heading"><a href="http://courses.coreservlets.com/">training courses</a></div>
+<div class="list">
+
+<a href="http://courses.coreservlets.com/about-instructor.html"><span class="smallCaps">A</span>BOUT THE <span class="smallCaps">I</span>NSTRUCTOR</a><br>
+  
+<a href="http://courses.coreservlets.com/student-reviews.html"><span class="smallCaps">C</span>OURSE <span class="smallCaps">R</span>EVIEWS</a><br>
+  
+<a href="http://courses.coreservlets.com/jsf-training.html">
+<span class="smallCaps">JSF</span> <span class="smallCaps">2</span> &amp;
+<span class="smallCaps">P</span>RIME<span class="smallCaps">F</span>ACES</a><br>
+
+<a href="http://courses.coreservlets.com/java-training.html"><span class="smallCaps">J</span>AVA  <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+<a href="http://courses.coreservlets.com/java-training.html"><span class="smallCaps">J</span>AVA 8 <span class="smallCaps">L</span>AMBDAS &amp; <span class="smallCaps">S</span>TREAMS</a><br>
+
+<a href="http://courses.coreservlets.com/javascript-jquery-training.html">
+<span class="smallCaps">J</span>AVA<span class="smallCaps">S</span>CRIPT &amp; J<span class="smallCaps">Q</span>UERY</a><br>
+
+<a href="http://courses.coreservlets.com/android-training.html"><span class="smallCaps">A</span>NDROID <span class="smallCaps">P</span>ROGRAMMING</a><br>
+
+<a href="http://courses.coreservlets.com/hadoop-training.html"><span class="smallCaps">H</span>ADOOP</a><br>
+
+<a href="http://courses.coreservlets.com/hadoop-training.html"><span class="smallCaps">R</span>ESTful
+<span class="smallCaps">W</span>EB <span class="smallCaps">S</span>ERVICES</a><br>
+
+<a href="http://courses.coreservlets.com/gwt-training.html">
+<span class="smallCaps">GWT</span></a><br>
+
+<a href="http://courses.coreservlets.com/spring-training.html"><span class="smallCaps">S</span>PRING 
+<span class="smallCaps">F</span>RAMEWORK</a><br>
+
+<a href="http://courses.coreservlets.com/hibernate-training.html"><span class="smallCaps">H</span>IBERNATE &amp; <span class="smallCaps">JPA</span></a><br>
+
+<a href="http://courses.coreservlets.com/servlet+jsp-training.html"><span class="smallCaps">S</span>ERVLETS &amp; <span class="smallCaps">JSP</span></a><br>
+
+<a href="http://courses.coreservlets.com/scwcd-training.html"><span class="smallCaps">SCWCD</span></a><br>
+
+<a href="http://courses.coreservlets.com/"><span class="smallCaps">C</span>USTOMIZED <span class="smallCaps">O</span>N-SITE</a><br>
+  
+<a href="http://courses.coreservlets.com/public-courses/"><span class="smallCaps">P</span>UBLIC <span class="smallCaps">T</span>RAINING <span class="smallCaps">S</span>CHEDULE</a><br><br>
+</div><!-- #EndLibraryItem --><br><p>&nbsp;</p>
+  </td>
+<!-- End Left Sidebar -->
+
+<!-- Begin Main Content -->
+<td id="content" colspan="7"><h1 class="content_heading" style="line-height:normal;">Tutorial: Installing Tomcat 7 and Using it with Eclipse</h1>
+
+<p>
+  This tutorial covers Tomcat 7, which supports the servlet 3.0 and JSP 2.2 specs. This means that you can also run 
+  <a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html" target="_blank">servlet/JSP</a> or
+  <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/" target="_blank">JSF</a> apps that support the latest versions.
+  I recommend Tomcat 7 over Tomcat 6 for <i>all</i> apps, since Tomcat 7 also supports
+  the older servlet 2.5 and JSP 2.1 specs. But, if you really need to use Tomcat 6, please see the <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/eclipse.html">tutorial on Eclipse with Tomcat 6</a>.
+  It takes only a short time to download Eclipse and learn the bare bones basics of using
+  it to build Web apps and deploy them to Tomcat, and all the information you need to do this is
+  described in this tutorial. This time will be very quickly recouped by the savings in development, debugging,
+  and deployment times. To get started with Web apps in Eclipse, 
+  you only need to know a <i>very</i> small number of Eclipse features. You can 
+  gradually learn the advanced Eclipse capabilities at your leisure. Also note that if you print this page, the
+  entire contents (including the expanded contents of all the accordion tabs below) will be printed.
+</p>
+<p>
+  If you find these free tutorials helpful, we would appreciate it if you would
+  <a href="http://courses.coreservlets.com/Course-Materials/link-to-us.html" target="_blank">link to us</a>. Send corrections or feedback on any tutorial to
+  <a href="mailto:hall@coreservlets.com">hall@coreservlets.com</a>.
+</p>
+
+<div class="accordion-div ui-accordion ui-widget ui-helper-reset" role="tablist">
+  <h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="0"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Summary"><b>Quick Start</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    Here is a quick summary of basic use. <i>This section is enough for most developers</i>; however, if you want more details, expand the following sections.
+  </p>
+  <ol>
+    <li><b>Install Java.</b> Download for Windows, MacOS, Linux, and Solaris from
+      <a href="http://www.oracle.com/technetwork/java/javase/downloads/" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/</a>. 
+      As of early 2013, I used JDK 1.7.0_10 and 1.6.0_35 (the latest versions at the time), but any Java 6 or 7 version will work. 
+      Servlet 3.0 containers (of which Tomcat 7 is one) require Java 6+,
+      and will not work with Java 5. You want the full JDK (with compiler), not just the JRE (for running existing apps).
+      Accept all defaults when installing. 
+      </li>
+    <li><b>Unzip Tomcat.</b>
+      Unzip <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/tomcat-7.0.34-preconfigured.zip">tomcat-7.0.34-preconfigured.zip</a>
+      into the location of your choice. I use the top level of the C drive, which results in C:\apache-tomcat-7.0.34.
+      <u>I modified the port so Tomcat runs on 80 instead of 8080</u>, and made two other small changes: enabling directory listings, and
+      making the server automatically restart when faces-config.xml or struts-config.xml changes. These changes are useful during development,
+      but only the port number change should be set for deployment servers.
+      Alternatively, you can download any Tomcat 7 version from <a href="http://tomcat.apache.org/download-70.cgi" target="_blank">the Tomcat Web site</a>
+      and then copy <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/context.xml">context.xml</a>, <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/server.xml">server.xml</a>,
+      and <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/web.xml">web.xml</a> into install_dir/conf. These files are annotated with comments
+      on what modifications were done to change the port to 80 and to enable directory listings and automatic server restarts.
+      </li>
+    <li><b>Install and start Eclipse.</b>
+      Download from <a href="http://www.eclipse.org/downloads/" target="_blank">
+        http://www.eclipse.org/downloads/</a>. Choose "Eclipse IDE for Java EE Developers", download, and unzip. 
+      As of early 2013, the latest version is Eclipse 3.8 (Juno), and is what I use as of the latest update of this tutorial. However, these instructions
+      were also tested with Eclipse 3.7 and 3.6. Double click on eclipse.exe in the eclipse folder,
+      then click on "Workbench".
+      </li>
+    <li><b>Tell Eclipse about Tomcat.</b>
+      Click on Servers tab at bottom. R-click, New, Server, Apache,
+      Tomcat v7.0, navigate to Tomcat 7 installation folder 
+      (e.g., C:\apache-tomcat-7.0.34), OK. If you don't see Servers tab, 
+      add the tab via Window, Show View, Servers.
+      </li>
+    <li><b>Run Tomcat.</b>
+      Click on Servers tab at bottom. R-click on Tomcat v7.0, choose 
+      "Start". Open http://localhost/ in a browser (or http://localhost:8080/ if you downloaded Tomcat instead of using
+      the preconfigured version, and then failed to change the port from 8080 to 80). Either way, you will see a 404 error message, but at least the message
+      comes from Tomcat. Then, copy the ROOT app as described in the next section, come back,
+      and reload http://localhost/ (or http://localhost:8080/ if using the unmodified version from the Tomcat download site). 
+      You should now see a friendly Tomcat welcome page.
+      If you get a "port 80 is already in use" message, go to the Windows Control Panel, Services, and stop
+      the other server (probably IIS).  Also, on Linux and Solaris, you
+      need admin privileges to start servers on low-numbered ports like 80.
+      So, if you use the preconfigured Tomcat version but do <i>not</i> want port 80, double click on Tomcat at the bottom and change the port from
+      80 to something else (see "HTTP/1.1" in the "Ports" section on the right). 
+      But port 80 is nicer so that you can use URLs of the
+      form http://localhost/app/blah instead of http://localhost:8080/app/blah, so using 80 should be your first choice.
+      </li>
+    <li><b>Copy the ROOT (default) Web app into Eclipse.</b>
+      Eclipse forgets to copy the default apps (ROOT, examples, docs, etc.) when it creates a Tomcat folder inside
+      the Eclipse workspace. Go to C:\apache-tomcat-7.0.34\webapps and copy the ROOT folder. Then go to your Eclipse workspace, go
+      to the .metadata folder, and search for "wtpwebapps". You should find something like 
+      C:\your-eclipse-workspace-location\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps (or .../tmp<b>1</b>/wtpwebapps
+      if you already had another server registered in Eclipse). Go to the wtpwebapps folder and paste ROOT (say "yes" if
+      asked if you want to merge/replace folders/files). Then reload http://localhost/ to see the Tomcat welcome page.
+      </li>
+    <li><b>Import and test a sample Web App.</b>
+      Grab <a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/test-app.zip">
+        test-app.zip</a>, save it, and import it into Eclipse.
+      Use File, Import, General, Existing Projects, Select archive file.
+      Then click Browse and navigate to test-app.zip.
+      Click on Servers tab at bottom. R-click on Tomcat v7.0 Server, choose
+      "Add and Remove Projects". Choose test-app project. Start Tomcat, or restart if 
+      already running. Open http://localhost/test-app/ in browser.
+      Note that this app uses the servlet 3.0 @WebServlet annotation to provide the
+      URLs for the various servlets. See the source code for details.
+      </li>
+    <li><b>Create and test a new Web App.</b>
+      File, New, Project, Web, Dynamic Web Project. Make sure that the Target runtime is
+      "Apache Tomcat v7.0". Copy HTML, JSP, and servlet files
+      from the test-app project into this new project. Deploy and test it as above.
+      </li>
+    <li><b>Tweak Eclipse preferences.</b>
+      Window, Preferences, then many options re font sizes, import and indentation styles, and so forth. 
+      At a minimum, set the JDK location: Window, Preferences, Java,
+      Installed JREs, and make sure that a JDK (not just JRE) is selected. If not, press Add, and then navigate to the base JDK folder.
+      If you develop with servlets, you probably also want to suppress unnecessary warnings about Serializable classes for servlets. 
+      Window, Preferences, Java, Compiler, Errors/Warnings, change "Serializable class without ..." to "Ignore".
+      </li>
+    <li><b>Bookmark the servlet &amp; JSP Javadocs.</b> 
+      Add <a href="http://docs.coreservlets.com/servlet-3.0-api/" target="_blank">the servlet 3.0, JSP 2.2, and EL 2.2 API</a> 
+      to your bookmarks/favorites list.
+      <!-- TODO: trick re adding Javadocs to Eclipse -->
+      </li>
+    <li><b>Learn details of developing Java-based Web apps.</b>
+      If you got through the previous steps, Eclipse and Tomcat are all set up, and
+      you are ready to start the fun part: learning how to develop real apps! For this,
+      you have two main choices:
+      <ul style="margin-top: 3px">
+        <li><a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html" target="_blank">Servlet and JSP programming.</a>
+          This is a very widely used library and is used by thousands of major sites. However, it is a bit low-level by
+          the standards of modern Web apps.</li>
+        <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/" target="_blank">JSF 2 programming.</a> JavaServer Faces version 2
+          is a higher-level and more powerful library for building Web apps. JSF is
+          even better when you add in a rich component library like
+          <a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/" target="_blank">PrimeFaces</a>.
+          JSF is recommended over servlets/JSP for most new projects. 
+          </li>
+        </ul>
+      Both servlets/JSP and JSF 2 work well on Tomcat 7.
+      </li>
+  </ol>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Install-Java"><b>Install Java</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    Download for Windows, MacOS, Linux, and Solaris from
+  <a href="http://www.oracle.com/technetwork/java/javase/downloads/" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/</a>. 
+    Get the standard edition (Java SE), not the enterprise edition (Java EE). Be sure to get the JDK (which has a compiler), not just the JRE (which
+    is for running preexisting applications). As of early 2013, I used JDK 1.7.0_10 and 1.6.0_35 (the latest versions at the time), 
+    but any Java 6 or 7 version will work. Servlet 3.0 containers 
+    (of which Tomcat 7 is one) require Java 6+, and will not work with Java 5. Once you have downloaded the installer, run it and
+    accept all default settings. There is no need to set any environment variables, but if you already had an earlier version
+    of Java installed and you had set the PATH variable (pointing at the bin subfolder) or the JAVA_HOME variable (pointing
+    at the main installation folder), it is a good idea to update them to the new version.
+  </p>
+  <p>
+    Also, please note that if you use 1.6.0_21, you also need to 
+  <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/eclipse-jdk1.6.0_21-permgen-bug.html">fix the Eclipse PermGen space error</a>
+    or Eclipse will run out of memory and crash. That is the <i>only</i> Java version where you have this problem.
+  </p>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Unzip-Tomcat"><b>Unzip Tomcat</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    Unzip <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/tomcat-7.0.34-preconfigured.zip">
+      tomcat-7.0.34-preconfigured.zip</a> into the location of your choice.
+    I use the top level of the C drive, resulting in <i>C:\apache-tomcat-7.0.34\</i>. 
+    This preconfigured version of Tomcat has the following settings already in place.
+  </p>
+  <ul style="margin-top: 4px;">
+    <li><b>The port is changed from 8080 to 80.</b> This lets you enter URLs
+      of the form <i>http://localhost/...</i> instead of <i>http://localhost:8080/...</i>. 
+      <ul>
+        <li>When you download Tomcat from the Apache site, the port is 8080 in case you already
+          have another server running on port 80.</li>
+        </ul></li>
+    <li><b>Directory listings are turned on.</b>
+      If you type a URL ending in / and there is no welcome file,
+      Tomcat shows a directory listing.
+      <ul>
+        <li>Directory listings were on by default in previous
+          Tomcat versions, but are off in the current version. They are 
+          convenient during development so you can just click on files,
+          but most developers disable them for deployed applications.</li>
+        </ul></li>
+    <li><b>Tomcat monitors struts-config.xml and faces-config.xml.</b>
+      Whenever either of these files changes, Tomcat reloads the Web
+      application. This saves you from restarting the server when
+      you change these files.
+      <ul>
+        <li>If you do not use Struts or JSF, this change will not
+          be beneficial to you. But it does not hurt either way.</li>
+        </ul></li>
+  </ul>
+  <p>Alternatively, you can download any Tomcat 7 version from <a href="http://tomcat.apache.org/download-70.cgi">the Tomcat Web site</a>
+    and then copy <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/context.xml">context.xml</a>, <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/server.xml">server.xml</a>,
+    and <a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat7-files/web.xml">web.xml</a> into install_dir/conf. These files are annotated with comments
+    on what modifications were done to change the port to 80 and to enable directory listings and automatic server restarts.
+  </p>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Install"><b>Install and Start Eclipse</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <!-- R-floated images fail in IE with small screens, so using tables instead. -->
+  <table>
+  <tbody><tr>
+  <td valign="top">
+    Go to <a href="http://www.eclipse.org/downloads/" target="_blank">
+      http://www.eclipse.org/downloads/</a>. Choose "Eclipse IDE for
+    Java EE Developers", download, and unzip. As of early 2013, the latest version is Eclipse 3.8 (Juno), and is what I use as of the latest update of this tutorial. However, these instructions were also tested with Eclipse 3.8 (Indigo) and 3.6 (Helios). 
+    Eclipse 3.5 and earlier do not have adapters for Tomcat 7, so cannot be used.
+    There is no real installer, so unzipping it is all you need to do.
+    I normally unzip into the top level of the C drive, resulting in C:\eclipse, but any location is fine.
+  <br><br>
+  <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/eclipse-shortcut.jpg" alt="Desktop Shortcut to Eclipse Juno" align="left" hspace="4">
+    Start Eclipse by going to the "bin" folder and double-clicking on eclipse.exe. I usually make a shortcut on the desktop by
+    R-clicking on eclipse.exe, selecting Copy, then going to the desktop, R-clicking, and doing Paste Shortcut. 
+  <br><br>
+    After you start Eclipse, select "Workbench" as shown on the image to the right.
+  </td>
+  <td>
+  <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/go-to-workbench-3.6.jpg" alt="Welcome Page for Eclipse" title="Welcome page for Eclipse. Click on Workbench in top right corner.">
+  </td>
+  </tr>
+  </tbody></table>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Configure-Server"><b>Tell Eclipse about Tomcat</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    First, start Eclipse and go to the Workbench as shown in the previous section.
+    Then, click on Servers tab at bottom. (If you don't see Servers tab, 
+    add the tab via Window, Show View, Servers.) R-click on Servers tab, New, 
+    Server, Apache, Tomcat v7.0, navigate to the folder where you unzipped Tomcat (e.g., <i>C:\apache-tomcat-7.0.34\</i>), OK. You should now
+    see "Tomcat v7.0 Server at localhost" listed under the Servers tab at the bottom.<br>
+  <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/eclipse-new-server-tomcat-7.jpg" alt="Eclipse Tomcat 7 Setup">
+  <br clear="all">
+  </p>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Run-Server"><b>Run Tomcat</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <table>
+  <tbody><tr>
+  <td valign="top">
+  <p>
+    Click on Servers tab at bottom. R-click on Tomcat v7.0, choose 
+  "Start". 
+    Open http://localhost/ in a browser (or http://localhost:8080/ if you downloaded Tomcat instead of using
+    the preconfigured version, and then failed to change the port from 8080 to 80). Either way,
+    you will see a 404 error message, but at least the message
+    comes from Tomcat. Then, copy the ROOT app as described in the next section, come back,
+    and reload http://localhost/ (or http://localhost:8080/ if using the unmodified version from the Tomcat download site). 
+    You should now see a friendly Tomcat welcome page.
+  </p>
+  <p>
+    If you fail to copy the ROOT files as mentioned below, http://localhost/ will
+    result in a 404 error. But, the error page comes from Tomcat, so it shows
+    that Tomcat is running. The problem is that Eclipse doesn't copy the default
+    Web application to the Eclipse/Tomcat folder. However, if you copy the ROOT files as described in
+    the next section, http://localhost/ will give the nice friendly "Welcome to Tomcat" page. 
+  </p>
+  <p>
+    If you get a "port 80 is already in use" message, that means you have another server already using
+    port 80 (probably IIS).
+    To stop the other server, go to the Control Panel, Services, and stop
+    it from there. Or, double click on Tomcat at the bottom of the Eclipse window and change the HTTP/1.1 port (see the upper right)
+    from 80 to something else. But using port 80 is nicer, so it is better to stop the other server instead of changing the Tomcat port.
+  </p>
+  <p>
+    It is also easy to start and stop Tomcat manually, without using Eclipse. Just go to the "bin" folder
+    of the Tomcat installation directory (e.g., C:\apache-tomcat-7.0.34\bin) and double click on startup.bat and shutdown.bat.
+    You can also manually deploy WAR files to the "webapps" folder of the Tomcat installation directory.
+    However, doing everything in Eclipse is <i>much</i> more convenient because Eclipse automatically sends over
+    changes as you modify files.
+  </p>
+  </td>
+  <td>
+  <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/eclipse-start-server.jpg" alt="Start Tomcat 7 from Eclipse">
+  </td>
+  </tr>
+  </tbody></table>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="ROOT"><b>Copy the ROOT (Default) Web App into Eclipse.</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    Eclipse forgets to copy the default apps (ROOT, examples, etc.) when it creates a Tomcat folder inside
+    the Eclipse workspace. Go to C:\apache-tomcat-7.0.34\webapps, R-click on the ROOT folder and copy it. Then go to your Eclipse workspace, go
+    to the .metadata folder, and search for "wtpwebapps". You should find something like 
+  <i>your-eclipse-workspace</i>\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps (or .../tmp<b>1</b>/wtpwebapps
+    if you already had another server registered in Eclipse). Go to the wtpwebapps folder, R-click, and paste ROOT (say "yes" if
+    asked if you want to merge/replace folders/files). Then reload http://localhost/ to see the Tomcat welcome page.
+  </p>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Import-App"><b>Import and Test a Sample App</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <table>
+  <tbody><tr>
+  <td valign="top">
+  <p>
+    Grab <a href="http://courses.coreservlets.com/Course-Materials/servlet+jsp-code/test-app.zip">
+      test-app.zip</a> and save it. Import it into Eclipse with
+    File, Import, General, Existing Projects, Select archive file.
+    Then click Browse and navigate to test-app.zip. Note
+    that this app uses the @WebServlet annotation to give URL patterns
+    to servlets, and will only run in Tomcat 7 or other servlet 3.0 containers.
+    It will <i>not</i> run in Tomcat 6.
+  </p>
+  <p>
+    Click on Servers tab at bottom. R-click on Tomcat v7.0 Server, choose
+  "Add and Remove Projects". Choose test-app. Start Tomcat, or restart it if 
+    already running (R-click on Tomcat and choose either "Start" or "Restart"). 
+    Try the following URLs in a browser:
+  </p>
+  <ul>
+    <li><b>http://localhost/test-app/</b>
+      Welcome page showing links to pages and servlets below.</li>
+    <li><b>http://localhost/test-app/hello.html</b>
+      Simple HTML page.</li>
+    <li><b>http://localhost/test-app/hello.jsp</b>
+      Simple JSP page.</li>
+    <li><b>http://localhost/test-app/hello</b>
+      The HelloWorld servlet that generates plain text.</li>
+    <li><b>http://localhost/test-app/test1</b>
+      The TestServlet that generates 
+      HTML, accessed via the URL given in the @WebServlet 
+      annotation in the Java source code.</li>
+    <li><b>http://localhost/test-app/test2</b>
+      The TestServlet, accessed via
+      the URL given in the web.xml file.</li>
+  </ul>
+  </td>
+  <td>
+    <table>
+      <tbody><tr>
+        <td>
+          <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/Eclipse-Import1.jpg" alt="Eclipse Import Project 1">
+          </td></tr>
+      <tr>
+        <td>
+          <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/Eclipse-Import2.jpg" alt="Eclipse Import Project 2">
+          </td></tr>
+      </tbody></table>
+  </td>
+  </tr>
+  </tbody></table>
+  
+  
+  
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="New-App"><b>Create a New Web App in Eclipse</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <table>
+  <tbody><tr>
+    <td valign="top">
+      <br>
+      <ul>
+        <li><b>Make empty project.</b>
+          <ul>
+            <li>File, New, Project, Web, Dynamic Web Project. Eclipse remembers the recent project types,
+              so once you do this once, you can just do File, New, Dynamic Web Project.</li>
+            <li>For "Target Runtime", choose "Apache Tomcat v7.0"</li>
+            <li>Give it a name (e.g., "test").</li>
+            <li>Accept all other defaults.</li>
+            </ul></li>  
+        </ul>
+      </td>
+    <td>
+      <table>
+        <tbody><tr><td><img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/Eclipse-New-Project1.jpg" alt="Eclipse New Project 1"></td></tr>
+        <tr><td><img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/eclipse-new-project-tomcat-7.jpg" alt="Eclipse New Project 2"></td></tr>
+        </tbody></table>
+      </td>
+  </tr>
+  </tbody></table>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Adding-Code"><b>Add Code to New Apps in Eclipse</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    Here is a quick summary of the most commonly used folders in Dynamic Web Projects in Eclipse.
+  </p>
+  <table>
+  <tbody><tr>
+    <td valign="top">
+      <br>
+      <ul>
+        <li><b>WebContent.</b><br>
+          Regular Web files (HTML, JavaScript, CSS, JSP, images, etc.)</li>
+        <li><b>WebContent/some-subdirectory</b><br>
+          Web files in subdirectory.</li>
+        <li><b>WebContent/WEB-INF</b><br>
+          web.xml. This deployment descriptor be used for servlet mappings and many other tasks.
+          However, this file can be <i>completely</i> omitted in servlet 3.0 apps,
+          since servlet mappings can be done via the @WebServlet annotation
+          in the Java source code.</li>
+        <li><b>WebContent/WEB-INF/lib</b><br>
+          JAR files specific to application.</li>
+        <li><b>src/testPackage</b><br>
+          Java code in testPackage package. Make a package by R-clicking on "Java Resources: src"
+          and doing New, package. Always make packages: use of the default package is strongly discouraged in Web apps.</li> 
+        <li><b>Note:</b><br>
+          You can cut/paste or drag/drop existing files into the appropriate locations.</li> 
+        </ul>
+      </td>
+    <td>
+      <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/eclipse-test-project-layout.jpg" alt="Eclipse Project Layout">
+      </td>
+  </tr>
+  </tbody></table>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Testing-New-Apps"><b>Test New Apps in Eclipse</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    Follow same procedure as given in example above with "test-app" app:
+    Click on Servers tab at bottom. R-click on Tomcat v7.0 Server, choose
+  "Add and Remove Projects". Choose app. Start Tomcat, or restart if
+    already running. Open http://localhost/<i>appName</i>/ in browser.
+    You must restart the server after adding a new project. To do so, R-click
+    server and choose "Restart".
+  </p>
+  <p>For details on writing servlets, giving them custom URLs, using JSP, applying the MVC architecture,
+    creating JSP custom tag libraries, and many other servlet and JSP topics, please see 
+  <a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html">the servlet and JSP programming tutorial</a>.
+    You might also consider JSF 2, a higher-level and much more powerful library that is a standard part of Java EE 6, but
+    that also runs fine in Tomcat and other servlet/JSP containers. For details, please see
+  <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">the JSF 2 programming tutorial</a>.
+  </p>
+</div> <!-- Accordion content -->
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Preferences"><b>Adjust Eclipse Preferences</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <table>
+  <tbody><tr>
+  <td valign="top">
+  <p>
+    There are many customizations you can do in Eclipse. You can adjust the font size, colors,
+    indentation styles, import statement formats, and much much more. Go to Window, Preferences and browse around.
+  </p>
+  <p>
+    At a minimum, set the JDK location: Window, Preferences, Java,
+    Installed JREs, and make sure that a JDK (not just JRE) is selected. If not, press Add, and then navigate to the base JDK folder.
+    Another customization you almost always want to do is to suppress the unneeded warning re serialVersionUID on Serializable classes.
+    The HttpServlet class is already Serializable, but nobody actually sends instances across the network or writes them to disk,
+    and certainly almost nobody puts in a serialVersionUID field in servlets. But, if Eclipse marks every servlet with a warning,
+    you get in the very bad habit of ignoring warnings. Most of the warnings are actually useful; this is a rare exception. So,
+    go to Window, Preferences, Java, Compiler, Errors/Warnings, expand "Potential programming problems", 
+    and change "Serializable class without serialVersionUID" to "Ignore".
+  </p>
+  </td>
+  <td>
+  <img src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/eclipse-serialization-warning.jpg" alt="Suppressing Serialization Warning in Eclipse" title="Suppressing Serialization Warning in Eclipse">
+  </td>
+  </tr>
+  </tbody></table>
+</div>
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a name="Accessing-Javadocs"><b>Access the Servlet and JSP Javadocs</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"> <!-- Accordion content -->
+  <p>
+    The single most useful reference for a servlet and JSP developer is the online API. 
+    Sadly, as of mid-2012, there was no online version of the servlet 3.0 and JSP 2.2 Javadocs, and
+    browsing the massive <a href="http://docs.oracle.com/javaee/6/api/" target="_blank">Java EE 6 API</a>
+    is much more difficult because the servlet and JSP classes get lost
+    in the crowd. So, I generated the API from the <a href="http://tomcat.apache.org/download-70.cgi" target="_blank">Tomcat 7 source code</a>.
+    You can access the result at
+  <a href="http://docs.coreservlets.com/servlet-3.0-api/" target="_blank">http://docs.coreservlets.com/servlet-3.0-api/</a>.
+    And, if you haven't already done so long ago, bookmark the
+  <a href="http://docs.oracle.com/javase/7/docs/api/" target="_blank">Java SE 7 API</a> or
+  <a href="http://docs.oracle.com/javase/6/docs/api/" target="_blank">Java SE 6 API</a>.
+  <!-- TODO: trick re adding Javadocs to Eclipse -->
+  </p>
+</div>
+
+<h1 class="book_part ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1"><span class="ui-icon ui-icon-triangle-1-e"></span><a class="accordionLink" href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html#More-Info" name="More-Info"><b>More Information</b></a></h1>
+<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;"><!-- #BeginLibraryItem "/Library/MoreInfoTable.lbi" --><table align="center">
+
+<tbody><tr valign="top"><td> <!-- Left column -->
+<fieldset><legend>Java</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://docs.oracle.com/javase/7/docs/api/" target="_blank">Java SE 7 API</a></li>
+  <li><a href="http://download.java.net/jdk8/docs/api/" target="_blank">Java SE 8 API</a></li>
+  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java SE Downloads for Windows, Linux, &amp; Solaris</a></li>
+  <li><a href="http://support.apple.com/kb/DL1573" target="_blank">Java SE Downloads for MacOS 10.6</a></li>      
+  <li><a href="http://docs.oracle.com/javaee/6/api/" target="_blank">Java EE 6 API.</a>
+		  Includes the servlet 3.0, JSP 2.2, and JSF 2.0 APIs.</li>	 
+  <li><a href="http://www.oracle.com/technetwork/java/javaee/tech/index.html" target="_blank">Java EE 6 Technologies.</a>
+		  Includes servlet 3.0, JSP 2.2, JSTL 1.2, and JSF 2.0 specifications</li>
+  <li><a href="http://download.oracle.com/javaee/5/api/" target="_blank">Java EE 5 API.</a>
+		  Includes the servlet 2.5, JSP 2.1, and JSF 1.1 APIs.</li>		
+  <li><a href="http://courses.coreservlets.com/Course-Materials/java.html">
+      Java 7 Programming Tutorial</a></li>
+  <li><a href="http://www.coreservlets.com/java-8-tutorial/">
+      Java 8 Tutorial: Lambdas, Streams, &amp; More</a></li>
+  <li><a href="http://courses.coreservlets.com/java-training.html">
+      Java 7 &amp; 8 Training Courses</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#java">
+      Recommended Java Programming Books</a></li>
+  <li><a href="http://www.apl.jhu.edu/~hall/java/" target="_blank">
+      General Java Programming Resources</a></li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>JSF (JavaServer Faces)</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+      JSF 2 Tutorial (with Eclipse)</a></li>
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">
+      PrimeFaces Tutorial</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/" target="_blank">JSF 2.1 Documentation Home</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/javadocs/index.html" target="_blank">JSF 2.1 Java API</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/vdldocs/facelets/index.html" target="_blank">JSF 2.1 Facelets Tags API</a></li>    
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.1/managed-bean-javadocs/index.html" target="_blank">JSF 2.1 Managed Beans Annotations API</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.0/javadocs/index.html" target="_blank">JSF 2.0 Java API</a></li>
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.0/vdldocs/facelets/index.html" target="_blank">JSF 2.0 Facelets Tags API</a></li>    
+  <li><a href="http://javaserverfaces.java.net/nonav/docs/2.0/managed-bean-javadocs/index.html" target="_blank">JSF 2.0 Managed Beans Annotations API</a></li>
+  <li><a href="http://javaserverfaces-spec-public.java.net/" target="_blank">JSF 2 Specifications</a></li>
+  <li><a href="http://primefaces.org/" target="_blank">PrimeFaces Home Page</a></li> 
+  <li><a href="http://www.jboss.org/richfaces" target="_blank">RichFaces Home Page</a></li>
+  <li><a href="http://docs.oracle.com/cd/E17802_01/j2ee/j2ee/javaserverfaces/1.2/docs/api/" target="_blank">JSF 1.2 Java API</a></li>
+  <li><a href="http://docs.oracle.com/javaee/5/javaserverfaces/1.2/docs/tlddocs/" target="_blank">JSF 1.2 Tag Library API</a></li>
+  <li><a href="http://wiki.apache.org/myfaces/" target="_blank">Apache MyFaces Documentation</a></li>
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">
+      JSF 2 Tutorial (plus PrimeFaces Intro)</a> </li>
+  <li><a href="http://www.coreservlets.com/JSF-Tutorial/jsf1/">
+      JSF 1 Tutorial.</a></li>
+  <li><a href="http://courses.coreservlets.com/jsf-training.html">
+      JSF 2.<i>x</i> Training Courses (optionally with PrimeFaces)</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#jsf">
+      Recommended JSF Books</a></li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>Servlets &amp; JSP</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://docs.coreservlets.com/servlet-3.0-api/" target="_blank">Servlet 3.0, JSP 2.2, and EL 2.2 API.</a> 
+		 Supported by Tomcat 7.<i>x</i>.</li>
+  <li><a href="http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html" target="_blank">Tutorial on setting up Tomcat 7 and Integrating it with Eclipse</a></li>
+  <li><a href="http://docs.oracle.com/cd/E17802_01/products/products/servlet/2.5/docs/servlet-2_5-mr2/" target="_blank">Servlet 2.5 API.</a> 
+		 Supported by Tomcat 6.<i>x</i>.</li>
+  <li><a href="http://docs.oracle.com/cd/E17802_01/products/products/jsp/2.1/docs/jsp-2_1-pfd2/" target="_blank">JSP 2.1 API.</a>
+		 Supported by Tomcat 6.<i>x</i>.</li>
+  <li><a href="http://jakarta.apache.org/tomcat/tomcat-5.5-doc/servletapi/" target="_blank">Servlet 2.4 API.</a>
+		 Supported by Tomcat 5.<i>x</i> and 6.<i>x</i>.</li>
+  <li><a href="http://jakarta.apache.org/tomcat/tomcat-5.5-doc/jspapi/" target="_blank">JSP 2.0 API.</a>
+		 Supported by Tomcat 5.<i>x</i> and 6.<i>x</i>.</li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/csajsp2.html">
+      Beginning/Intermediate Servlet and JSP Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/msajsp.html">
+      Advanced Servlet and JSP Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/servlet+jsp-training.html">
+      Servlet and JSP Training Courses</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#servlets+jsp">
+      Recommended Servlet &amp; JSP Books</a></li>
+</ul>
+</fieldset>
+
+</td>
+<td> <!-- Right column -->
+<fieldset><legend>Ajax, GWT, &amp; JavaScript</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://code.google.com/webtoolkit/overview.html" target="_blank">Top-Level GWT Docs Page</a></li>
+  <li><a href="http://google-web-toolkit.googlecode.com/svn/javadoc/1.5/index.html" target="_blank">GWT Java API</a></li>
+  <li><a href="http://www.w3schools.com/jsref/" target="_blank">JavaScript Reference: Core Objects</a></li>
+  <li><a href="http://www.w3schools.com/htmldom/dom_reference.asp" target="_blank">JavaScript Reference: HTML DOM</a></li>
+  <li><a href="http://docs.jquery.com/Main_Page" target="_blank">jQuery API</a></li>
+  <li><a href="http://jqueryui.com/demos/" target="_blank">jQuery UI Docs</a></li>
+  <li><a href="http://github.com/madrobby/scriptaculous/wikis" target="_blank">Script.aculo.us API</a></li>
+  <li><a href="http://www.prototypejs.org/api" target="_blank">Prototype API</a></li>
+  <li><a href="http://api.dojotoolkit.org/" target="_blank">Dojo API</a></li>
+  <li><a href="http://extjs.com/deploy/dev/docs/" target="_blank">Ext JS API</a></li>
+  <li><a href="http://developer.yahoo.com/yui/docs/" target="_blank">YUI API</a></li>
+  <li><a href="http://code.google.com/closure/" target="_blank">Google Closure Home</a></li>       
+  <li><a href="http://courses.coreservlets.com/Course-Materials/ajax.html">
+      Ajax Tutorial (includes jQuery, Dojo, and other JavaScript Frameworks)</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/gwt.html">
+      GWT 2 Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/ajax-training.html">
+      Ajax Training Courses (with jQuery, etc.)</a></li>
+  <li><a href="http://courses.coreservlets.com/gwt-training.html">
+      GWT 2 Training Courses</a></li>
+  <li>Recommended Ajax-Related Books: 
+      <a href="http://resources.coreservlets.com/java-ee-books.html#ajax">Ajax</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#gwt">GWT</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#javascript">Core JavaScript</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#javascript-frameworks">JavaScript Frameworks</a>,
+      <a href="http://resources.coreservlets.com/java-ee-books.html#html+css">HTML, XHTML, &amp; CSS</a>.</li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>Spring, Hibernate, &amp; JPA</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://static.springsource.org/spring/docs/3.0.x/javadoc-api/" target="_blank">Spring 3.0 API</a></li>
+  <li><a href="http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/" target="_blank">Spring 3.0 Reference Manual</a></li>      
+  <li><a href="http://static.springframework.org/spring/docs/2.5.x/api/index.html" target="_blank">Spring 2.5 API</a></li>
+  <li><a href="http://static.springframework.org/spring/docs/2.5.x/reference/index.html" target="_blank">Spring 2.5 Reference Manual</a></li>
+  <li><a href="http://static.springframework.org/spring/docs/2.5.x/reference/index.html" target="_blank">Top-Level Hibernate Docs Page</a></li>
+  <li><a href="http://docs.oracle.com/javaee/5/api/javax/persistence/package-summary.html" target="_blank">JPA API</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/spring.html">
+      Spring Framework Tutorial</a></li>
+  <li><a href="http://courses.coreservlets.com/spring-training.html">
+      Spring Training Courses</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/hibernate.html">
+      Hibernate and JPA Tutorial</a></li>  
+  <li><a href="http://courses.coreservlets.com/hibernate-training.html">
+      Hibernate Training Courses</a></li> 
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#spring">
+      Recommended Spring Books</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#hibernate">
+      Recommended Hibernate Books</a></li>
+</ul>
+</fieldset>
+<br>
+<fieldset><legend>Struts</legend>
+<ul style="margin-top: 5px; margin-bottom: 5px">
+  <li><a href="http://struts.apache.org/1.x/userGuide/index.html" target="_blank">Struts 1.x Developer and User Guides</a></li>
+  <li><a href="http://struts.apache.org/struts-action/struts-core/apidocs/index.html" target="_blank">Struts 1.x API</a></li>
+  <li><a href="http://struts.apache.org/2.x/" target="_blank">Struts 2 Overview</a></li>
+  <li><a href="http://struts.apache.org/2.x/docs/guides.html" target="_blank">Struts 2 Developer's Guide</a></li>
+  <li><a href="http://struts.apache.org/2.x/struts2-core/apidocs/index.html" target="_blank">Struts 2 API</a></li>
+  <li><a href="http://courses.coreservlets.com/Course-Materials/struts.html">
+      Struts Tutorial</a></li>
+  <li><a href="http://resources.coreservlets.com/java-ee-books.html#struts">
+      Recommended Struts Books</a></li>
+</ul>
+</fieldset>
+</td>
+</tr></tbody></table><!-- #EndLibraryItem --><br>
+</div>  <!-- Accordion content for more-info -->
+
+</div>  <!-- Overall accordion-div -->
+		
+
+
+</td>
+<!-- End Main Content -->
+
+<!-- Begin Right Sidebar -->
+<td id="sidebar_right" nowrap="nowrap">
+<div style="border-right: #533859 1px solid; border-left: #533859 1px solid; border-bottom: #533859 2px solid;">
+<div id="announcements"><font color="yellow">2016 Courses</font></div>
+
+<p id="announcements_intro">
+Too few developers for<br>
+onsite courses? Try<br>
+our public courses in MD,<br>
+co-sponsored by Johns<br>
+Hopkins "Engineering<br>
+for Professionals"<br>
+<br>
+<font color="red">&nbsp;&nbsp;2016 Spring Schedule</font>
+</p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/java/">
+Java Programming:<br>A Crash Course</a></p>
+<p class="course_info"><font color="blue">February 1-5 2016</font></p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/java8/">
+Java 8 Mini-Course:<br>
+Lambdas &amp; Streams</a></p>
+<p class="course_info"><font color="blue">February 9-11 2016</font></p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/jsf2/">
+JSF2: Modern Web <br>Apps in Java</a><br>
+(with PrimeFaces)</p>
+<p class="course_info"><font color="blue">February 22-26 2016</font></p>
+
+<p class="course_title">
+<a href="http://courses.coreservlets.com/public-courses/hadoop/">
+Hadoop: Big-Data<br>Apps in the Cloud</a></p>
+<p class="course_info"><font color="blue">March 7-11 2016</font></p>
+
+<p class="course_title"><a href="http://courses.coreservlets.com/">
+Customized<br>
+On-Site Courses</a>
+</p>
+<p class="course_info"><font color="blue">Training at<br> <i>YOUR</i> Location</font><br>
+&nbsp;• Customized content<br>
+&nbsp;• Flexible dates<br>
+&nbsp;• Any country</p>
+</div><p>&nbsp;</p>
+</td>
+<!-- End Right Sidebar -->
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td id="copyright" colspan="7">
+© 2015 coreservlets.com 
+| Design by <a href="http://www.tbiq.com/designedby.html" target="_blank">TBIQ</a> 
+| Java hosting from <a href="http://www.kattare.com/hosting-pricing-chart.kvws?ref=martyhall" target="_blank">Kattare</a></td>
+<td>&nbsp;</td>
+</tr>  
+</tbody></table>
+</div>
+
+<script type="text/javascript" async="" src="./Tutorial_ Configuring and Using Apache Tomcat 7 with Eclipse_files/1e6ab715a3a95d4603.js"></script></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>
