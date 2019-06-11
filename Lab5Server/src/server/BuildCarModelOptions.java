@@ -24,30 +24,24 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 
 	////////// INSTANCE METHODS //////////
 
-	public Automobile buildAuto(Object obj) {
-    	try {
-    		Properties props = (Properties) obj;
-        	auto = new FileIO().buildAutoProperties(props);
-    	}
-		catch (ClassCastException e) {
-			auto = new FileIO().buildAutoText((StringBuffer) obj);
-		}
-    	return auto;
-	}
 	
 	public Object processRequest(Object obj) {
 		Object toClient = null;
-
+		
 		if (state == REQUEST_BUILD_AUTO) {
-			auto = buildAuto(obj);
-	    	new BuildAuto().addAuto(auto);
+			try {
+	    		Properties props = (Properties) obj;
+				buildAuto(obj,1);
+	    	}
+			catch (ClassCastException e) {
+				buildAuto(obj,2);
+			}
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";
-			//this.state = WAITING;
+			this.state = WAITING;
 		}
 		else if (state == REQUEST_CONFIGURE_AUTO) {
 			Automobile a = new BuildAuto().getAuto( (String) (obj));
-			
 			toClient = a;
 		}
 

@@ -23,7 +23,19 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private static AutoLHM<Automobile> cars = new AutoLHM<Automobile>();
 	private static int [] error;
 	private String errorFile = "errorFile.txt";
-
+	public void buildAuto(Object obj, int type) {
+		Automobile auto = null;
+    	switch(type){
+    		case 1:
+    			auto = new FileIO().buildAutoProperties( (Properties) obj);
+    			break;
+    		case 2:
+    			auto = new FileIO().buildAutoText((StringBuffer) obj);
+    			break;
+    	}
+    	cars.adding(auto);
+	}
+	
 	public String avaliableAuto() {
 		return cars.getAllCar();
 	}
