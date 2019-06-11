@@ -1,0 +1,24 @@
+Port 8080 - default port for tomcat.
+Container - configure a car - (5 objectS) --> Tomcat
+	
+	1 request per hour.
+	Demand --> rps increases
+	Performance (response time) should not be compromised.
+	Scalability
+
+	Tomcat --> Container
+
+install software in each container.
+----------------
+Cluster n instances of Tomcat.
+-----
+Tomcat
+---
+OS
+
+Containerizing their app.	
+	
+[OS + Runtime engine + code] - image
+
+Kubernetes <--Deployment of containers.
+
