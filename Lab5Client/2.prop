@@ -21,15 +21,15 @@ BasePrice=36200
 2a1=0
 2b=Single-Speed Fixed Gear
 2b1=200
-3Tires
+3=Tires
 30=2
 3a=18''
 3a1=0
 3b=19''
 3b1=200
-4Wheels
+4=Wheels
 40=2
 4a=Normal
 4a1=0
-4baSport Alloy
+4b=Sport Alloy
 4b1=200

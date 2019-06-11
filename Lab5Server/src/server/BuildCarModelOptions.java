@@ -29,12 +29,13 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 		Object toClient = null;
 		
 		if (state == REQUEST_BUILD_AUTO) {
+			CreateAuto a = new BuildAuto();
 			try {
 	    		Properties props = (Properties) obj;
-				buildAuto(obj,1);
+				a.buildAuto(obj,1);
 	    	}
 			catch (ClassCastException e) {
-				buildAuto(obj,2);
+				a.buildAuto(obj,2);
 			}
 			toClient = "Automobile object successfully added to database\n"
 					+ "Press any key to return to main menu";

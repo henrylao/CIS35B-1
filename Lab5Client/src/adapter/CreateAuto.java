@@ -11,6 +11,6 @@ package adapter;
 
 public interface CreateAuto {
 	public void BuildAuto(String filename);
-	public String printAuto(String modelname);
 	public void buildAuto(Object obj, int type);
+	public String printAuto(String modelname);
 }
