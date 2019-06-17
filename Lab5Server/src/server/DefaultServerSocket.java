@@ -24,7 +24,7 @@ public class DefaultServerSocket extends Thread implements Debuggable, Runnable 
 	public void run() {
 		Socket clientSocket = null;
 		try {
-			this.server = new ServerSocket(port); 
+			server = new ServerSocket(port); 
 		}
 		catch (IOException e) {
 			System.out.println("Could not listen on port " + port + " ... ");
