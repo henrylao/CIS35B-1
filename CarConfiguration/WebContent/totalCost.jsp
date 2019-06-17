@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Pricing</title>
 </head>
-<body  BGCOLOR="#FDF5E6">
+<body BGCOLOR="#FDF5E6">
 <h1 ALIGN="CENTER" >Price</h1>
 <%!
 public int add(int a, int b){

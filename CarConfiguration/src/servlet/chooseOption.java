@@ -29,9 +29,7 @@ public class chooseOption extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		out.println("Request ");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -44,23 +42,22 @@ public class chooseOption extends HttpServlet {
 	    out.println(headWithTitle(title) +
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
 	                "<H1 ALIGN=\"CENTER\">" + title + "</H1>\n" +
-	                "<TABLE BORDER=1 ALIGN=\"CENTER\">\n" +
+	                "<form action=\"/CarConfiguration/totalCost.jsp\" ALIGN=\"right\">"+
+	                "<TABLE BORDER=2 ALIGN=\"CENTER\">\n" +
 	                "<TR BGCOLOR=\"#FFAD00\">\n");
 	    String [] arr = {"1","2","3"};
 	    String [] arr1 = {"5","2","3"};
 	    out.println("<TR><TD>" + "first" + "<TD><select>");
 	    for(int i = 0; i < arr.length; i++) {
-	    	out.println("<option>" + arr[i]+"</option><br>");
+	    	out.println("<option>" + arr[i]+"</option>");
 	    }
-	    out.println("<TR><TD>" + "last" + "<TD><select>");
+	    out.println("</TR><tr><TD>" + "last" + "<TD><select>");
 	    for(int i = 0; i < arr.length; i++) {
 	    	out.println("<option>" + arr1[i] +"</option>");
 	    }
-	    out.println("</select></TABLE>");
-	    out.println("<form action=\"totalCost.jsp\" ALIGN=\"CENTER\">");
-		out.println("<input type=\"submit\" value=\"OK\"/> ");
-		out.println("</form>\n");
-		out.println("</BODY></HTML>");
+	    out.println("</select></tr>");
+	    out.println("<td colspan=2 align=right><input  align=center type=\"submit\" value=\"Done\"></td>");
+		out.println("</form></TABLE></BODY></HTML>");
 	}
 
 }

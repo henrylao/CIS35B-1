@@ -39,23 +39,7 @@ public class carList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		out.println("Request ");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		/*
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		String name = request.getParameter("name");
-		HttpSession session = request.getSession();
-		ServletContext context = request.getServletContext();
-		if(name!="" && name !=null) {
-			session.setAttribute("saveUserName", name);
-			context.setAttribute("saveUserName", name);
-		}
-		out.println("\nRequest " + name);
-		out.println("\nSession  " + (String) session.getAttribute("saveUserName"));
-		out.println("\nContext  "+ (String) context.getAttribute("saveUserName"));
-		*/
+		doPost(request, response);
 	}
 
 	/**
@@ -77,17 +61,13 @@ public class carList extends HttpServlet {
 	    out.println(headWithTitle(title) +
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
 	                "<H1 ALIGN=\"CENTER\">" + title + "</H1>");
-	    out.println("<form method=\"post\" action=\"chooseOption\"  ALIGN=\"CENTER\">");
+	    out.println("<form method=\"post\" action=\"/CarConfiguration/chooseOption\"  ALIGN=\"CENTER\">");
 	    String [] arr = {"1","2","3"};
 	    for(int i = 0; i < arr.length; i++) {
-	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + i + "\">" + i + "</input>");
-	    }
-	    
-	    
-	    out.println("<input type=\"submit\" value=\"OK\"/> ");
-		out.println("</form>\n");
-		out.println("</BODY></HTML>");
-
+	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + i + "\" checked>" + i + "</input>");
+	    }  
+	    out.println("<p><input align=center type=\"submit\" value=\"Yes\"></p>");
+		out.println("</form></BODY></HTML>");
 		/*
 		PrintWriter out = response.getWriter();
 		String userName = request.getParameter("userName");		

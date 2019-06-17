@@ -6,7 +6,15 @@
     <servlet-class>servlet.carList</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>xmlServlet</servlet-name>
+    <servlet-name>carList</servlet-name>
     <url-pattern>/carList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>chooseOption</servlet-name>
+    <servlet-class>servlet.chooseOption</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chooseOption</servlet-name>
+    <url-pattern>/chooseOption/</url-pattern>
   </servlet-mapping>
 </web-app>
