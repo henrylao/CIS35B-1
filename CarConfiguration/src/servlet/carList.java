@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import adapter.BuildAuto;
-import client.AutoClient;
-import server.AutoServer;
 
 /**
  * Servlet implementation class carList
@@ -35,6 +33,14 @@ public class carList extends HttpServlet {
 				"<HEAD><TITLE>" + title + "</TITLE></HEAD>\n");
 	}
 	
+	public void init(ServletConfig config) throws ServletException {
+//		 String host = "127.0.0.1";
+//		 AutoServer serve = new BuildAuto();
+//		 serve.serve(7777);
+//		 AutoClient client = new BuildAuto();
+//		 client.client(host, 7777);
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -48,13 +54,8 @@ public class carList extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 String host = "127.0.0.1";
-		 AutoServer serve = new BuildAuto();
-		serve.serve(7777);
-		AutoClient client = new BuildAuto();
-		client.client(host, 7777);
-		 */
+		
+		
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    String title = "Car List";

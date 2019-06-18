@@ -13,7 +13,7 @@ import client.AutoClient;
 
 public class ClientDriver {
 	public static void main(String[] args) {
-		int port = 6666;
+		int port = 7777;
 		//String host = "10.44.3.26";
 		String host = "127.0.0.1";
 		AutoClient client = new BuildAuto();

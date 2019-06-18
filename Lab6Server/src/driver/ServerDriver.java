@@ -13,7 +13,7 @@ import server.AutoServer;
 
 public class ServerDriver {
 	public static void main(String[] args) {
-		int port = 6666;
+		int port = 7777;
 		AutoServer serve = new BuildAuto();
 		serve.serve(port);
 	}
