@@ -8,22 +8,26 @@
 </head>
 <body BGCOLOR="#FDF5E6">
 <h1 ALIGN="CENTER" >Price</h1>
-<%!
-public int add(int a, int b){
-	return a + b;
-}
-%>
+<%@ page import="javax.servlet.http.HttpSession" 
+	import="model.Automobile" 
+	import="java.io.ObjectOutputStream" 
+	import="java.io.ObjectInputStream" %>
+
+request.
 <%
-int i = 1;
+Automobile car = (Automobile) request.getAttribute("car");
+ObjectOutputStream o = (ObjectOutputStream) session.getAttribute("out");
+ObjectInputStream i = (ObjectInputStream) session.getAttribute("in");
+%>
+
+<%
 int j =2;
-int k;
-k = i + j;
+int in = 0;
+int k = in + j;
 //out.println("value of k is "+k);
 %>
 <br>
-<%
-k = add(123,345);
-%>
+
 The value of k is: <%=k %>??
 </body>
 </html>

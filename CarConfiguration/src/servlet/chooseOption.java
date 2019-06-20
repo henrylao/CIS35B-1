@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -10,10 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import adapter.BuildAuto;
-//import adapter.CreateAuto;
-//import model.Automobile;
-//import server.AutoServer;
+import model.Automobile;
 
 /**
  * Servlet implementation class chooseOption
@@ -27,7 +26,7 @@ public class chooseOption extends HttpServlet {
 		    "Transitional//EN\">";
 
 	public static String headWithTitle(String title) {
-		return(DOCTYPE + "\n" +
+		return (DOCTYPE + "\n" +
 				"<HTML>\n" +
 				"<HEAD><TITLE>" + title + "</TITLE></HEAD>\n");
 	}
@@ -42,14 +41,19 @@ public class chooseOption extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
 		HttpSession session = request.getSession();
-
-//		server = (AutoServer) session.getAttribute("server");
-	    String carName = request.getParameter("carName");
-
-//		CreateAuto a = (CreateAuto) server.getAuto(carName);
-//		System.out.println(a.toString());
+		String carName = request.getParameter("carName");
+	    ObjectOutputStream o = (ObjectOutputStream) session.getAttribute("out");
+		ObjectInputStream i = (ObjectInputStream) session.getAttribute("in");
+		Object fromServer = null;
+		o.writeObject(carName);
+		try {
+			fromServer = i.readObject();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		Automobile a = (Automobile) fromServer;
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 	    String title = "Choosing Option";
 	    out.println(headWithTitle(title) +
@@ -58,20 +62,19 @@ public class chooseOption extends HttpServlet {
 	                "<form action=\"/CarConfiguration/totalCost.jsp\" ALIGN=\"right\">"+
 	                "<TABLE BORDER=2 ALIGN=\"CENTER\">\n" +
 	                "<TR BGCOLOR=\"#FFAD00\">\n");
-//	    out.println(a.printAuto("carName"));
-//	    String [] arr = {"1","2","3"};
-//	    String [] arr1 = {"5","2","3"};
-//	    out.println("<TR><TD>" + "first" + "<TD><select>");
-//	    for(int i = 0; i < arr.length; i++) {
-//	    	out.println("<option>" + arr[i]+"</option>");
-//	    }
-//	    out.println("</TR><tr><TD>" + "last" + "<TD><select>");
-//	    for(int i = 0; i < arr.length; i++) {
-//	    	out.println("<option>" + arr1[i] +"</option>");
-//	    }
-//	    out.println("</select></tr>");
+		for(int m = 0; m < a.getOptionSetSize(); m++) {
+			String [] optionSet = a.choiceInHtml(m).split("\n");
+			out.println("<TR><TD>" + optionSet[0] + "<TD><select name=\"" +  optionSet[0] + "\">");
+			for(int n = 1; n < optionSet.length; n++) {
+				out.println("<option value=\"" + optionSet[n] + "\">" + optionSet[n]+"</option>");
+			}
+			out.println("</select></tr>");
+		}
 	    out.println("<td colspan=2 align=right><input  align=center type=\"submit\" value=\"Done\"></td>");
 		out.println("</form></TABLE></BODY></HTML>");
-	}
+		session.setAttribute("car", a);
+		session.setAttribute("in", i);
+		session.setAttribute("out", o);
 
+	}
 }

@@ -58,8 +58,8 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 		}
 		else if (i == 2) {
 			this.state = REQUEST_CONFIGURE_AUTO;
-			output = "Select an Automobile from the following list to configure: \n"+
-					super.avaliableAuto();
+			//output = "Select an Automobile from the following list to configure: \n"+
+			output = super.avaliableAuto();
 		}
 		else {
 			output = "Invalid request";

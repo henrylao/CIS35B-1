@@ -310,9 +310,16 @@ public class Automobile implements Serializable{
 		}
 		return s.toString();
 	}
+	
 	public String printOneSet(int i) {
 		StringBuffer s = new StringBuffer();
 		s.append(opset.get(i).toString()).append("----------------------------------------------");
+		return s.toString();
+	}
+	
+	public String choiceInHtml(int i) {
+		StringBuffer s = new StringBuffer();
+		s.append(opset.get(i).toString());
 		return s.toString();
 	}
 	/*
