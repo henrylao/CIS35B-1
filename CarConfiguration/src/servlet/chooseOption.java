@@ -45,6 +45,7 @@ public class chooseOption extends HttpServlet {
 	                "<form action=\"/CarConfiguration/totalCost.jsp\" ALIGN=\"right\">"+
 	                "<TABLE BORDER=2 ALIGN=\"CENTER\">\n" +
 	                "<TR BGCOLOR=\"#FFAD00\">\n");
+	    System.out.println(request.getAttribute("carName"));
 	    String [] arr = {"1","2","3"};
 	    String [] arr1 = {"5","2","3"};
 	    out.println("<TR><TD>" + "first" + "<TD><select>");

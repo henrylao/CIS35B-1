@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import adapter.BuildAuto;
+import server.AutoServer;
+
 
 /**
  * Servlet implementation class carList
@@ -19,7 +22,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/carList")
 public class carList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private AutoServer server;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,11 +37,9 @@ public class carList extends HttpServlet {
 	}
 	
 	public void init(ServletConfig config) throws ServletException {
-//		 String host = "127.0.0.1";
-//		 AutoServer serve = new BuildAuto();
-//		 serve.serve(7777);
-//		 AutoClient client = new BuildAuto();
-//		 client.client(host, 7777);
+		 String host = "127.0.0.1";
+		 server = new BuildAuto();
+		 server.serve(7777);
 	}
 
 	/**
@@ -54,8 +55,7 @@ public class carList extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		String[] listcar = server.avaliableAuto().split("\n");
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    String title = "Car List";
@@ -63,9 +63,9 @@ public class carList extends HttpServlet {
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
 	                "<H1 ALIGN=\"CENTER\">" + title + "</H1>");
 	    out.println("<form method=\"post\" action=\"/CarConfiguration/chooseOption\"  ALIGN=\"CENTER\">");
-	    String [] arr = {"1","2","3"};
-	    for(int i = 0; i < arr.length; i++) {
-	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + i + "\" checked>" + i + "</input>");
+	    
+	    for(int i = 0; i < listcar.length; i++) {
+	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + listcar[i] + "\" checked>" + listcar[i] + "</input>");
 	    }  
 	    out.println("<p><input align=center type=\"submit\" value=\"Yes\"></p>");
 		out.println("</form></BODY></HTML>");
