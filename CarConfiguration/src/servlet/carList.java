@@ -1,7 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.net.Socket;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -12,8 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import adapter.BuildAuto;
-import server.AutoServer;
+//import adapter.BuildAuto;
+//import model.AutoLHM;
+//import model.Automobile;
+//import server.AutoServer;
 
 
 /**
@@ -22,7 +27,9 @@ import server.AutoServer;
 @WebServlet("/carList")
 public class carList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private AutoServer server;
+	private Socket sock;
+
+//    private AutoServer server;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,17 +44,18 @@ public class carList extends HttpServlet {
 	}
 	
 	public void init(ServletConfig config) throws ServletException {
-		 String host = "127.0.0.1";
-		 server = new BuildAuto();
-		 server.serve(7777);
+//		 String host = "127.0.0.1";
+//		 server = new BuildAuto();
+//		 server.serve(7777);
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,7 +63,13 @@ public class carList extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] listcar = server.avaliableAuto().split("\n");
+		this.sock = new Socket(request.getServerName() , 7777);
+		ObjectOutputStream o = new ObjectOutputStream(sock.getOutputStream());
+		ObjectInputStream i = new ObjectInputStream(sock.getInputStream());
+		o.writeObject(2);
+		HttpSession session = request.getSession();
+//		session.setAttribute("server", server);
+//		String[] listcar = server.avaliableAuto().split("\n");
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    String title = "Car List";
@@ -63,10 +77,9 @@ public class carList extends HttpServlet {
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
 	                "<H1 ALIGN=\"CENTER\">" + title + "</H1>");
 	    out.println("<form method=\"post\" action=\"/CarConfiguration/chooseOption\"  ALIGN=\"CENTER\">");
-	    
-	    for(int i = 0; i < listcar.length; i++) {
-	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + listcar[i] + "\" checked>" + listcar[i] + "</input>");
-	    }  
+//	    for(int i = 0; i < listcar.length; i++) {
+//	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + listcar[i] + "\" checked>" + listcar[i] + "</input>");
+//	    }  
 	    out.println("<p><input align=center type=\"submit\" value=\"Yes\"></p>");
 		out.println("</form></BODY></HTML>");
 		/*

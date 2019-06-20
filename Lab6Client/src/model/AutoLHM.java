@@ -84,7 +84,7 @@ public class AutoLHM <T extends Automobile>{
 		while(it.hasNext()) {
 			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
-			buf.append(i++).append('.').append(((Automobile) item.getValue()).getModel()).append("\n");
+			buf.append(((Automobile) item.getValue()).getModel()).append("\n");
 		}
 		return buf.toString();
 	}

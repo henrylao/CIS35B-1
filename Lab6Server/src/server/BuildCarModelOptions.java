@@ -41,8 +41,8 @@ public class BuildCarModelOptions extends ProxyAutomobile implements AutoServer{
 			this.state = WAITING;
 		}
 		else if (state == REQUEST_CONFIGURE_AUTO) {
-			Automobile a = new BuildAuto().getAuto( (String) (obj));
-			toClient = a;
+			Automobile a = (Automobile)new BuildAuto().getAuto( (String) (obj));
+			toClient = a; 
 		}
 
 		this.state = WAITING;

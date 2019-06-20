@@ -52,7 +52,7 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 		new DefaultSocketClient(host, port).start();
 	}
 
-	public Automobile getAuto(String modelName) {
+	public Object getAuto(String modelName) {
 		if(cars.finding(modelName)) {
 			return cars.returnObject(modelName);
 		}

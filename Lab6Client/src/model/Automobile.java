@@ -315,9 +315,18 @@ public class Automobile implements Serializable{
 		s.append(opset.get(i).toString()).append("----------------------------------------------");
 		return s.toString();
 	}
-	@Override
+	/*
 	public String toString(){
 		StringBuffer s = new StringBuffer(String.format("Model Make:%35s\nModel Name:%35s\nYear:%41s\nBase Price:%35.2f\n\n", getMake(), getModel(), getYear(), getbaseprice()));
+		for ( OptionSet item : opset) {
+			s.append(item.toString()).append('\n');
+		}
+		return s.toString();
+	}
+	*/
+	public String toString(){
+		StringBuffer s = new StringBuffer();
+		//String.format("Model Make:%35s\nModel Name:%35s\nYear:%41s\nBase Price:%35.2f\n\n", getMake(), getModel(), getYear(), getbaseprice()));
 		for ( OptionSet item : opset) {
 			s.append(item.toString()).append('\n');
 		}
