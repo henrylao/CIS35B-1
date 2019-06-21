@@ -49,4 +49,10 @@ public class Option implements Serializable{
 		}
 		return s.toString();
 	}
+
+	public String returnHtml() {
+		StringBuffer s = new StringBuffer();
+		s.append(getOptionName()).append("\n").append(getOptionPrice());
+		return s.toString();
+	}
 }

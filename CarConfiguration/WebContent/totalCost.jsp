@@ -11,23 +11,37 @@
 <%@ page import="javax.servlet.http.HttpSession" 
 	import="model.Automobile" 
 	import="java.io.ObjectOutputStream" 
-	import="java.io.ObjectInputStream" %>
-
-request.
+	import="java.io.ObjectInputStream" 
+%>
 <%
-Automobile car = (Automobile) request.getAttribute("car");
+Automobile a = (Automobile) session.getAttribute("car");
 ObjectOutputStream o = (ObjectOutputStream) session.getAttribute("out");
 ObjectInputStream i = (ObjectInputStream) session.getAttribute("in");
+for(int m = 0; m < a.getOptionSetSize(); m++) {
+	String optionSetName = a.getOptionSetName(m);
+	a.setOptionChoice(m, (String) request.getParameter(optionSetName));
+}
 %>
-
+<p align=center>Here is what you selected:</p>
+<table border=2 align=center>
+<tr bgcolor=FFAD00>
 <%
-int j =2;
-int in = 0;
-int k = in + j;
-//out.println("value of k is "+k);
+for(int m = 0; m < a.getOptionSetSize(); m++){
+	String optionSetName = a.getOptionSetName(m);%>
+	<tr>
+		<td><%=optionSetName %></td>
+		<td><%=a.getOptionChoiceName(optionSetName) %></td>
+		<td align=right><%=a.getOptionChoicePrice(optionSetName) %></td>
+	</tr>
+<%
+}
 %>
+	<tr>
+		<td><strong>Total Cost</strong></td>
+		<td></td>
+		<td><strong>$<%=a.caulateTotal() %></strong></td>
+	</tr>
+</table>
 <br>
-
-The value of k is: <%=k %>??
 </body>
 </html>

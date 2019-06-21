@@ -124,6 +124,13 @@ public class Automobile implements Serializable{
 		}
 		return null;
 	}
+	public String getOptionChoiceName(String setName) {
+		int pos = findOptionSetByName(setName);
+		if(pos != -1) {
+			return choice.get(pos).getOptionName();
+		}
+		return null;
+	}
 	public float getOptionChoicePrice(String s) {
 		int pos = findOptionSetByName(s);
 		if(pos != -1) {
@@ -311,12 +318,19 @@ public class Automobile implements Serializable{
 		return s.toString();
 	}
 	
+	public String returnChoicesHtml(int i) {
+	
+		return choice.get(i).returnHtml();
+	}
 	public String printOneSet(int i) {
 		StringBuffer s = new StringBuffer();
 		s.append(opset.get(i).toString()).append("----------------------------------------------");
 		return s.toString();
 	}
 	
+	public String getOptionSetName(int i) {
+		return opset.get(i).getOptionSetName();
+	}
 	public String choiceInHtml(int i) {
 		StringBuffer s = new StringBuffer();
 		s.append(opset.get(i).toString());
