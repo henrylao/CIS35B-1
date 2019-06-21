@@ -34,7 +34,7 @@ public class chooseOption extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		//doPost(request, response);
 	}
 
 	/**
@@ -59,8 +59,8 @@ public class chooseOption extends HttpServlet {
 	    out.println(headWithTitle(title) +
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
 	                "<H1 ALIGN=\"CENTER\">" + title + "</H1>\n" +
-	                "<form action=\"/CarConfiguration/totalCost.jsp\" ALIGN=\"right\">"+
-	                "<TABLE BORDER=2 ALIGN=\"CENTER\">\n" +
+	                "<form action=\"/CarConfiguration/totalCost.jsp\" ALIGN=\"right\" method=post>"+
+	                "<TABLE BORDER=2 ALIGN=\"CENTER\" target=\"_blank\">\n" +
 	                "<TR BGCOLOR=\"#FFAD00\">\n");
 		for(int m = 0; m < a.getOptionSetSize(); m++) {
 			String [] optionSet = a.choiceInHtml(m).split("\n");
@@ -70,7 +70,7 @@ public class chooseOption extends HttpServlet {
 			}
 			out.println("</select></tr>");
 		}
-	    out.println("<td colspan=2 align=right><input  align=center type=\"submit\" value=\"Done\"></td>");
+	    out.println("<td colspan=2 align=right><input align=center type=\"submit\" value=\"Done\"></td>");
 		out.println("</form></TABLE></BODY></HTML>");
 		session.setAttribute("car", a);
 		session.setAttribute("in", i);

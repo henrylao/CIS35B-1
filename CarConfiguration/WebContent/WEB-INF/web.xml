@@ -17,4 +17,12 @@
     <servlet-name>chooseOption</servlet-name>
     <url-pattern>/chooseOption/</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>totalCost</servlet-name>
+    <servlet-class>/totalCost.jsp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>totalCost</servlet-name>
+    <url-pattern>/totalCost/</url-pattern>
+  </servlet-mapping>
 </web-app>

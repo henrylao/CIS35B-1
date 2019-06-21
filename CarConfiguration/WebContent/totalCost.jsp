@@ -23,7 +23,7 @@ for(int m = 0; m < a.getOptionSetSize(); m++) {
 }
 %>
 <p align=center>Here is what you selected:</p>
-<table border=2 align=center>
+<table border=2 align=center id="table">
 <tr bgcolor=FFAD00>
 <%
 for(int m = 0; m < a.getOptionSetSize(); m++){
@@ -42,6 +42,40 @@ for(int m = 0; m < a.getOptionSetSize(); m++){
 		<td><strong>$<%=a.caulateTotal() %></strong></td>
 	</tr>
 </table>
-<br>
+<script type="text/javascript">
+function exportTableToExcel(tableID, filename){
+    var downloadLink;
+    var dataType;
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+</script>
+
+<input align="center" type="button" onclick="exportTableToExcel('table', 'car')" value="Export to Excel">
+
 </body>
 </html>
