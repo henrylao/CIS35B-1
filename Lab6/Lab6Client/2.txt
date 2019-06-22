@@ -1,0 +1,16 @@
+Tesla,Model 3,2019,36200
+0Color
+Solid Black,0
+Deep Blue Metallic,0
+Midnight Silver Metallic,100
+Pearl White Multi-Coat,100
+Red Multi-Coat,100
+0Powertrain
+AC Electric Motor,0
+Single-Speed Fixed Gear,200
+0Tires
+18,0
+19,200
+0Wheels
+Normal,0
+Sport Alloy,200
