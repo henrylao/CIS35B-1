@@ -32,7 +32,6 @@
 	}
 	%>
 	<p align=center>Here is what you selected:</p>
-	<a href="excelreport.jsp">save</a>
 		<table border=2 align=center id="tableData">
 			<tr bgcolor=FFAD00>
 			<%
@@ -52,5 +51,6 @@
 				<td><strong>$<%=a.caulateTotal() %></strong></td>
 			</tr>
 		</table> 
+		<p align="center"><a href="excelreport.jsp">save</a></p>
 </body>
 </html>
