@@ -326,7 +326,7 @@ public class Automobile implements Serializable{
 	*/
 	public String toString(){
 		StringBuffer s = new StringBuffer();
-		//String.format("Model Make:%35s\nModel Name:%35s\nYear:%41s\nBase Price:%35.2f\n\n", getMake(), getModel(), getYear(), getbaseprice()));
+		String.format("Model Make:%35s\nModel Name:%35s\nYear:%41s\nBase Price:%35.2f\n\n", getMake(), getModel(), getYear(), getbaseprice());
 		for ( OptionSet item : opset) {
 			s.append(item.toString()).append('\n');
 		}

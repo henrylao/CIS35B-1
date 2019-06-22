@@ -6,7 +6,7 @@ Deep Blue Metallic,1000
 Pearl White Multi-Coat,1500
 Red Multi-Coat,2000
 0Wheel
-18" Aero Wheels,0
+18 Aero Wheels,0
 0Premium Interior
 All Black,0
 Black and White,1000

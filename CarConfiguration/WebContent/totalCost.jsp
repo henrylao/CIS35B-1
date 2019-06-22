@@ -4,15 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script>
-    function gotoExcel(elemId, frmFldId)
-    {
-        var obj = document.getElementById(elemId);
-        var oFld = document.getElementById(frmFldId);
-        oFld.value = obj.innerHTML;
- 
-    }
-</script>
 <title>Pricing</title>
 </head>
 <body BGCOLOR="#FDF5E6">
@@ -34,7 +25,13 @@
 	<p align=center>Here is what you selected:</p>
 		<table border=2 align=center id="tableData">
 			<tr bgcolor=FFAD00>
+			<tr>
+				<td><%=a.getMake()%> <%=a.getModel()%></td>
+				<td>Base Price</td>
+				<td align=right><%=a.getbaseprice() %></td>
+			</tr>
 			<%
+			
 			for(int m = 0; m < a.getOptionSetSize(); m++){
 				String optionSetName = a.getOptionSetName(m);%>
 				<tr>
@@ -51,6 +48,6 @@
 				<td><strong>$<%=a.caulateTotal() %></strong></td>
 			</tr>
 		</table> 
-		<p align="center"><a href="excelreport.jsp">save</a></p>
+		<p align="center"><a href="excelreport.jsp">save as excel</a></p>
 </body>
 </html>

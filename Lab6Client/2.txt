@@ -9,8 +9,8 @@ Red Multi-Coat,100
 AC Electric Motor,0
 Single-Speed Fixed Gear,200
 0Tires
-18'',0
-19'',200
+18,0
+19,200
 0Wheels
 Normal,0
 Sport Alloy,200

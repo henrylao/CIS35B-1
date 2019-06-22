@@ -55,13 +55,14 @@ public class chooseOption extends HttpServlet {
 		Automobile a = (Automobile) fromServer;
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-	    String title = "Choosing Option";
+	    String title = "Basic Car Choice";
 	    out.println(headWithTitle(title) +
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
 	                "<H1 ALIGN=\"CENTER\">" + title + "</H1>\n" +
 	                "<form action=\"/CarConfiguration/totalCost.jsp\" ALIGN=\"right\" method=post>"+
 	                "<TABLE BORDER=2 ALIGN=\"CENTER\" target=\"_blank\">\n" +
 	                "<TR BGCOLOR=\"#FFAD00\">\n");
+	    out.println(String.format("<tr><td>Make/Model:<td>%s %s</tr>", a.getMake(), a.getModel()));
 		for(int m = 0; m < a.getOptionSetSize(); m++) {
 			String [] optionSet = a.choiceInHtml(m).split("\n");
 			out.println("<TR><TD>" + optionSet[0] + "<TD><select name=\"" +  optionSet[0] + "\">");
