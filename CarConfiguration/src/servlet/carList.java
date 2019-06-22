@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import client.SelectCarOptions;
-
 /**
  * Servlet implementation class carList
  */
@@ -23,7 +21,6 @@ import client.SelectCarOptions;
 public class carList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Socket sock;
-	private SelectCarOptions clientProtocol;
 
 //    private AutoServer server;
     /**
@@ -60,7 +57,6 @@ public class carList extends HttpServlet {
 		this.sock = new Socket(request.getServerName() , 7777);
 		ObjectOutputStream o = new ObjectOutputStream(sock.getOutputStream());
 		ObjectInputStream i = new ObjectInputStream(sock.getInputStream());
-		clientProtocol = new SelectCarOptions();
 		Object fromServer = null;
 		try {
 			i.readObject();//useless menu

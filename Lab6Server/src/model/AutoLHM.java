@@ -80,7 +80,6 @@ public class AutoLHM <T extends Automobile>{
 	public String getAllCar() {
 		StringBuffer buf = new StringBuffer(""); 
 		Iterator<?> it = auto.entrySet().iterator();
-		int i = 1;
 		while(it.hasNext()) {
 			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
