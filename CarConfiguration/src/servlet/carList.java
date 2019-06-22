@@ -58,8 +58,9 @@ public class carList extends HttpServlet {
 		ObjectOutputStream o = new ObjectOutputStream(sock.getOutputStream());
 		ObjectInputStream i = new ObjectInputStream(sock.getInputStream());
 		Object fromServer = null;
+		
 		try {
-			i.readObject();//useless menu
+			i.readObject();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}

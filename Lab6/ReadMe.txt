@@ -26,6 +26,7 @@ Adding the editInterface so I can control what user accesses the data.
 Synchronized the methods in the HelperEidit class.
 Muli threading so the program could run fast when there are muli users. 
 The drive tests the methods by non-synchronized, and synchronized.
+
 Lab5:
 Using server communicate with client. 
 Parse properties object to new automobile object.
@@ -33,3 +34,14 @@ Server could accept string buffer or properties object and create an automobile.
 Client upload different types of files. After receive the automobile that client asks for, it will ask user to choice the options.
 Usage: use ip address of the computer and an available port to create the socket that connect server and client. 
 Start client first, and we could start muli clients. 
+
+Lab6:
+Using servlet and jsp so we can configure car over the web.
+Connect servlet and server and servlet becomes a client to communicate server and show car list so user can configure car.
+How to open web:
+1.run ServerDriver.java in Lab6Server
+2.run ClientDriver.java in Lab6Client
+3.upload cars to server in the console
+4.start server (run index.html in CarConfiguration/WebContent/)
+5.the window will open the default webpage and user can start configure the car they want
+6.after configured the car, user could save the car into a excel file

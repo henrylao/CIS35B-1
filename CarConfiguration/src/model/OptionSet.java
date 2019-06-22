@@ -125,13 +125,10 @@ public class OptionSet implements Serializable{
 	*/
 	public String toString(){
 		StringBuffer s = new StringBuffer();
-		s.append(String.format("%s\n----------------------------------------------", getOptionSetName())).append(String.format("\n%-35s%11s\n", "Options:", "Fee"));
-		//s.append(String.format("<tr><td>%</td><select>",getOptionSetName()));
+		s.append(getOptionSetName()).append("\n");
 		for(int i=0; i< opt.size(); i++){
-			s.append(String.format("%2s.%-35s%8.2f\n",i+1,opt.get(i).getOptionName(),opt.get(i).getOptionPrice()));
-			//s.append(String.format("<option>%</option>", opt.get(i).getOptionName()));
+			s.append(opt.get(i).getOptionName()).append("\n");
 		}
-		//s.append("</select></tr>");
 		return s.toString();
 	}
 }
