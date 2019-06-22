@@ -45,14 +45,9 @@ public class chooseOption extends HttpServlet {
 		String carName = request.getParameter("carName");
 	    ObjectOutputStream o = (ObjectOutputStream) session.getAttribute("out");
 		ObjectInputStream i = (ObjectInputStream) session.getAttribute("in");
-		Object fromServer = null;
 		o.writeObject(carName);
-		try {
-			fromServer = i.readObject();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		Automobile a = (Automobile) fromServer;
+		AutoServlet s = (AutoServlet) session.getAttribute("interface");
+		Automobile a = s.getCarObject(i);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 	    String title = "Basic Car Choice";

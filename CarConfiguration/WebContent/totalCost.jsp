@@ -2,27 +2,27 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pricing</title>
-</head>
-<body BGCOLOR="#FDF5E6">
-	<h1 ALIGN="CENTER" >Price</h1>
-	<%@ page import="javax.servlet.http.HttpSession" 
-		import="model.Automobile" 
-		import="java.io.ObjectOutputStream" 
-		import="java.io.ObjectInputStream" 
-	%>
-	<%
-	Automobile a = (Automobile) session.getAttribute("car");
-	ObjectOutputStream o = (ObjectOutputStream) session.getAttribute("out");
-	ObjectInputStream i = (ObjectInputStream) session.getAttribute("in");
-	for(int m = 0; m < a.getOptionSetSize(); m++){
-		String optionSetName = a.getOptionSetName(m);
-		a.setOptionChoice(m, (String) request.getParameter(optionSetName));
-	}
-	%>
-	<p align=center>Here is what you selected:</p>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Pricing</title>
+	</head>
+	<body BGCOLOR="#FDF5E6">
+		<h1 ALIGN="CENTER" >Price</h1>
+		<%@ page import="javax.servlet.http.HttpSession" 
+			import="model.Automobile" 
+			import="java.io.ObjectOutputStream" 
+			import="java.io.ObjectInputStream" 
+		%>
+		<%
+		Automobile a = (Automobile) session.getAttribute("car");
+		ObjectOutputStream o = (ObjectOutputStream) session.getAttribute("out");
+		ObjectInputStream i = (ObjectInputStream) session.getAttribute("in");
+		for(int m = 0; m < a.getOptionSetSize(); m++){
+			String optionSetName = a.getOptionSetName(m);
+			a.setOptionChoice(m, (String) request.getParameter(optionSetName));
+		}
+		%>
+		<p align=center>Here is what you selected:</p>
 		<table border=2 align=center id="tableData">
 			<tr bgcolor=FFAD00>
 			<tr>
@@ -49,5 +49,6 @@
 			</tr>
 		</table> 
 		<p align="center"><a href="excelreport.jsp">save as excel</a></p>
-</body>
+		<p align="center"><a href="/CarConfiguration/">restart</a></p>
+	</body>
 </html>

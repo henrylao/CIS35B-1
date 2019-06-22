@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import adapter.BuildAuto;
+
 /**
  * Servlet implementation class carList
  */
@@ -57,7 +59,6 @@ public class carList extends HttpServlet {
 		this.sock = new Socket(request.getServerName() , 7777);
 		ObjectOutputStream o = new ObjectOutputStream(sock.getOutputStream());
 		ObjectInputStream i = new ObjectInputStream(sock.getInputStream());
-		Object fromServer = null;
 		
 		try {
 			i.readObject();
@@ -65,12 +66,8 @@ public class carList extends HttpServlet {
 			e.printStackTrace();
 		}
 		o.writeObject(2);
-		try {
-			fromServer = i.readObject();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		String[] listcar = ((String) fromServer).split("\n");
+		AutoServlet s = new BuildAuto();
+		String[] listcar = (s.getCarList(i)).split("\n");
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    String title = "Car List";
@@ -87,7 +84,7 @@ public class carList extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("in", i);
 		session.setAttribute("out", o);
-
+		session.setAttribute("interface", s);
 	}
 
 }
