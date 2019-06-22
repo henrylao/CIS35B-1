@@ -68,9 +68,7 @@ public class chooseOption extends HttpServlet {
 		}
 	    out.println("<td colspan=2 align=right><input align=center type=\"submit\" value=\"Done\"></td>");
 		out.println("</form></TABLE></BODY></HTML>");
-		session.setAttribute("car", a);
-		session.setAttribute("in", i);
-		session.setAttribute("out", o);
+		//session.setAttribute("car", a);
 
 	}
 }

@@ -12,8 +12,8 @@ package adapter;
 import client.AutoClient;
 import scale.EditInterface;
 import server.AutoServer;
+import servlet.AutoServlet;
 
-public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto, Choice, EditInterface, AutoServer, AutoClient{
-
+public class BuildAuto extends ProxyAutomobile implements CreateAuto, UpdateAuto, FixAuto, Choice, EditInterface, AutoServer, AutoClient, AutoServlet{
 
 }

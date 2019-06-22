@@ -23,6 +23,26 @@ public abstract class ProxyAutomobile  {//acting as a delegate
 	private static AutoLHM<Automobile> cars = new AutoLHM<Automobile>();
 	private static int [] error;
 	private String errorFile = "errorFile.txt";
+	public String getCarList(ObjectInputStream i) {
+		Object fromServer = null;
+		try {
+			fromServer = i.readObject();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		return (String) fromServer;
+	}
+	public Automobile getCarObject(ObjectInputStream i) {
+		Object fromServer = null;
+		try {
+			fromServer = i.readObject();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		Automobile a = (Automobile) fromServer;
+		return a;
+	}
+
 	public void buildAuto(Object obj, int type) {
 		Automobile auto = null;
     	switch(type){

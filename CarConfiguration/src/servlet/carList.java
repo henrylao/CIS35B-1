@@ -59,7 +59,6 @@ public class carList extends HttpServlet {
 		this.sock = new Socket(request.getServerName() , 7777);
 		ObjectOutputStream o = new ObjectOutputStream(sock.getOutputStream());
 		ObjectInputStream i = new ObjectInputStream(sock.getInputStream());
-		
 		try {
 			i.readObject();
 		} catch (ClassNotFoundException e) {
@@ -76,7 +75,10 @@ public class carList extends HttpServlet {
 	                "<H1 ALIGN=\"CENTER\">" + title + "</H1>");
 	    out.println("<form method=\"post\" action=\"/CarConfiguration/chooseOption\"  ALIGN=\"CENTER\">");
 	    for(int j = 0; j < listcar.length; j++) {
-	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + listcar[j] + "\" checked>" + listcar[j] + "</input><br>");
+	    	out.println("<input type=\"radio\" name=\"carName\" value=\"" + listcar[j] + "\" ");
+	    	if (j == 0)
+	    		out.println("checked");
+	    	out.println(">" + listcar[j] + "</input><br>");
 	    }  
 	    out.println("<p><input align=center type=\"submit\" value=\"Yes\"></p>");
 		out.println("</form></BODY></HTML>");
