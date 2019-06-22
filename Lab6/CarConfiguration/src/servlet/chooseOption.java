@@ -30,31 +30,26 @@ public class chooseOption extends HttpServlet {
 				"<HTML>\n" +
 				"<HEAD><TITLE>" + title + "</TITLE></HEAD>\n");
 	}
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doPost(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String carName = request.getParameter("carName");
 	    ObjectOutputStream o = (ObjectOutputStream) session.getAttribute("out");
 		ObjectInputStream i = (ObjectInputStream) session.getAttribute("in");
-		try {
-			o.writeObject(carName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		o.writeObject(carName);
 		AutoServlet s = (AutoServlet) session.getAttribute("interface");
 		Automobile a = s.getCarObject(i);
 		response.setContentType("text/html");
-		PrintWriter out = null;
-		try {
-			out = response.getWriter();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		PrintWriter out = response.getWriter();
 	    String title = "Basic Car Choice";
 	    out.println(headWithTitle(title) +
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +

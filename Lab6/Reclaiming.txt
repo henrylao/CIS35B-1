@@ -1,0 +1,4 @@
+I lost 2 points on Lab 2 because I rewrite some fix(int i) method in ProxyAuto instead of call fix in autoexception. 
+I cut the fix methods in proxyAuto and paste it in the autoexception. I imported the exception classes and make a AutoException object e in order to call the fix functions to fix the errors that happens in ProxyAutomobile class. 
+I think I should get those two points back.
+

@@ -57,7 +57,7 @@ public class AutoLHM <T extends Automobile>{
 		while(it.hasNext()) {
 			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
-			if( ((T) item.getValue()).getModel().equals(name))
+			if( ((T) item.getValue()).getModel().equals(name)) 
 				return true;
 		}
 		return false;		
@@ -83,7 +83,7 @@ public class AutoLHM <T extends Automobile>{
 		while(it.hasNext()) {
 			@SuppressWarnings("rawtypes")
 			Map.Entry item = (Map.Entry) it.next();
-			buf.append(((Automobile) item.getValue()).getModel()).append("\n").append(((Automobile) item.getValue()).getModel()).append(" ").append(((Automobile) item.getValue()).getMake()).append("\n");
+			buf.append(((Automobile) item.getValue()).getModel()).append(" ").append(((Automobile) item.getValue()).getMake()).append("\n");
 		}
 		return buf.toString();
 	}

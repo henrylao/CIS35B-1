@@ -55,51 +55,20 @@ public class carList extends HttpServlet {
 	 */
 	
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			this.sock = new Socket(request.getServerName() , 7777);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		ObjectOutputStream o = null;
-		try {
-			o = new ObjectOutputStream(sock.getOutputStream());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		ObjectInputStream i = null;
-		try {
-			i = new ObjectInputStream(sock.getInputStream());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.sock = new Socket(request.getServerName() , 7777);
+		ObjectOutputStream o = new ObjectOutputStream(sock.getOutputStream());
+		ObjectInputStream i = new ObjectInputStream(sock.getInputStream());
 		try {
 			i.readObject();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		try {
-			o.writeObject(2);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		o.writeObject(2);
 		AutoServlet s = new BuildAuto();
 		String[] listcar = (s.getCarList(i)).split("\n");
 		response.setContentType("text/html");
-	    PrintWriter out = null;
-		try {
-			out = response.getWriter();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    PrintWriter out = response.getWriter();
 	    String title = "Car List";
 	    out.println(headWithTitle(title) +
 	                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
