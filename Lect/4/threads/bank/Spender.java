@@ -1,4 +1,4 @@
-package bank;
+package examples.threads.bank;
 
 import examples.threads.bank.*;
 

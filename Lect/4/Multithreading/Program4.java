@@ -16,7 +16,7 @@ class Queue {
 	System.out.println("Put: " + n);
 	try {  
 		Thread.sleep(3000); 
-     	} catch (InterruptedException e) { }
+     	} catch (InterruptedException e) { }	
   }
 
 }

@@ -1,4 +1,4 @@
-package bank;
+package examples.threads;
 /**
  * Class Transaction demonstrates ThreadLocal 
  * static variables. It contains an instance 

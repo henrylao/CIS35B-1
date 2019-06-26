@@ -1,4 +1,4 @@
-package bank;
+package examples.threads.bank;
 
 /** 
   * A class to demonstrate wait and notify methods

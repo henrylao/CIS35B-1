@@ -1,7 +1,4 @@
 package examples.threads;
-
-import bank.TransactionThread;
-
 /**
  * Class TestTransactionThreads demonstrates 
  * ThreadLocal variables 
